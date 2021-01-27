@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
 import axios from './axios';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Checkout from './components/Checkout';
 
 import './App.css';
@@ -23,9 +26,31 @@ function App() {
 
     return (
         <div className='app'>
+
+            {/*
             {promise && <Elements stripe={promise}>
-                <Checkout />
+            <Checkout />
             </Elements>}
+            */}
+
+            <BrowserRouter>
+                <Header />
+                
+                <Switch>
+                    <Route path='/store-locations'>
+                        <h1>store locations</h1>
+                    </Route>
+                    <Route path='/cart'>
+                        <h1>cart</h1>
+                    </Route>
+                    <Route path='/'>
+                        <h1>home</h1>
+                    </Route>
+                </Switch>
+
+                <Footer />
+            </BrowserRouter>
+
         </div>
     );
 }

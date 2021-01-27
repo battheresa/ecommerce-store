@@ -1,15 +1,115 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto|Lato');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&family=Lato:wght@300;400;700');
 
 body {
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p, a, button, input, input::placeholder {
+    line-height: 2.2em;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
     font-family: 'Roboto', sans-serif;
 }
 
-p, a, button, input, input::placeholder {
+h4, h5, h6, p, a, button, input, input::placeholder {
     font-family: 'Lato', sans-serif;
 }
 
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    word-spacing: 4px;
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+h3 {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 22px;
+    font-weight: 700;
+    word-spacing: 3px;
+    letter-spacing: 1.3px;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+h6 {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+p, a, button {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+a, a:link, a:visited, a:active, a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+input {
+    font-size: 16px;
+    font-weight: 300;
+
+    outline: none;
+    padding: 2px 12px;
+    border: 0.8px solid black;
+}
+
+input::placeholder {
+    color: #CCCCCC;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 5px;
+    width: 100%;
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-wide {
+    word-spacing: 3px;
+    letter-spacing: 1.05px;
+}
+
+.line-veritcal {
+    content: '';
+    background-color: black;
+    width: 0.5px;
+    height: 100%;
+}
+
+.line-horizontal {
+    content: '';
+    background-color: black;
+    width: 500px;
+    height: 0.5px;
+}
