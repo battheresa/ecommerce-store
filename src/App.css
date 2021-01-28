@@ -100,13 +100,6 @@ button {
     letter-spacing: 1.05px;
 }
 
-.line-veritcal {
-    content: '';
-    background-color: black;
-    width: 0.5px;
-    height: 100%;
-}
-
 .line-horizontal {
     content: '';
     background-color: black;

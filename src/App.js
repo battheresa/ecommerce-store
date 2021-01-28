@@ -6,6 +6,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import axios from './axios';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Home from './components/Home';
 import Checkout from './components/Checkout';
 
 import './App.css';
@@ -44,7 +45,7 @@ function App() {
                         <h1>cart</h1>
                     </Route>
                     <Route path='/'>
-                        <h1>home</h1>
+                        <Home />
                     </Route>
                 </Switch>
 
