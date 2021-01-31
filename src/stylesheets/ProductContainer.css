@@ -1,0 +1,21 @@
+.productContainer {
+    display: grid;
+    justify-items: stretch;
+    align-items: stretch;
+
+    column-gap: 20px;
+    row-gap: 40px;
+
+    position: absolute;
+    transition: 0.5s;
+}
+
+.productContainer__small {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.productContainer__large {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+}

@@ -1,0 +1,754 @@
+{
+    "electronics": [
+        {
+            "name": "Aluminium LED Torch",
+            "price": [480],
+            "priceBy": "standard",
+            "description": "This is a handy waterproof LED light that can safely be used outside even when it is raining. 2 light modes (high/low) is available with approximate 3 hours battery span.",
+            "color": [],
+            "size": [],
+            "material": ["Aluminium"],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4549738884811_1260.jpg",
+                    "https://img.muji.net/img/item/4549738884811_01_1260.jpg",
+                    "https://img.muji.net/img/item/4549738884811_02_1260.jpg",
+                    "https://img.muji.net/img/item/4549738884811_03_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 10,
+            "trending": false,
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "LED Lighting",
+            "price": [1480],
+            "priceBy": "standard",
+            "description": "With the spring hidden inside supporting arm, the whole design looks simple and slim. You can adjust the lighting from yellowish to white light according to daily need using the touch panel on the top. Base, clamp and floor stands are sold separately to be used following your interior need.",
+            "color": ["Black"],
+            "size": ["12x57x57cm"],
+            "material": ["Aluminium"],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4549738397977_1260.jpg",
+                    "https://img.muji.net/img/item/4549738397977_01_1260.jpg",
+                    "https://img.muji.net/img/item/4549738397977_02_1260.jpg",
+                    "https://img.muji.net/img/item/4549738397977_09_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 10,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "LED Lighting Base",
+            "price": [150],
+            "priceBy": "standard",
+            "description": "Base for the LED Lighting.",
+            "color": ["Black"],
+            "size": ["20x7cm"],
+            "material": ["Aluminium"],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4549738326526_1260.jpg",
+                    "https://img.muji.net/img/item/4549738326526_01_1260.jpg",
+                    "https://img.muji.net/img/item/4549738326526_02_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 10,
+            "trending": true, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "LED Lighting Floor Stand",
+            "price": [850],
+            "priceBy": "standard",
+            "description": "Floor stands for the LED Lighting.",
+            "color": ["black"],
+            "size": ["26x73cm"],
+            "material": ["Aluminium"],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4549738326540_1260.jpg",
+                    "https://img.muji.net/img/item/4549738326540_01_1260.jpg",
+                    "https://img.muji.net/img/item/4549738326540_02_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 10,
+            "trending": true, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Wall Clock",
+            "price": [350],
+            "priceBy": "standard",
+            "description": "A highly visible wall clock having a slightly convex number with text font that is widely applied in business-use clocks.",
+            "color": ["White", "Black"],
+            "size": ["26x5cm"],
+            "material": ["Polycarbonate"],
+            "gallery": {
+                "white": [
+                    "https://img.muji.net/img/item/4547315915163_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915163_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915163_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915163_03_1260.jpg"
+                ],
+                "black": [
+                    "https://img.muji.net/img/item/4547315915170_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915170_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915170_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915170_03_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 10,
+            "trending": false, 
+            "newArrival": true, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Circulator Fan",
+            "price": [590],
+            "priceBy": "standard",
+            "description": "Large air volume and low-noise type circulator fan. The fan grill can be taken off, making cleaning of fan easier.",
+            "color": ["White"],
+            "size": ["33x26x38cm"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4549738309833_1260.jpg",
+                    "https://img.muji.net/img/item/4549738309833_01_1260.jpg",
+                    "https://img.muji.net/img/item/4549738309833_02_1260.jpg",
+                    "https://img.muji.net/img/item/4549738309833_03_1260.jpg",
+                    "https://img.muji.net/img/item/4549738309833_04_1260.jpg",
+                    "https://img.muji.net/img/item/4549738309833_09_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 10,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": true
+        },
+        {
+            "name": "USB External Battery",
+            "price": [320],
+            "priceBy": "standard",
+            "description": "It is a compact external battery with a battery capacity of 10000mAh and LED indicator showing the remaining amount of battery.",
+            "color": ["white"],
+            "size": ["6x10x2cm"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4550182943955_1260.jpg",
+                    "https://img.muji.net/img/item/4550182943955_03_1260.jpg",
+                    "https://img.muji.net/img/item/4550182943955_04_1260.jpg",
+                    "https://img.muji.net/img/item/4550182943955_05_1260.jpg",
+                    "https://img.muji.net/img/item/4550182943955_06_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 10,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": true
+        },
+        {
+            "name": "Air Purifier",
+            "price": [3580],
+            "priceBy": "standard",
+            "description": "Equipped with Dual Counter Fan and 360° Dust and Odor Filter to enhance air flow and helps filter out suspended particles. Designed with Auto mode that adjusts the optimum spinning frequency and Jet cleansing mode that purifies the air in the highest speed.",
+            "color": ["white"],
+            "size": ["25x25x50cm"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4549337193604_1260.jpg",
+                    "https://img.muji.net/img/item/4549337193604_03_1260.jpg",
+                    "https://img.muji.net/img/item/4549337193604_06_1260.jpg",
+                    "https://img.muji.net/img/item/4549337193604_07_1260.jpg",
+                    "https://img.muji.net/img/item/4549337193604_10_1260.jpg",
+                    "https://img.muji.net/img/item/4549337193604_11_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 10,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Health Meter",
+            "price": [380],
+            "priceBy": "standard",
+            "description": "A large liquid crystal display that is easy to see even when standing. When you get on the main unit, the power turns on automatically, and after measuring the weight, the power turns off after 20 seconds.",
+            "color": ["white"],
+            "size": ["27x21x3cm"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4549738969693_1260.jpg",
+                    "https://img.muji.net/img/item/4549738969693_01_1260.jpg",
+                    "https://img.muji.net/img/item/4549738969693_02_1260.jpg",
+                    "https://img.muji.net/img/item/4549738969693_03_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 10,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        }
+    ],
+    "fabrics": [
+        {
+            "name": "Cotton Denim Cushion",
+            "price": [250],
+            "priceBy": "standard",
+            "description": "Make use of Indian Cotton as cover, the cushion is filled with materials has cushioning characteristics.",
+            "color": ["light blue", "dark blue"],
+            "size": ["55x59cm"],
+            "material": ["cotton"],
+            "gallery": {
+                "light": [
+                    "https://img.muji.net/img/item/4549337130500_1260.jpg"
+                ],
+                "dark": [
+                    "https://img.muji.net/img/item/4549337130524_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Cotton Flannel Cushion",
+            "price": [180],
+            "description": "It is produced based on warm and soft flannel shirt. The fabric has undergone a washing process with short pile.",
+            "color": ["red", "green"],
+            "size": ["55x59cm"],
+            "material": ["cotton"],
+            "gallery": {
+                "red": [
+                    "https://img.muji.net/img/item/4549738398288_1260.jpg"
+                ],
+                "green": [
+                    "https://img.muji.net/img/item/4549738398301_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Organic Cotton Jersey Cushion",
+            "price": [180],
+            "description": "Made of comfortable material which is often used in innerwear to bring a unique soft texture.",
+            "color": ["light brown", "dark brown"],
+            "size": ["55x59cm"],
+            "material": ["cotton"],
+            "gallery": {
+                "light": [
+                    "https://img.muji.net/img/item/4549738398325_1260.jpg"
+                ],
+                "dark": [
+                    "https://img.muji.net/img/item/4549738398349_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Organic Cotton Seersucker Cushion",
+            "price": [150],
+            "description": "Cotton seersucker is commonly used to make pajamas. Wave-like vertical stripe is printed. It is characterized by the softness and refreshing comfort.",
+            "color": ["white", "grey"],
+            "size": ["55x59cm"],
+            "material": ["cotton"],
+            "gallery": {
+                "white": [
+                    "https://img.muji.net/img/item/4549738973973_1260.jpg"
+                ],
+                "grey": [
+                    "https://img.muji.net/img/item/4549738973997_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Organic Cotton Blended Thin Face Towel",
+            "price": [48],
+            "description": "Made of cotton with long fibers, it maintains elasticity after frequent washing. With moderate thickness that provides high water-absorbency. It is suitable for daily use.",
+            "color": ["white", "brown"],
+            "size": ["34x85cm"],
+            "material": ["cotton"],
+            "gallery": {
+                "white": [
+                    "https://img.muji.net/img/item/4549738979142_1260.jpg"
+                ],
+                "brown": [
+                    "https://img.muji.net/img/item/4549738979173_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Organic Cotton Blended Thin Bath Towel",
+            "price": [150],
+            "description": "Made of cotton with long fibers, it maintains elasticity after frequent washing. With moderate thickness that provides high water-absorbency. It is suitable for daily use.",
+            "color": ["white", "brown"],
+            "size": ["70x140cm"],
+            "material": ["cotton"],
+            "gallery": {
+                "white": [
+                    "https://img.muji.net/img/item/4549738979302_1260.jpg"
+                ],
+                "brown": [
+                    "https://img.muji.net/img/item/4549738979333_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Wrap and Tie Long Extra Thin Towel Set",
+            "price": [50],
+            "description": "A thin and long towel that can be wrapped around the neck or head, tied and used. One side is pile and the other side is plain weave. It is easy to dry and convenient for laundering. Set of 2 pcs.",
+            "color": ["white", "brown"],
+            "size": ["34x110cm"],
+            "material": ["cotton"],
+            "gallery": {
+                "white": [
+                    "https://img.muji.net/img/item/4549738671152_1260.jpg"
+                ],
+                "brown": [
+                    "https://img.muji.net/img/item/4549738671169_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Linen Twill Cushion Slippers",
+            "price": [98],
+            "description": "This pair of slippers applies insoles that are usually used in shoes for a cushioned effect.",
+            "color": ["beige", "grey"],
+            "size": ["S", "M", "L", "XL"],
+            "material": ["linen"],
+            "gallery": {
+                "beige": [
+                    "https://img.muji.net/img/item/4549738704294_1260.jpg"
+                ],
+                "grey": [
+                    "https://img.muji.net/img/item/4549738704331_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Jersey Knitted Soft Slipper",
+            "price": [65],
+            "description": "The insole is made of soft and light, cushioned material and the toecap is made of soft organic cotton used for making innerwear. These slippers are bendable, therefore easy to wear and store.",
+            "color": ["grey", "navy"],
+            "size": ["S", "M", "L", "XL"],
+            "material": ["cotton"],
+            "gallery": {
+                "grey": [
+                    "https://img.muji.net/img/item/4550002829223_1260.jpg"
+                ],
+                "navy": [
+                    "https://img.muji.net/img/item/4550002829193_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Cotton Basket Weave Eva Slipper",
+            "price": [68],
+            "description": "This pair of slippers is easy to wear with hard soles and both left and right slippers are identical.",
+            "color": ["beige", "grey"],
+            "size": ["S", "M", "L", "XL"],
+            "material": ["cotton"],
+            "gallery": {
+                "beige": [
+                    "https://img.muji.net/img/item/4550182345438_1260.jpg"
+                ],
+                "grey": [
+                    "https://img.muji.net/img/item/4549738728986_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        }
+    ],
+    "furnitures": [
+        {
+            "name": "Slim Arm Sofa (2 Seats)",
+            "price": [1800],
+            "priceBy": "standard",
+            "description": "The seating comfort is enhanced after reviewing the structure of sofa.",
+            "color": ["beige", "brown"],
+            "size": [],
+            "material": ["Cotton Polyester Cover"],
+            "gallery": {
+                "beige": [
+                    "https://img.muji.net/img/item/4549337668010_1260.jpg"
+                ],
+                "brown": [
+                    "https://img.muji.net/img/item/4549337668027_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Wide Arm Sofa (2 Seats)",
+            "price": [1800],
+            "priceBy": "standard",
+            "description": "The seating comfort is enhanced after reviewing the structure of sofa.",
+            "color": ["beige", "brown"],
+            "size": [],
+            "material": ["Cotton Polyester Cover"],
+            "gallery": {
+                "beige": [
+                    "https://img.muji.net/img/item/4549337667990_1260.jpg"
+                ],
+                "brown": [
+                    "https://img.muji.net/img/item/4549337668003_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Slim Arm Sofa (2.5 Seats)",
+            "price": [1800],
+            "priceBy": "standard",
+            "description": "The seating comfort is enhanced after reviewing the structure of sofa.",
+            "color": ["beige", "brown"],
+            "size": [],
+            "material": ["Linen Cotton Cover"],
+            "gallery": {
+                "beige": [
+                    "https://img.muji.net/img/item/4549337667938_1260.jpg"
+                ],
+                "brown": [
+                    "https://img.muji.net/img/item/4549337667945_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Wide Arm Sofa (2.5 Seats)",
+            "price": [1800],
+            "priceBy": "standard",
+            "description": "The seating comfort is enhanced after reviewing the structure of sofa.",
+            "color": ["beige", "brown"],
+            "size": [],
+            "material": ["Linen Cotton Cover"],
+            "gallery": {
+                "beige": [
+                    "https://img.muji.net/img/item/4549337667914_1260.jpg"
+                ],
+                "brown": [
+                    "https://img.muji.net/img/item/4549337667921_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Chair",
+            "price": [5580, 8000],
+            "priceBy": "material",
+            "description": "Chair that is made by Japanese craftsman meticulously one by one. The large arc at the back can act as an armrest and able to support the back when leaning slantly, usability for daily life has been well-considered. The gradual gradient of the seat and the arc makes it comfortable to sit on.",
+            "color": [],
+            "size": ["51x50x73cm"],
+            "material": ["Oak Wood", "Walnut Wood"],
+            "gallery": {
+                "oak": [
+                    "https://img.muji.net/img/item/4934761413464_1260.jpg",
+                    "https://img.muji.net/img/item/4934761413464_02_1260.jpg",
+                    "https://img.muji.net/img/item/4934761413464_03_1260.jpg",
+                    "https://img.muji.net/img/item/4934761413464_04_1260.jpg"
+                ],
+                "walnut": [
+                    "https://img.muji.net/img/item/4548076392439_1260.jpg",
+                    "https://img.muji.net/img/item/4548076392439_02_1260.jpg",
+                    "https://img.muji.net/img/item/4548076392439_04_1260.jpg",
+                    "https://img.muji.net/img/item/4548076392439_05_1260.jpg"
+                ]
+            },
+            "galleryBy": "material",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Side Table",
+            "price": [4500, 5000],
+            "priceBy": "material",
+            "description": "Consisted of a convenient storage layer, it possesses strength to be used as a bench.",
+            "color": [],
+            "size": ["37x37x44cm"],
+            "material": ["Oak Wood", "Walnut Wood"],
+            "gallery": {
+                "oak": [
+                    "https://img.muji.net/img/item/4547315892341_1260.jpg",
+                    "https://img.muji.net/img/item/4547315892341_03_1260.jpg",
+                    "https://img.muji.net/img/item/4547315892341_04_1260.jpg"
+                ],
+                "walnut": [
+                    "https://img.muji.net/img/item/4547315903566_1260.jpg",
+                    "https://img.muji.net/img/item/4547315903566_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315903566_03_1260.jpg"
+                ]
+            },
+            "galleryBy": "material",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Coat Hanger",
+            "price": [750, 980],
+            "priceBy": "material",
+            "description": "Attached with a convenient shelf board. Maximum withstand load: Hanger 10kg, shelf board 10kg.",
+            "color": [],
+            "size": ["44x54x150cm"],
+            "material": ["Oak Wood", "Walnut Wood"],
+            "gallery": {
+                "oak": [
+                    "https://img.muji.net/img/item/4547315874873_1260.jpg",
+                    "https://img.muji.net/img/item/4547315874873_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315874873_02_1260.jpg"
+                ],
+                "walnut": [
+                    "https://img.muji.net/img/item/4549337154476_1260.jpg",
+                    "https://img.muji.net/img/item/4549337154476_01_1260.jpg",
+                    "https://img.muji.net/img/item/4549337154476_02_1260.jpg"
+                ]
+            },
+            "galleryBy": "material",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Shelf (5 Layers)",
+            "price": [1850, 2050],
+            "priceBy": "material",
+            "description": "A basic component of wooden stacking shelf. The grids allow MUJI storage to fit in perfectly, forming a uniform storage unit. Can be used vertically or horizontally.",
+            "color": [],
+            "size": ["42x29x200cm"],
+            "material": ["Oak Wood", "Walnut Wood"],
+            "gallery": {
+                "oak": [
+                    "https://img.muji.net/img/item/4549337263178_1260.jpg",
+                    "https://img.muji.net/img/item/4549337263178_02_1260.jpg",
+                    "https://img.muji.net/img/item/4549337263178_08_1260.jpg"
+                ],
+                "walnut": [
+                    "https://img.muji.net/img/item/4549337265646_1260.jpg",
+                    "https://img.muji.net/img/item/4549337265646_02_1260.jpg",
+                    "https://img.muji.net/img/item/4549337265646_04_1260.jpg"
+                ]
+            },
+            "galleryBy": "material",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        }
+    ],
+    "housekeeping": [
+        {
+            "name": "Stainless Steel Laundry Basket",
+            "price": [240, 320],
+            "priceBy": "size",
+            "description": "Made of stainless steel for durability.",
+            "color": [],
+            "size": ["36x32cm", "42x38cm"],
+            "material": ["Stainless Steel"],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4547315820788_1260.jpg",
+                    "https://img.muji.net/img/item/4547315820771_1260.jpg",
+                    "https://img.muji.net/img/item/4547315820771_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315820771_02_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Laundry Hanger",
+            "price": [20, 22],
+            "priceBy": "material",
+            "description": "The shape of the hanger can prevent the shoulder of the clothes from sticking out.",
+            "color": [],
+            "size": ["41cm"],
+            "material": ["PP", "Stainless Steel"],
+            "gallery": {
+                "pp": [
+                    "https://img.muji.net/img/item/4547315259847_1260.jpg",
+                    "https://img.muji.net/img/item/4547315259847_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315259847_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315259847_05_1260.jpg"
+                ],
+                "stainless": [
+                    "https://img.muji.net/img/item/4547315915613_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915613_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915613_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315915613_05_1260.jpg"
+                ]
+            },
+            "galleryBy": "material",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Round Reversible Laundry Net",
+            "price": [20, 22],
+            "priceBy": "size",
+            "description": "Reversible laundry net",
+            "color": [],
+            "size": ["36x25x25cm", "52x35x35cm"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4550002578435_1260.jpg",
+                    "https://img.muji.net/img/item/4550002578435_01_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Clothes Cleaner",
+            "price": [32],
+            "priceBy": "standard",
+            "description": "The clothes cleaner with self standing design can be stored near the entrance area without being standing out.",
+            "color": [],
+            "size": ["6x6x21cm"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4547315268368_1260.jpg",
+                    "https://img.muji.net/img/item/4547315268368_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315268368_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315268368_03_1260.jpg",
+                    "https://img.muji.net/img/item/4547315268368_05_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Tissue Box",
+            "price": [25, 55],
+            "priceBy": "material",
+            "description": "Tabletop tissue box",
+            "color": [],
+            "size": ["4x12x7cm"],
+            "material": ["Kraft Paper", "Arcrylic"],
+            "gallery": {
+                "kraft": [
+                    "https://img.muji.net/img/item/4550002526238_1260.jpg",
+                    "https://img.muji.net/img/item/4550002526238_01_1260.jpg",
+                    "https://img.muji.net/img/item/4550002526238_02_1260.jpg"
+                ],
+                "arcrylic": [
+                    "https://img.muji.net/img/item/4550002578480_1260.jpg",
+                    "https://img.muji.net/img/item/4550002578480_01_1260.jpg",
+                    "https://img.muji.net/img/item/4550002578480_02_1260.jpg"
+                ]
+            },
+            "galleryBy": "material",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        }
+    ],
+    "kitchenwares": [
+        
+    ],
+    "stationaries": [
+        
+    ],
+    "storages": [
+        
+    ],
+    "travelgoods": [
+        
+    ]
+}
+
