@@ -6,6 +6,9 @@
     justify-content: center;
     align-items: center;
 
+    position: relative;
+    /* border: 1px solid black; */
+
     width: 100%;
 }
 
@@ -17,4 +20,24 @@
 
 .productCard__image:hover {
     transform: scale(1.1);
+}
+
+.productCard__tag {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.productCard__tag > div {
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.productCard__tag > div > p {
+    font-size: 10px;
+    padding: 0px 10px;
 }

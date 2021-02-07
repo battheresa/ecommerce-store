@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Checkout from './components/Checkout';
 
 import './App.css';
+import ProductDetail from './components/ProductDetail';
 
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
                 <Header />
                 
                 <Switch>
+                    <Route path='/product'>
+                        <ProductDetail />
+                    </Route>
                     <Route path='/store-locations'>
                         <h1>store locations</h1>
                     </Route>

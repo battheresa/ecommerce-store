@@ -26,7 +26,7 @@
             "name": "LED Lighting",
             "price": [1480],
             "priceBy": "standard",
-            "description": "With the spring hidden inside supporting arm, the whole design looks simple and slim. You can adjust the lighting from yellowish to white light according to daily need using the touch panel on the top. Base, clamp and floor stands are sold separately to be used following your interior need.",
+            "description": "With the spring hidden inside supporting arm, the whole design looks simple and slim. You can adjust the lighting from yellowish to White light according to daily need using the touch panel on the top. Base, clamp and floor stands are sold separately to be used following your interior need.",
             "color": ["Black"],
             "size": ["12x57x57cm"],
             "material": ["Aluminium"],
@@ -62,7 +62,7 @@
             "galleryBy": "general",
             "sale": 10,
             "trending": true, 
-            "newArrival": false, 
+            "newArrival": true, 
             "limitedEdition": false
         },
         {
@@ -70,7 +70,7 @@
             "price": [850],
             "priceBy": "standard",
             "description": "Floor stands for the LED Lighting.",
-            "color": ["black"],
+            "color": ["Black"],
             "size": ["26x73cm"],
             "material": ["Aluminium"],
             "gallery": {
@@ -143,7 +143,7 @@
             "price": [320],
             "priceBy": "standard",
             "description": "It is a compact external battery with a battery capacity of 10000mAh and LED indicator showing the remaining amount of battery.",
-            "color": ["white"],
+            "color": ["White"],
             "size": ["6x10x2cm"],
             "material": [],
             "gallery": {
@@ -157,8 +157,8 @@
             },
             "galleryBy": "general",
             "sale": 10,
-            "trending": false, 
-            "newArrival": false, 
+            "trending": true, 
+            "newArrival": true, 
             "limitedEdition": true
         },
         {
@@ -166,7 +166,7 @@
             "price": [3580],
             "priceBy": "standard",
             "description": "Equipped with Dual Counter Fan and 360° Dust and Odor Filter to enhance air flow and helps filter out suspended particles. Designed with Auto mode that adjusts the optimum spinning frequency and Jet cleansing mode that purifies the air in the highest speed.",
-            "color": ["white"],
+            "color": ["White"],
             "size": ["25x25x50cm"],
             "material": [],
             "gallery": {
@@ -190,7 +190,7 @@
             "price": [380],
             "priceBy": "standard",
             "description": "A large liquid crystal display that is easy to see even when standing. When you get on the main unit, the power turns on automatically, and after measuring the weight, the power turns off after 20 seconds.",
-            "color": ["white"],
+            "color": ["White"],
             "size": ["27x21x3cm"],
             "material": [],
             "gallery": {
@@ -214,7 +214,7 @@
             "price": [250],
             "priceBy": "standard",
             "description": "Make use of Indian Cotton as cover, the cushion is filled with materials has cushioning characteristics.",
-            "color": ["light blue", "dark blue"],
+            "color": ["Light Blue", "Dark Blue"],
             "size": ["55x59cm"],
             "material": ["cotton"],
             "gallery": {
@@ -234,8 +234,9 @@
         {
             "name": "Cotton Flannel Cushion",
             "price": [180],
+            "priceBy": "standard",
             "description": "It is produced based on warm and soft flannel shirt. The fabric has undergone a washing process with short pile.",
-            "color": ["red", "green"],
+            "color": ["Red", "Green"],
             "size": ["55x59cm"],
             "material": ["cotton"],
             "gallery": {
@@ -255,8 +256,9 @@
         {
             "name": "Organic Cotton Jersey Cushion",
             "price": [180],
+            "priceBy": "standard",
             "description": "Made of comfortable material which is often used in innerwear to bring a unique soft texture.",
-            "color": ["light brown", "dark brown"],
+            "color": ["Light Brown", "Dark Brown"],
             "size": ["55x59cm"],
             "material": ["cotton"],
             "gallery": {
@@ -276,8 +278,9 @@
         {
             "name": "Organic Cotton Seersucker Cushion",
             "price": [150],
+            "priceBy": "standard",
             "description": "Cotton seersucker is commonly used to make pajamas. Wave-like vertical stripe is printed. It is characterized by the softness and refreshing comfort.",
-            "color": ["white", "grey"],
+            "color": ["White", "Grey"],
             "size": ["55x59cm"],
             "material": ["cotton"],
             "gallery": {
@@ -297,8 +300,9 @@
         {
             "name": "Organic Cotton Blended Thin Face Towel",
             "price": [48],
+            "priceBy": "standard",
             "description": "Made of cotton with long fibers, it maintains elasticity after frequent washing. With moderate thickness that provides high water-absorbency. It is suitable for daily use.",
-            "color": ["white", "brown"],
+            "color": ["White", "Brown"],
             "size": ["34x85cm"],
             "material": ["cotton"],
             "gallery": {
@@ -318,8 +322,9 @@
         {
             "name": "Organic Cotton Blended Thin Bath Towel",
             "price": [150],
+            "priceBy": "standard",
             "description": "Made of cotton with long fibers, it maintains elasticity after frequent washing. With moderate thickness that provides high water-absorbency. It is suitable for daily use.",
-            "color": ["white", "brown"],
+            "color": ["White", "Brown"],
             "size": ["70x140cm"],
             "material": ["cotton"],
             "gallery": {
@@ -339,8 +344,9 @@
         {
             "name": "Wrap and Tie Long Extra Thin Towel Set",
             "price": [50],
+            "priceBy": "standard",
             "description": "A thin and long towel that can be wrapped around the neck or head, tied and used. One side is pile and the other side is plain weave. It is easy to dry and convenient for laundering. Set of 2 pcs.",
-            "color": ["white", "brown"],
+            "color": ["White", "Brown"],
             "size": ["34x110cm"],
             "material": ["cotton"],
             "gallery": {
@@ -360,8 +366,9 @@
         {
             "name": "Linen Twill Cushion Slippers",
             "price": [98],
+            "priceBy": "standard",
             "description": "This pair of slippers applies insoles that are usually used in shoes for a cushioned effect.",
-            "color": ["beige", "grey"],
+            "color": ["Beige", "Grey"],
             "size": ["S", "M", "L", "XL"],
             "material": ["linen"],
             "gallery": {
@@ -381,8 +388,9 @@
         {
             "name": "Jersey Knitted Soft Slipper",
             "price": [65],
+            "priceBy": "standard",
             "description": "The insole is made of soft and light, cushioned material and the toecap is made of soft organic cotton used for making innerwear. These slippers are bendable, therefore easy to wear and store.",
-            "color": ["grey", "navy"],
+            "color": ["Grey", "Navy"],
             "size": ["S", "M", "L", "XL"],
             "material": ["cotton"],
             "gallery": {
@@ -402,8 +410,9 @@
         {
             "name": "Cotton Basket Weave Eva Slipper",
             "price": [68],
+            "priceBy": "standard",
             "description": "This pair of slippers is easy to wear with hard soles and both left and right slippers are identical.",
-            "color": ["beige", "grey"],
+            "color": ["Beige", "Grey"],
             "size": ["S", "M", "L", "XL"],
             "material": ["cotton"],
             "gallery": {
@@ -427,7 +436,7 @@
             "price": [1800],
             "priceBy": "standard",
             "description": "The seating comfort is enhanced after reviewing the structure of sofa.",
-            "color": ["beige", "brown"],
+            "color": ["Beige", "Brown"],
             "size": [],
             "material": ["Cotton Polyester Cover"],
             "gallery": {
@@ -449,7 +458,7 @@
             "price": [1800],
             "priceBy": "standard",
             "description": "The seating comfort is enhanced after reviewing the structure of sofa.",
-            "color": ["beige", "brown"],
+            "color": ["Beige", "Brown"],
             "size": [],
             "material": ["Cotton Polyester Cover"],
             "gallery": {
@@ -471,7 +480,7 @@
             "price": [1800],
             "priceBy": "standard",
             "description": "The seating comfort is enhanced after reviewing the structure of sofa.",
-            "color": ["beige", "brown"],
+            "color": ["Beige", "Brown"],
             "size": [],
             "material": ["Linen Cotton Cover"],
             "gallery": {
@@ -493,7 +502,7 @@
             "price": [1800],
             "priceBy": "standard",
             "description": "The seating comfort is enhanced after reviewing the structure of sofa.",
-            "color": ["beige", "brown"],
+            "color": ["Beige", "Brown"],
             "size": [],
             "material": ["Linen Cotton Cover"],
             "gallery": {
@@ -628,13 +637,17 @@
             "material": ["Stainless Steel"],
             "gallery": {
                 "general": [
-                    "https://img.muji.net/img/item/4547315820788_1260.jpg",
-                    "https://img.muji.net/img/item/4547315820771_1260.jpg",
                     "https://img.muji.net/img/item/4547315820771_01_1260.jpg",
                     "https://img.muji.net/img/item/4547315820771_02_1260.jpg"
+                ],
+                "36x32cm": [
+                    "https://img.muji.net/img/item/4547315820788_1260.jpg" 
+                ],
+                "42x38cm": [
+                    "https://img.muji.net/img/item/4547315820771_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "size",
             "sale": 0,
             "trending": false, 
             "newArrival": false, 
@@ -739,16 +752,357 @@
         }
     ],
     "kitchenwares": [
-        
-    ],
-    "stationaries": [
-        
+        {
+            "name": "Iron Frying Pan",
+            "price": [350, 400],
+            "priceBy": "size",
+            "description": "It has a good thermal conductivity which brings ingredients' delicious and crunchy taste. It is easy to maintain and can be used for a long time.",
+            "color": [],
+            "size": ["22cm", "26cm"],
+            "material": [],
+            "gallery": {
+                "22cm": [
+                    "https://img.muji.net/img/item/4547315822201_1260.jpg"
+                ],
+                "26cm": [
+                    "https://img.muji.net/img/item/4547315822218_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Stainless Aluminium 3-Layer Saucepan",
+            "price": [350, 380],
+            "priceBy": "size",
+            "description": "The pan is made of 3-layered metal plate which there is an aluminium layer in between two stainless steel layers. It is usable with all heat sources. The handle is made of stainless steel as well. The pot can be used in oven.",
+            "color": [],
+            "size": ["33x11cm (1.5L)", "38x13cm (2L)"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4547315257805_1260.jpg",
+                    "https://img.muji.net/img/item/4547315257805_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315257805_03_1260.jpg",
+                    "https://img.muji.net/img/item/4547315257805_04_1260.jpg",
+                    "https://img.muji.net/img/item/4547315257805_05_1260.jpg",
+                    "https://img.muji.net/img/item/4547315257805_06_1260.jpg"
+                ]
+            },
+            "galleryBy": "general",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Spatula",
+            "price": [60, 65, 100],
+            "priceBy": "material",
+            "description": "The silicone spatula is made of highly heat resistant and flexible silicone (26cm). The Bamboo spatula has ideal hardness so that it does not scratch fluoride coated frying pans (30cm). The flat tip wooden spatula that can easily use when frying with rounded and lightweight handle (30cm).",
+            "color": [],
+            "size": [],
+            "material": ["Silicone", "Bamboo", "Wooden"],
+            "gallery": {
+                "silicone": [
+                    "https://img.muji.net/img/item/4548718172153_1260.jpg"
+                ],
+                "bamboo": [
+                    "https://img.muji.net/img/item/4549738886310_1260.jpg"
+                ],
+                "wooden": [
+                    "https://img.muji.net/img/item/4549738968924_1260.jpg"
+                ]
+            },
+            "galleryBy": "material",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Storage Jar",
+            "price": [45, 55, 60],
+            "priceBy": "size",
+            "description": "The thick glass jar can be sealed firmly.",
+            "color": [],
+            "size": ["500ml", "750ml", "1000ml"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4547315759514_20_1260.jpg",
+                    "https://img.muji.net/img/item/4547315759538_20_1260.jpg"
+                ],
+                "500ml": [
+                    "https://img.muji.net/img/item/4547315759514_1260.jpg"
+                ],
+                "750ml": [
+                    "https://img.muji.net/img/item/4547315759521_1260.jpg"
+                ],
+                "1000ml": [
+                    "https://img.muji.net/img/item/4547315759538_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Nylon Fork and Spoon Set",
+            "price": [58],
+            "priceBy": "standard",
+            "description": "The cultery set is made of resin, it is lightweight, easy for carrying and washing.",
+            "color": ["White", "black"],
+            "size": ["18x5x2cm"],
+            "material": [],
+            "gallery": {
+                "white": [
+                    "https://img.muji.net/img/item/4550002181185_1260.jpg",
+                    "https://img.muji.net/img/item/4550002181185_02_1260.jpg",
+                    "https://img.muji.net/img/item/4550002181185_03_1260.jpg"
+                ],
+                "black": [
+                    "https://img.muji.net/img/item/4550002181192_1260.jpg",
+                    "https://img.muji.net/img/item/4550002181192_02_1260.jpg",
+                    "https://img.muji.net/img/item/4550002181192_03_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Nylon Chopsticks Set",
+            "price": [48],
+            "priceBy": "standard",
+            "description": "The chopstick set is made of resin, it is lightweight, easy for carrying and washing.",
+            "color": ["White", "black"],
+            "size": ["20x3x1cm"],
+            "material": [],
+            "gallery": {
+                "white": [
+                    "https://img.muji.net/img/item/4550002181208_1260.jpg",
+                    "https://img.muji.net/img/item/4550002181208_02_1260.jpg",
+                    "https://img.muji.net/img/item/4550002181208_03_1260.jpg"
+                ],
+                "black": [
+                    "https://img.muji.net/img/item/4550002181215_1260.jpg",
+                    "https://img.muji.net/img/item/4550002181215_02_1260.jpg",
+                    "https://img.muji.net/img/item/4550002181215_03_1260.jpg"
+                ]
+            },
+            "galleryBy": "color",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        }
+        ,
+        {
+            "name": "White Porcelain Tea Pot",
+            "price": [100, 120],
+            "priceBy": "size",
+            "description": "The tea pot is made of high quality broken and refined Amakusa pottery stone clay, and finished as White porcelain with a hint of faint blue.",
+            "color": [],
+            "size": ["360ml", "550ml"],
+            "material": [],
+            "gallery": {
+                "360ml": [
+                    "https://img.muji.net/img/item/4547315873876_1260.jpg"
+                ],
+                "550ml": [
+                    "https://img.muji.net/img/item/4547315873906_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Heatproof Glass Pot",
+            "price": [120, 140],
+            "priceBy": "size",
+            "description": "The glass pot is made of heat resistant glass with a removable strainer. The lid is resinous which is difficult to break. Use strainer for loose tea leaves into strainer, and remove the strainer for large tea leaves.",
+            "color": [],
+            "size": ["670ml", "1L"],
+            "material": [],
+            "gallery": {
+                "670ml": [
+                    "https://img.muji.net/img/item/4549337527140_1260.jpg",
+                    "https://img.muji.net/img/item/4549337527140_02_1260.jpg"
+                ],
+                "1L": [
+                    "https://img.muji.net/img/item/4549337527188_1260.jpg",
+                    "https://img.muji.net/img/item/4549337527188_02_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        }
     ],
     "storages": [
-        
-    ],
-    "travelgoods": [
-        
+        {
+            "name": "Stainless Steel Wire Basket with Handle",
+            "price": [180, 200, 220, 250, 320],
+            "priceBy": "size",
+            "description": "Basket composed of stainless steel that is difficult to rust. Lay the handle to inner part to enable stacking.",
+            "color": [],
+            "size": ["37x26z8cm", "37x26x12cm", "37x26x18cm", "37x26x24cm", "51x37x18cm"],
+            "material": [],
+            "gallery": {
+                "37x26z8cm": [
+                    "https://img.muji.net/img/item/4547315117048_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117048_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117048_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117048_03_1260.jpg"
+                ],
+                "37x26x12cm": [
+                    "https://img.muji.net/img/item/4547315117055_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117055_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117055_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117055_03_1260.jpg"
+                ],
+                "37x26x18cm": [
+                    "https://img.muji.net/img/item/4547315117062_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117062_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117062_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117062_03_1260.jpg"
+                ],
+                "37x26x24cm": [
+                    "https://img.muji.net/img/item/4547315117079_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117079_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117079_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117079_03_1260.jpg"
+                ],
+                "51x37x18cm": [
+                    "https://img.muji.net/img/item/4547315117147_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117147_01_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117147_02_1260.jpg",
+                    "https://img.muji.net/img/item/4547315117147_03_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Rattan Square Basket with Handle",
+            "price": [250, 280],
+            "priceBy": "size",
+            "description": "Stackable rattan basket. It is flexible and its surface is smooth. It is a hand knitted product that contains warmth.",
+            "color": [],
+            "size": ["35x36x16cm", "35x36x24cm"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4548718021833_20_1260.jpg"
+                ],
+                "670ml": [
+                    "https://img.muji.net/img/item/4548718021833_1260.jpg"
+                ],
+                "1L": [
+                    "https://img.muji.net/img/item/4548718021826_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Buri Stackable Rectangle Basket",
+            "price": [90, 100],
+            "priceBy": "size",
+            "description": "Use the high quality buri material from Philippines for hand knitting and utilize its natural texture.",
+            "color": [],
+            "size": ["35x36x16cm", "35x36x24cm"],
+            "material": [],
+            "gallery": {
+                "general": [
+                    "https://img.muji.net/img/item/4945247027907_02_1260.jpg",
+                    "https://img.muji.net/img/item/4945247027907_12_1260.jpg"
+                ],
+                "35x36x16cm": [
+                    "https://img.muji.net/img/item/4945247027907_1260.jpg"
+                ],
+                "35x36x24cm": [
+                    "https://img.muji.net/img/item/4945247027914_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Buri Stackable Square Basket with Handle",
+            "price": [100, 140, 180],
+            "priceBy": "size",
+            "description": "Use the high quality buri material from Philippines for hand knitting and utilize its natural texture.",
+            "color": [],
+            "size": ["35x37x16cm", "35x37x24cm", "35x37x32cm"],
+            "material": [],
+            "gallery": {
+                "35x37x16cm": [
+                    "https://img.muji.net/img/item/4945247027938_1260.jpg"
+                ],
+                "35x37x24cm": [
+                    "https://img.muji.net/img/item/4548718013999_1260.jpg"
+                ],
+                "35x37x32cm": [
+                    "https://img.muji.net/img/item/4945247027945_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        },
+        {
+            "name": "Cotton Linen Polyester Soft Box Square with Lid",
+            "price": [120, 180],
+            "priceBy": "size",
+            "description": "Use the high quality buri material from Philippines for hand knitting and utilize its natural texture.",
+            "color": [],
+            "size": ["35x35x16cm", "35x35x32cm"],
+            "material": [],
+            "gallery": {
+                "35x35x16cm": [
+                    "https://img.muji.net/img/item/4549738369691_1260.jpg",
+                    "https://img.muji.net/img/item/4549738369691_02_1260.jpg",
+                    "https://img.muji.net/img/item/4549738369691_03_1260.jpg",
+                    "https://img.muji.net/img/item/4549738369691_04_1260.jpg"
+                ],
+                "35x35x32cm": [
+                    "https://img.muji.net/img/item/4549738369721_1260.jpg",
+                    "https://img.muji.net/img/item/4549738369721_03_1260.jpg",
+                    "https://img.muji.net/img/item/4549738369721_02_1260.jpg",
+                    "https://img.muji.net/img/item/4549738369721_04_1260.jpg"
+                ]
+            },
+            "galleryBy": "size",
+            "sale": 0,
+            "trending": false, 
+            "newArrival": false, 
+            "limitedEdition": false
+        }
     ]
 }
 

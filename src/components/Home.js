@@ -10,7 +10,7 @@ import ProductContainer from './ProductContainer';
 import dataFile from '../data.json';
 import '../stylesheets/Home.css';
 
-// NOTE : change accessories to travel goods
+// NOTE : remove accessories and stationaries
 
 function Home() {
     const [ data, setData ] = useState([]);
@@ -68,7 +68,6 @@ function Home() {
         }
     };
 
-
     // fetch and expand products
     useEffect(() => {
         if (!data.length) {
@@ -105,7 +104,6 @@ function Home() {
         setLastPage(Math.ceil(display.length / perPage) === 1 ? true : false);
     }, [display]);
     
-
     return (
         <div className='home'>
             {/* carousel */}
@@ -143,8 +141,3 @@ function Home() {
 }
 
 export default Home;
-
-
-// backend cases:
-// 1. price by: standard, size, material
-// 2. gallery by: general, color, material
