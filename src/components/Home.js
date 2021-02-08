@@ -7,10 +7,9 @@ import ArrowForwardIosOutlinedIcon from '@material-ui/icons/ArrowForwardIosOutli
 import Carousel from './Carousel';
 import ProductContainer from './ProductContainer';
 
-import dataFile from '../data.json';
+// import dataFile from '../data.json';
+import { db } from '../firebase';
 import '../stylesheets/Home.css';
-
-// NOTE : remove accessories and stationaries
 
 function Home() {
     const [ data, setData ] = useState([]);
@@ -70,39 +69,44 @@ function Home() {
 
     // fetch and expand products
     useEffect(() => {
-        if (!data.length) {
-            for (let category in dataFile) {
-                dataFile[category].forEach(product => {
-                    if (product.galleryBy !== 'general') {    
-                        product[product.galleryBy].forEach(variant => {
-                            setData(data => [...data, { item: product, variation: variant.toLowerCase().split(' ')[0] } ]);
-                        });
+        // for (let category in dataFile) {
+        //     dataFile[category].forEach(product => {
+        //         db.collection('products').doc().set(product);
+        //     });
+        // };
+
+        db.collection('products').onSnapshot(snapshot => {
+            snapshot.forEach(doc => {
+                if (doc.data().sale !== 0 || doc.data().trending || doc.data().newArrival || doc.data().limitedEdition) {
+                    if (doc.data().galleryBy !== 'general') {
+                        for (let variant in doc.data().gallery) {
+                            if (variant !== 'general')
+                                setData(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0] } ]);
+                        }
                     }
                     else {
-                        setData(data => [...data, { item: product, variation: 'general' } ]);
+                        setData(data => [...data, { id: doc.id, item: doc.data(), variation: 'general' } ]);
                     }
-                });
-            }
-        }
-
-        // eslint-disable-next-line
+                }
+            });
+        });
     }, []);
-
-    // get all items for current menu
+    
+    // get all items for initial menu (sale)
     useEffect(() => {
         setDisplay(data.filter(content => {
             return content.item.sale !== 0;
         }));
 
-    }, [data]);
+        const length = data.filter(content => {
+            return content.item.sale !== 0;
+        }).length;
 
-    // get initial current display
-    useEffect(() => {
-        setTotalPages(Math.ceil(display.length / perPage));
+        setTotalPages(Math.ceil(length / perPage));
 
         setFirstPage(true);
-        setLastPage(Math.ceil(display.length / perPage) === 1 ? true : false);
-    }, [display]);
+        setLastPage(Math.ceil(length / perPage) === 1 ? true : false);
+    }, [data]);
     
     return (
         <div className='home'>

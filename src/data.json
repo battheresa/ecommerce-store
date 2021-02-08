@@ -1,6 +1,7 @@
 {
     "electronics": [
         {
+            "category": "electronics",
             "name": "Aluminium LED Torch",
             "price": [480],
             "priceBy": "standard",
@@ -9,20 +10,21 @@
             "size": [],
             "material": ["Aluminium"],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4549738884811_1260.jpg",
                     "https://img.muji.net/img/item/4549738884811_01_1260.jpg",
                     "https://img.muji.net/img/item/4549738884811_02_1260.jpg",
                     "https://img.muji.net/img/item/4549738884811_03_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 10,
             "trending": false,
             "newArrival": false, 
             "limitedEdition": false
         },
         {
+            "category": "electronics",
             "name": "LED Lighting",
             "price": [1480],
             "priceBy": "standard",
@@ -31,20 +33,21 @@
             "size": ["12x57x57cm"],
             "material": ["Aluminium"],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4549738397977_1260.jpg",
                     "https://img.muji.net/img/item/4549738397977_01_1260.jpg",
                     "https://img.muji.net/img/item/4549738397977_02_1260.jpg",
                     "https://img.muji.net/img/item/4549738397977_09_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 10,
             "trending": false, 
             "newArrival": false, 
             "limitedEdition": false
         },
         {
+            "category": "electronics",
             "name": "LED Lighting Base",
             "price": [150],
             "priceBy": "standard",
@@ -53,19 +56,20 @@
             "size": ["20x7cm"],
             "material": ["Aluminium"],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4549738326526_1260.jpg",
                     "https://img.muji.net/img/item/4549738326526_01_1260.jpg",
                     "https://img.muji.net/img/item/4549738326526_02_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 10,
             "trending": true, 
             "newArrival": true, 
             "limitedEdition": false
         },
         {
+            "category": "electronics",
             "name": "LED Lighting Floor Stand",
             "price": [850],
             "priceBy": "standard",
@@ -74,19 +78,20 @@
             "size": ["26x73cm"],
             "material": ["Aluminium"],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4549738326540_1260.jpg",
                     "https://img.muji.net/img/item/4549738326540_01_1260.jpg",
                     "https://img.muji.net/img/item/4549738326540_02_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 10,
             "trending": true, 
             "newArrival": false, 
             "limitedEdition": false
         },
         {
+            "category": "electronics",
             "name": "Wall Clock",
             "price": [350],
             "priceBy": "standard",
@@ -115,6 +120,7 @@
             "limitedEdition": false
         },
         {
+            "category": "electronics",
             "name": "Circulator Fan",
             "price": [590],
             "priceBy": "standard",
@@ -123,7 +129,7 @@
             "size": ["33x26x38cm"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4549738309833_1260.jpg",
                     "https://img.muji.net/img/item/4549738309833_01_1260.jpg",
                     "https://img.muji.net/img/item/4549738309833_02_1260.jpg",
@@ -132,13 +138,14 @@
                     "https://img.muji.net/img/item/4549738309833_09_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 10,
             "trending": false, 
             "newArrival": false, 
             "limitedEdition": true
         },
         {
+            "category": "electronics",
             "name": "USB External Battery",
             "price": [320],
             "priceBy": "standard",
@@ -147,7 +154,7 @@
             "size": ["6x10x2cm"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4550182943955_1260.jpg",
                     "https://img.muji.net/img/item/4550182943955_03_1260.jpg",
                     "https://img.muji.net/img/item/4550182943955_04_1260.jpg",
@@ -155,13 +162,14 @@
                     "https://img.muji.net/img/item/4550182943955_06_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 10,
             "trending": true, 
             "newArrival": true, 
             "limitedEdition": true
         },
         {
+            "category": "electronics",
             "name": "Air Purifier",
             "price": [3580],
             "priceBy": "standard",
@@ -170,7 +178,7 @@
             "size": ["25x25x50cm"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4549337193604_1260.jpg",
                     "https://img.muji.net/img/item/4549337193604_03_1260.jpg",
                     "https://img.muji.net/img/item/4549337193604_06_1260.jpg",
@@ -179,13 +187,14 @@
                     "https://img.muji.net/img/item/4549337193604_11_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 10,
             "trending": false, 
             "newArrival": false, 
             "limitedEdition": false
         },
         {
+            "category": "electronics",
             "name": "Health Meter",
             "price": [380],
             "priceBy": "standard",
@@ -194,14 +203,14 @@
             "size": ["27x21x3cm"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4549738969693_1260.jpg",
                     "https://img.muji.net/img/item/4549738969693_01_1260.jpg",
                     "https://img.muji.net/img/item/4549738969693_02_1260.jpg",
                     "https://img.muji.net/img/item/4549738969693_03_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 10,
             "trending": false, 
             "newArrival": false, 
@@ -210,6 +219,7 @@
     ],
     "fabrics": [
         {
+            "category": "fabrics",
             "name": "Cotton Denim Cushion",
             "price": [250],
             "priceBy": "standard",
@@ -232,6 +242,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Cotton Flannel Cushion",
             "price": [180],
             "priceBy": "standard",
@@ -254,6 +265,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Organic Cotton Jersey Cushion",
             "price": [180],
             "priceBy": "standard",
@@ -276,6 +288,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Organic Cotton Seersucker Cushion",
             "price": [150],
             "priceBy": "standard",
@@ -298,6 +311,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Organic Cotton Blended Thin Face Towel",
             "price": [48],
             "priceBy": "standard",
@@ -320,6 +334,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Organic Cotton Blended Thin Bath Towel",
             "price": [150],
             "priceBy": "standard",
@@ -342,6 +357,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Wrap and Tie Long Extra Thin Towel Set",
             "price": [50],
             "priceBy": "standard",
@@ -364,6 +380,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Linen Twill Cushion Slippers",
             "price": [98],
             "priceBy": "standard",
@@ -386,6 +403,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Jersey Knitted Soft Slipper",
             "price": [65],
             "priceBy": "standard",
@@ -408,6 +426,7 @@
             "limitedEdition": false
         },
         {
+            "category": "fabrics",
             "name": "Cotton Basket Weave Eva Slipper",
             "price": [68],
             "priceBy": "standard",
@@ -432,6 +451,7 @@
     ],
     "furnitures": [
         {
+            "category": "furnitures",
             "name": "Slim Arm Sofa (2 Seats)",
             "price": [1800],
             "priceBy": "standard",
@@ -454,6 +474,7 @@
             "limitedEdition": false
         },
         {
+            "category": "furnitures",
             "name": "Wide Arm Sofa (2 Seats)",
             "price": [1800],
             "priceBy": "standard",
@@ -476,6 +497,7 @@
             "limitedEdition": false
         },
         {
+            "category": "furnitures",
             "name": "Slim Arm Sofa (2.5 Seats)",
             "price": [1800],
             "priceBy": "standard",
@@ -498,6 +520,7 @@
             "limitedEdition": false
         },
         {
+            "category": "furnitures",
             "name": "Wide Arm Sofa (2.5 Seats)",
             "price": [1800],
             "priceBy": "standard",
@@ -520,6 +543,7 @@
             "limitedEdition": false
         },
         {
+            "category": "furnitures",
             "name": "Chair",
             "price": [5580, 8000],
             "priceBy": "material",
@@ -548,6 +572,7 @@
             "limitedEdition": false
         },
         {
+            "category": "furnitures",
             "name": "Side Table",
             "price": [4500, 5000],
             "priceBy": "material",
@@ -574,6 +599,7 @@
             "limitedEdition": false
         },
         {
+            "category": "furnitures",
             "name": "Coat Hanger",
             "price": [750, 980],
             "priceBy": "material",
@@ -600,6 +626,7 @@
             "limitedEdition": false
         },
         {
+            "category": "furnitures",
             "name": "Shelf (5 Layers)",
             "price": [1850, 2050],
             "priceBy": "material",
@@ -628,6 +655,7 @@
     ],
     "housekeeping": [
         {
+            "category": "housekeeping",
             "name": "Stainless Steel Laundry Basket",
             "price": [240, 320],
             "priceBy": "size",
@@ -636,7 +664,7 @@
             "size": ["36x32cm", "42x38cm"],
             "material": ["Stainless Steel"],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4547315820771_01_1260.jpg",
                     "https://img.muji.net/img/item/4547315820771_02_1260.jpg"
                 ],
@@ -654,6 +682,7 @@
             "limitedEdition": false
         },
         {
+            "category": "housekeeping",
             "name": "Laundry Hanger",
             "price": [20, 22],
             "priceBy": "material",
@@ -682,6 +711,7 @@
             "limitedEdition": false
         },
         {
+            "category": "housekeeping",
             "name": "Round Reversible Laundry Net",
             "price": [20, 22],
             "priceBy": "size",
@@ -690,18 +720,19 @@
             "size": ["36x25x25cm", "52x35x35cm"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4550002578435_1260.jpg",
                     "https://img.muji.net/img/item/4550002578435_01_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 0,
             "trending": false, 
             "newArrival": false, 
             "limitedEdition": false
         },
         {
+            "category": "housekeeping",
             "name": "Clothes Cleaner",
             "price": [32],
             "priceBy": "standard",
@@ -710,7 +741,7 @@
             "size": ["6x6x21cm"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4547315268368_1260.jpg",
                     "https://img.muji.net/img/item/4547315268368_01_1260.jpg",
                     "https://img.muji.net/img/item/4547315268368_02_1260.jpg",
@@ -718,13 +749,14 @@
                     "https://img.muji.net/img/item/4547315268368_05_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 0,
             "trending": false, 
             "newArrival": false, 
             "limitedEdition": false
         },
         {
+            "category": "housekeeping",
             "name": "Tissue Box",
             "price": [25, 55],
             "priceBy": "material",
@@ -753,6 +785,7 @@
     ],
     "kitchenwares": [
         {
+            "category": "kitchenwares",
             "name": "Iron Frying Pan",
             "price": [350, 400],
             "priceBy": "size",
@@ -775,6 +808,7 @@
             "limitedEdition": false
         },
         {
+            "category": "kitchenwares",
             "name": "Stainless Aluminium 3-Layer Saucepan",
             "price": [350, 380],
             "priceBy": "size",
@@ -783,7 +817,7 @@
             "size": ["33x11cm (1.5L)", "38x13cm (2L)"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4547315257805_1260.jpg",
                     "https://img.muji.net/img/item/4547315257805_01_1260.jpg",
                     "https://img.muji.net/img/item/4547315257805_03_1260.jpg",
@@ -792,13 +826,14 @@
                     "https://img.muji.net/img/item/4547315257805_06_1260.jpg"
                 ]
             },
-            "galleryBy": "general",
+            "galleryBy": "standard",
             "sale": 0,
             "trending": false, 
             "newArrival": false, 
             "limitedEdition": false
         },
         {
+            "category": "kitchenwares",
             "name": "Spatula",
             "price": [60, 65, 100],
             "priceBy": "material",
@@ -824,6 +859,7 @@
             "limitedEdition": false
         },
         {
+            "category": "kitchenwares",
             "name": "Storage Jar",
             "price": [45, 55, 60],
             "priceBy": "size",
@@ -832,7 +868,7 @@
             "size": ["500ml", "750ml", "1000ml"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4547315759514_20_1260.jpg",
                     "https://img.muji.net/img/item/4547315759538_20_1260.jpg"
                 ],
@@ -853,6 +889,7 @@
             "limitedEdition": false
         },
         {
+            "category": "kitchenwares",
             "name": "Nylon Fork and Spoon Set",
             "price": [58],
             "priceBy": "standard",
@@ -879,6 +916,7 @@
             "limitedEdition": false
         },
         {
+            "category": "kitchenwares",
             "name": "Nylon Chopsticks Set",
             "price": [48],
             "priceBy": "standard",
@@ -903,9 +941,9 @@
             "trending": false, 
             "newArrival": false, 
             "limitedEdition": false
-        }
-        ,
+        },
         {
+            "category": "kitchenwares",
             "name": "White Porcelain Tea Pot",
             "price": [100, 120],
             "priceBy": "size",
@@ -928,6 +966,7 @@
             "limitedEdition": false
         },
         {
+            "category": "kitchenwares",
             "name": "Heatproof Glass Pot",
             "price": [120, 140],
             "priceBy": "size",
@@ -954,6 +993,7 @@
     ],
     "storages": [
         {
+            "category": "storages",
             "name": "Stainless Steel Wire Basket with Handle",
             "price": [180, 200, 220, 250, 320],
             "priceBy": "size",
@@ -1000,6 +1040,7 @@
             "limitedEdition": false
         },
         {
+            "category": "storages",
             "name": "Rattan Square Basket with Handle",
             "price": [250, 280],
             "priceBy": "size",
@@ -1008,7 +1049,7 @@
             "size": ["35x36x16cm", "35x36x24cm"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4548718021833_20_1260.jpg"
                 ],
                 "670ml": [
@@ -1025,6 +1066,7 @@
             "limitedEdition": false
         },
         {
+            "category": "storages",
             "name": "Buri Stackable Rectangle Basket",
             "price": [90, 100],
             "priceBy": "size",
@@ -1033,7 +1075,7 @@
             "size": ["35x36x16cm", "35x36x24cm"],
             "material": [],
             "gallery": {
-                "general": [
+                "standard": [
                     "https://img.muji.net/img/item/4945247027907_02_1260.jpg",
                     "https://img.muji.net/img/item/4945247027907_12_1260.jpg"
                 ],
@@ -1051,6 +1093,7 @@
             "limitedEdition": false
         },
         {
+            "category": "storages",
             "name": "Buri Stackable Square Basket with Handle",
             "price": [100, 140, 180],
             "priceBy": "size",
@@ -1076,6 +1119,7 @@
             "limitedEdition": false
         },
         {
+            "category": "storages",
             "name": "Cotton Linen Polyester Soft Box Square with Lid",
             "price": [120, 180],
             "priceBy": "size",
@@ -1105,4 +1149,3 @@
         }
     ]
 }
-
