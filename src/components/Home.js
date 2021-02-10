@@ -78,14 +78,14 @@ function Home() {
         db.collection('products').onSnapshot(snapshot => {
             snapshot.forEach(doc => {
                 if (doc.data().sale !== 0 || doc.data().trending || doc.data().newArrival || doc.data().limitedEdition) {
-                    if (doc.data().galleryBy !== 'general') {
+                    if (doc.data().galleryBy !== 'standard') {
                         for (let variant in doc.data().gallery) {
-                            if (variant !== 'general')
+                            if (variant !== 'standard')
                                 setData(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0] } ]);
                         }
                     }
                     else {
-                        setData(data => [...data, { id: doc.id, item: doc.data(), variation: 'general' } ]);
+                        setData(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard' } ]);
                     }
                 }
             });
@@ -131,7 +131,7 @@ function Home() {
                 {/* product carousel */}
                 <div className='home__products-display'>               
                     {Array(totalPages).fill().map((_, i) => (
-                        <ProductContainer key={i} products={getProducts(i + 1)} curPage={curPage + i} />
+                        <ProductContainer key={i} products={getProducts(i + 1)} curPage={curPage + i} mode='small' />
                     ))}
                 </div>
 

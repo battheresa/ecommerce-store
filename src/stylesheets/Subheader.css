@@ -1,0 +1,18 @@
+.subheader {
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+
+    margin-top: 15px;
+    padding: 0px 100px;
+    background-color: #F8F8F8;
+}
+
+.subheader__text {
+    color: #7F7F7F;
+}
+
+.subheader__slash {
+    margin: 0px 15px;
+}

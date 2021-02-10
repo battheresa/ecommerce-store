@@ -1,15 +1,45 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+
+import { useStateValue } from '../StateProvider';
 import '../stylesheets/ProductCard.css';
 
-function ProductCard({ item, variation }) {
+function ProductCard({ id, item, variation }) {
     const history = useHistory();
+    const [ {}, dispatch ] = useStateValue();
+
+    // save selected product to context
+    const seeDetail = () => {
+        dispatch({ 
+            type: 'UPDATE_PRODUCT', 
+            looking: {
+                id: id,
+                item: item,
+                variation: variation
+            }
+        });
+
+        window.scrollTo(0, 0);
+        history.push(`/product/${id}`);
+    }
     
     return (
-        <div className='productCard' onClick={() => history.push('/product')}>
+        <div className='productCard' onClick={() => seeDetail()}>
+            {/* image */}
             <img className='productCard__image' src={item.gallery[variation][0]} alt={item.gallery[variation][0]} />
+
+            {/* name */}
             <p className='font-wide font-bold'>{item.name.toUpperCase()}</p>
 
+            {/* sale price */}
+            {item.sale && <p className='font-wide font-light'>
+                <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${item.price}</span> HK${item.price - item.sale}
+            </p>}
+
+            {/* normal price */}
+            {!item.sale && <p className='font-wide font-light'>HK${item.price}</p>}
+
+            {/* tags */}
             <div className='productCard__tag'>
                 {item.trending && <div style={{ color: 'rgb(77, 131, 219)', backgroundColor: 'rgba(77, 131, 219, 0.1)' }}>
                     <p>TRENDING</p>
@@ -23,13 +53,6 @@ function ProductCard({ item, variation }) {
                     <p>LIMITED EDITION</p>
                 </div>}
             </div>
-
-            {item.sale && <p className='font-wide font-light'>
-                <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${item.price}</span> HK${item.price - item.sale}
-            </p>}
-
-            {!item.sale && <p className='font-wide font-light'>HK${item.price}</p>}
-            
         </div>
     );
 }

@@ -1,0 +1,112 @@
+.productDetail__product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 50px 100px;
+}
+
+.productDetail__option {
+    display: flex;
+}
+
+.productDetail__option > p {
+    cursor: pointer;
+    width: fit-content;
+
+    padding: 0px 8px;
+    margin-right: 10px;
+
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.productDetail__option-selected {
+    text-decoration: underline;
+}
+
+.productDetail__product-gallery {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 50%;
+    column-gap: 20px;
+}
+
+.productDetail__product-gallery > img {
+    width: 100%;
+}
+
+.productDetail__product-gallery-panel {
+    display: flex;
+    flex-direction: column;
+
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.productDetail__product-gallery-panel > img {
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.productDetail__product-details {
+    margin-left: 50px;
+}
+
+.productDetail__product-details > div > h6 {
+    margin-top: 20px;
+}
+
+.productDetail__product-quantity > div {
+    display: flex;
+    margin-top: 5px;
+}
+
+.productDetail__product-input {
+    width: 30px;
+    border: none;
+    text-align: center;
+}
+
+.productDetail__product-input::-webkit-inner-spin-button, 
+.productDetail__product-input::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none; 
+}
+
+.productDetail__product-buttons {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 20px;
+    
+    margin-top: 20px;
+}
+
+.productDetail__product-buttons > div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.productDetail__product-buttons > div > p {
+    margin-left: 8px;
+}
+
+.productDetail__related {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 350px;
+    margin: 80px 100px;
+    padding-top: 60px;
+
+    /* background-color: aliceblue; */
+    border-top: 0.8px solid black;
+}
+
+.productDetail__related-panel {
+    position: relative;
+    margin: 40px 0px;
+    width: 80%;
+}
