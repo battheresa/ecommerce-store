@@ -226,7 +226,7 @@
             "description": "Make use of Indian Cotton as cover, the cushion is filled with materials has cushioning characteristics.",
             "color": ["Light Blue", "Dark Blue"],
             "size": ["55x59cm"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "light": [
                     "https://img.muji.net/img/item/4549337130500_1260.jpg"
@@ -249,7 +249,7 @@
             "description": "It is produced based on warm and soft flannel shirt. The fabric has undergone a washing process with short pile.",
             "color": ["Red", "Green"],
             "size": ["55x59cm"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "red": [
                     "https://img.muji.net/img/item/4549738398288_1260.jpg"
@@ -272,7 +272,7 @@
             "description": "Made of comfortable material which is often used in innerwear to bring a unique soft texture.",
             "color": ["Light Brown", "Dark Brown"],
             "size": ["55x59cm"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "light": [
                     "https://img.muji.net/img/item/4549738398325_1260.jpg"
@@ -295,7 +295,7 @@
             "description": "Cotton seersucker is commonly used to make pajamas. Wave-like vertical stripe is printed. It is characterized by the softness and refreshing comfort.",
             "color": ["White", "Grey"],
             "size": ["55x59cm"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "white": [
                     "https://img.muji.net/img/item/4549738973973_1260.jpg"
@@ -318,7 +318,7 @@
             "description": "Made of cotton with long fibers, it maintains elasticity after frequent washing. With moderate thickness that provides high water-absorbency. It is suitable for daily use.",
             "color": ["White", "Brown"],
             "size": ["34x85cm"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "white": [
                     "https://img.muji.net/img/item/4549738979142_1260.jpg"
@@ -341,7 +341,7 @@
             "description": "Made of cotton with long fibers, it maintains elasticity after frequent washing. With moderate thickness that provides high water-absorbency. It is suitable for daily use.",
             "color": ["White", "Brown"],
             "size": ["70x140cm"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "white": [
                     "https://img.muji.net/img/item/4549738979302_1260.jpg"
@@ -364,7 +364,7 @@
             "description": "A thin and long towel that can be wrapped around the neck or head, tied and used. One side is pile and the other side is plain weave. It is easy to dry and convenient for laundering. Set of 2 pcs.",
             "color": ["White", "Brown"],
             "size": ["34x110cm"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "white": [
                     "https://img.muji.net/img/item/4549738671152_1260.jpg"
@@ -387,7 +387,7 @@
             "description": "This pair of slippers applies insoles that are usually used in shoes for a cushioned effect.",
             "color": ["Beige", "Grey"],
             "size": ["S", "M", "L", "XL"],
-            "material": ["linen"],
+            "material": ["Linen"],
             "gallery": {
                 "beige": [
                     "https://img.muji.net/img/item/4549738704294_1260.jpg"
@@ -410,7 +410,7 @@
             "description": "The insole is made of soft and light, cushioned material and the toecap is made of soft organic cotton used for making innerwear. These slippers are bendable, therefore easy to wear and store.",
             "color": ["Grey", "Navy"],
             "size": ["S", "M", "L", "XL"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "grey": [
                     "https://img.muji.net/img/item/4550002829223_1260.jpg"
@@ -433,7 +433,7 @@
             "description": "This pair of slippers is easy to wear with hard soles and both left and right slippers are identical.",
             "color": ["Beige", "Grey"],
             "size": ["S", "M", "L", "XL"],
-            "material": ["cotton"],
+            "material": ["Cotton"],
             "gallery": {
                 "beige": [
                     "https://img.muji.net/img/item/4550182345438_1260.jpg"
@@ -894,7 +894,7 @@
             "price": [58],
             "priceBy": "standard",
             "description": "The cultery set is made of resin, it is lightweight, easy for carrying and washing.",
-            "color": ["White", "black"],
+            "color": ["White", "Black"],
             "size": ["18x5x2cm"],
             "material": [],
             "gallery": {
@@ -921,7 +921,7 @@
             "price": [48],
             "priceBy": "standard",
             "description": "The chopstick set is made of resin, it is lightweight, easy for carrying and washing.",
-            "color": ["White", "black"],
+            "color": ["White", "Black"],
             "size": ["20x3x1cm"],
             "material": [],
             "gallery": {
@@ -979,7 +979,7 @@
                     "https://img.muji.net/img/item/4549337527140_1260.jpg",
                     "https://img.muji.net/img/item/4549337527140_02_1260.jpg"
                 ],
-                "1L": [
+                "1l": [
                     "https://img.muji.net/img/item/4549337527188_1260.jpg",
                     "https://img.muji.net/img/item/4549337527188_02_1260.jpg"
                 ]

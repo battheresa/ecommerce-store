@@ -37,12 +37,9 @@ const reducer = (state, action) => {
             return { ...state, user: action.user };
 
         case 'ALL_PRODUCTS':
-            console.log('reducer: ', action.products);
             return { ...state, products: action.products };
 
         case 'UPDATE_PRODUCT': 
-            console.log('update product: ', action.looking);
-
             localStorage.setItem('PRODUCT_ID', action.looking.id);
             localStorage.setItem('PRODUCT_VARIATION', action.looking.variation);
             return { ...state, user: action.user, looking: action.looking };

@@ -1,0 +1,25 @@
+.productSearch__container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+    padding: 50px 100px 25px 100px;
+}
+
+.productSearch__filters > div {
+    margin-bottom: 25px;
+}
+
+.productSearch__results {
+    padding-left: 50px;
+    border-left: 0.8px solid black;
+}
+
+.productSearch__results-header {
+    display: flex;
+}
+
+.productSearch__results-products {
+    height: 1250px;
+    position: relative;
+    margin: 20px 0px;
+}

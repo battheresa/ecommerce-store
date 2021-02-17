@@ -117,7 +117,7 @@ function ProductDetail() {
                             <img key={`a${i}`} src={img} alt={img} onClick={() => setImage(img)} />
                         ))}
 
-                        {product?.variation !== 'standard' && product?.item.gallery['standard'].map((img, i) => (
+                        {product?.variation !== 'standard' && product?.item.gallery['standard']?.map((img, i) => (
                             <img key={`b${i}`} src={img} alt={img} onClick={() => setImage(img)} />
                         ))}
                     </div>
@@ -131,7 +131,14 @@ function ProductDetail() {
 
                     {/* name */}
                     <h4>{product?.item.name.toUpperCase()}</h4>
-                    <h4 className='font-light'>HK${product?.item.price}</h4>
+
+                    {/* sale price */}
+                    {product?.item.sale !== 0 && <h4 className='font-wide font-light'>
+                        <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${product?.item.price[0]}</span> HK${product?.item.price[0] - product?.item.sale}
+                    </h4>}
+
+                    {/* normal price */}
+                    {product?.item.sale === 0 && <h4 className='font-wide font-light'>HK${product?.item.price[0]}</h4>}
                     
                     {/* description */}
                     <div>

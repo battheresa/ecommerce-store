@@ -7,11 +7,10 @@ import axios from './axios';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
-import Checkout from './components/Checkout';
-
-import './App.css';
 import ProductDetail from './components/ProductDetail';
-
+import ProductSearch from './components/ProductSearch';
+import Checkout from './components/Checkout';
+import './App.css';
 
 function App() {
     const [ promise, setPromise ] = useState('');
@@ -39,6 +38,9 @@ function App() {
                 <Header />
                 
                 <Switch>
+                    <Route exact path='/'>
+                        <Home />
+                    </Route>
                     <Route path='/product'>
                         <ProductDetail />
                     </Route>
@@ -49,13 +51,13 @@ function App() {
                         <h1>cart</h1>
                     </Route>
                     <Route path='/'>
-                        <Home />
+                        <ProductSearch />
                     </Route>
                 </Switch>
 
                 <Footer />
             </BrowserRouter>
-
+            
         </div>
     );
 }

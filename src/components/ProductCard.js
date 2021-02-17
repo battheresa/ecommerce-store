@@ -19,6 +19,8 @@ function ProductCard({ id, item, variation }) {
             }
         });
 
+        console.log(item, variation);
+
         window.scrollTo(0, 0);
         history.push(`/product/${id}`);
     }
@@ -32,12 +34,12 @@ function ProductCard({ id, item, variation }) {
             <p className='font-wide font-bold'>{item.name.toUpperCase()}</p>
 
             {/* sale price */}
-            {item.sale && <p className='font-wide font-light'>
-                <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${item.price}</span> HK${item.price - item.sale}
+            {item.sale !== 0 && <p className='font-wide font-light'>
+                <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${item.price[0]}</span> HK${item.price[0] - item.sale}
             </p>}
 
             {/* normal price */}
-            {!item.sale && <p className='font-wide font-light'>HK${item.price}</p>}
+            {item.sale === 0 && <p className='font-wide font-light'>HK${item.price[0]}</p>}
 
             {/* tags */}
             <div className='productCard__tag'>
