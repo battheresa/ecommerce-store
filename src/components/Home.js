@@ -29,7 +29,7 @@ function Home() {
     const changePage = (num) => {
         setCurPage(num);
         setLastPage(num === 0 ? true : false);
-        setFirstPage(num === totalPages.length ? true : false);  
+        setFirstPage(num === totalPages - 1 ? true : false);  
     };
 
     // get products at page num
@@ -41,30 +41,27 @@ function Home() {
     }
 
     // re-filter display products when menu change
-    const changeMenu = (num) => {
-        setMenu(num);
-        setCurPage(1);
+    const updateMenuDisplay = (menu) => {
+        setDisplay(data.filter(content => {
+            return menu === 'sale' ? content.item[menu] !== 0 : content.item[menu] === true;
+        }));
 
-        if (num === 0) {
-            setDisplay(data.filter(content => {
-                return content.item.sale !== 0;
-            }));
-        }
-        else if (num === 1) {
-            setDisplay(data.filter(content => {
-                return content.item.trending === true;
-            }));
-        }
-        else if (num === 2) {
-            setDisplay(data.filter(content => {
-                return content.item.newArrival === true;
-            }));
-        }
-        else if (num === 3) {
-            setDisplay(data.filter(content => {
-                return content.item.limitedEdition === true;
-            }));
-        }
+        const length = data.filter(content => {
+            return menu === 'sale' ? content.item[menu] !== 0 : content.item[menu] === true;
+        }).length;
+
+        setCurPage(1);
+        setTotalPages(Math.ceil(length / perPage));
+
+        setFirstPage(true);
+        setLastPage(Math.ceil(length / perPage) === 1 ? true : false);
+    }
+
+    // re-filter display products when menu change
+    const changeMenu = (num) => {
+        const menuText = ['sale', 'trending', 'newArrival', 'limitedEdition'];
+        updateMenuDisplay(menuText[num]);
+        setMenu(num);
     };
 
     // fetch and expand products
@@ -75,37 +72,32 @@ function Home() {
         //     });
         // };
 
-        db.collection('products').onSnapshot(snapshot => {
-            snapshot.forEach(doc => {
-                if (doc.data().sale !== 0 || doc.data().trending || doc.data().newArrival || doc.data().limitedEdition) {
-                    if (doc.data().galleryBy !== 'standard') {
-                        for (let variant in doc.data().gallery) {
-                            if (variant !== 'standard')
-                                setData(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0] } ]);
+        if (!data.length) {
+            db.collection('products').onSnapshot(snapshot => {
+                snapshot.forEach(doc => {
+                    if (doc.data().sale !== 0 || doc.data().trending || doc.data().newArrival || doc.data().limitedEdition) {
+                        if (doc.data().galleryBy !== 'standard') {
+                            for (let variant in doc.data().gallery) {
+                                if (variant !== 'standard')
+                                    setData(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0] } ]);
+                            }
+                        }
+                        else {
+                            setData(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard' } ]);
                         }
                     }
-                    else {
-                        setData(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard' } ]);
-                    }
-                }
+                });
             });
-        });
+        }
+
+        // eslint-disable-next-line
     }, []);
     
     // get all items for initial menu (sale)
     useEffect(() => {
-        setDisplay(data.filter(content => {
-            return content.item.sale !== 0;
-        }));
-
-        const length = data.filter(content => {
-            return content.item.sale !== 0;
-        }).length;
-
-        setTotalPages(Math.ceil(length / perPage));
-
-        setFirstPage(true);
-        setLastPage(Math.ceil(length / perPage) === 1 ? true : false);
+        updateMenuDisplay('sale');
+        
+        // eslint-disable-next-line
     }, [data]);
     
     return (
@@ -129,7 +121,7 @@ function Home() {
                 </IconButton>
 
                 {/* product carousel */}
-                <div className='home__products-display'>               
+                <div className='home__products-display'>
                     {Array(totalPages).fill().map((_, i) => (
                         <ProductContainer key={i} products={getProducts(i + 1)} curPage={curPage + i} mode='small' />
                     ))}

@@ -18,16 +18,22 @@
     overflow: hidden;
 }
 
-.carousel__slide-text {
+.carousel__text {
     position: absolute;
-    left: 120px;
-    bottom: 250px;
+    top: 0px;
+    left: 140px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 120px;
+
     width: 380px;
     height: 100%;
     transition: 1s;
 }
 
-.carousel__slide-text > h5 {
+.carousel__text > h5 {
     line-height: 1.9em;
 }
 
@@ -44,6 +50,7 @@
 }
 
 .carousel__pages {
+    cursor: pointer;
     position: absolute;
     top: 180px;
     left: -50px;

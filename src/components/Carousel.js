@@ -31,10 +31,13 @@ function Carousel() {
 
     // change slide manually
     const changeSlide = (page) => {
-        const cur = slide === 5 ? 0 : slide;
+        if (slide === 5 && page === 0) {
+            setSlide(0);
+            return;
+        }
 
-        const first = Math.abs(cur - page);
-        const second = Math.abs(cur - (page + 3));
+        const first = Math.abs(slide - page);
+        const second = Math.abs(slide - (page + 3));
 
         setSlide(first > second ? page + 3 : page);
     };
@@ -62,16 +65,16 @@ function Carousel() {
         <div className='carousel'>
             {/* carousel */}
             {data.map((content, i) => (
-                <div id={`carousel__${(slide - i) * 100}`} key={i} className='carousel__slide'>
+                <div key={i} className='carousel__slide'>
 
                     {/* carousel text */}
-                    <div className='carousel__slide-text' style={{ display: `${slide === i ? 'none' : 'block'}`, transform: `translateY(${getPosition(slide, i)}%)` }}>
+                    <div className='carousel__text' style={{ display: `${slide === i ? 'none' : 'flex'}`, transform: `translateY(${getPosition(slide, i)}%)` }}>
                         <h1>{content.title}</h1>
                         <h5 className='font-light'>{content.body}</h5>
                     </div>
 
                     {/* carousel image */}
-                    <div className='carousel__image' style={{ display: `${slide === i ? 'none' : 'block'}`, transform: `translateY(${getPosition(slide, i)}%)` }} >
+                    <div className='carousel__image' style={{ display: `${slide === i ? 'none' : 'flex'}`, transform: `translateY(${getPosition(slide, i)}%)` }} >
                         <img src={content.image} alt={content.title}/>
                     </div>
                 </div>
