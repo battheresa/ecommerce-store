@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
-import axios from './axios';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
@@ -16,6 +17,7 @@ function App() {
     const [ promise, setPromise ] = useState('');
 
     useEffect(() => {
+        // fetch strip key
         const getPromise = async () => {
             await axios.get('/key').then((response) => {
                 setPromise(loadStripe(response.data));

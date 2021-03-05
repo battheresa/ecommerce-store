@@ -28,8 +28,8 @@ function Home() {
     // change page display
     const changePage = (num) => {
         setCurPage(num);
-        setLastPage(num === 0 ? true : false);
-        setFirstPage(num === totalPages - 1 ? true : false);  
+        setLastPage(num === totalPages ? true : false);
+        setFirstPage(num === 1 ? true : false);  
     };
 
     // get products at page num
@@ -99,7 +99,7 @@ function Home() {
         
         // eslint-disable-next-line
     }, [data]);
-    
+
     return (
         <div className='home'>
             {/* carousel */}
@@ -116,19 +116,17 @@ function Home() {
             <div className='home__products'>
                 
                 {/* back arrow */}
-                <IconButton className='home__products-arrow' style={{ marginLeft: '-30px' }} disabled={firstPage} onClick={() => changePage(curPage + 1)}>
+                <IconButton className='home__products-arrow' style={{ marginLeft: '-30px' }} disabled={firstPage} onClick={() => changePage(curPage - 1)}>
                     <ArrowBackIosOutlinedIcon />
                 </IconButton>
 
                 {/* product carousel */}
                 <div className='home__products-display'>
-                    {Array(totalPages).fill().map((_, i) => (
-                        <ProductContainer key={i} products={getProducts(i + 1)} curPage={curPage + i} mode='small' />
-                    ))}
+                    <ProductContainer products={getProducts(curPage)} size='small' />
                 </div>
 
                 {/* forward arrow */}
-                <IconButton className='home__products-arrow' style={{ marginRight: '-30px' }} disabled={lastPage} onClick={() => changePage(curPage - 1)}>
+                <IconButton className='home__products-arrow' style={{ marginRight: '-30px' }} disabled={lastPage} onClick={() => changePage(curPage + 1)}>
                     <ArrowForwardIosOutlinedIcon />
                 </IconButton>
             </div>

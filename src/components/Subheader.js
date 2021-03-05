@@ -2,8 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import '../stylesheets/Subheader.css';
 
-// TODO: make redirect automatically
-
 function Subheader({ path }) {
     const history = useHistory();
 

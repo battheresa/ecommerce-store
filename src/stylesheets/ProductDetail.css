@@ -97,11 +97,8 @@
     flex-direction: column;
     align-items: center;
 
-    height: 350px;
     margin: 80px 100px;
     padding-top: 60px;
-
-    /* background-color: aliceblue; */
     border-top: 0.8px solid black;
 }
 

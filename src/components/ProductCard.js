@@ -1,8 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useStateValue } from '../StateProvider';
+import { useStateValue } from '../services/StateProvider';
 import '../stylesheets/ProductCard.css';
+
+// TODO: correct price for each variation
 
 function ProductCard({ id, item, variation }) {
     const history = useHistory();
@@ -31,7 +33,7 @@ function ProductCard({ id, item, variation }) {
             <img className='productCard__image' src={item.gallery[variation][0]} alt={item.gallery[variation][0]} />
 
             {/* name */}
-            <p className='font-wide font-bold'>{item.name.toUpperCase()}</p>
+            <p className='font-wide font-bold' style={{ textAlign: 'center' }}>{item.name.toUpperCase()}</p>
 
             {/* sale price */}
             {item.sale !== 0 && <p className='font-wide font-light'>

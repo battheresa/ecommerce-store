@@ -1,7 +1,6 @@
 .productSearch__container {
     display: grid;
     grid-template-columns: 1fr 4fr;
-
     padding: 50px 100px 25px 100px;
 }
 
@@ -19,7 +18,17 @@
 }
 
 .productSearch__results-products {
-    height: 1250px;
-    position: relative;
     margin: 20px 0px;
+}
+
+.productSearch__results-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 60px;
+}
+
+.productSearch__page-number {
+    cursor: pointer;
+    margin-left: 10px;
+    text-decoration: none;
 }

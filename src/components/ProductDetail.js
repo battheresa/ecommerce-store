@@ -7,13 +7,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import { db } from '../firebase';
-import { useStateValue } from '../StateProvider';
+import { useStateValue } from '../services/StateProvider';
 
 import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
 import '../stylesheets/ProductDetail.css';
 
-// TODO: add to wishlist
+// TODO: add to wishlist, correct price for each variation
 
 function ProductDetail() {
     const [ { looking }, dispatch ] = useStateValue();
@@ -180,7 +180,7 @@ function ProductDetail() {
                 <h6 className='font-bold'>YOU MIGHT ALSO LIKE</h6>
 
                 <div className='productDetail__related-panel'>
-                    <ProductContainer products={related.slice(0, 4)} curPage={1} mode='tiny' />
+                    <ProductContainer products={related.slice(0, 4)} size='tiny' />
                 </div>
             </div>
         </div>

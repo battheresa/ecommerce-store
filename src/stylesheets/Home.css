@@ -37,12 +37,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    position: relative;
-    overflow: hidden;
-    
-    width: 100%;
-    height: 600px;
 }
 
 .home__products-arrow {
