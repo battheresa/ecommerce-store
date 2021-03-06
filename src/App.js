@@ -5,6 +5,9 @@ import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
+import { ThemeProvider } from "@material-ui/core/styles";
+import { theme } from './stylesheets/Theme';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
@@ -29,37 +32,38 @@ function App() {
 
     return (
         <div className='app'>
+            <ThemeProvider theme={theme}>
 
-            {/*
-            {promise && <Elements stripe={promise}>
-            <Checkout />
-            </Elements>}
-            */}
+                {/*
+                {promise && <Elements stripe={promise}>
+                <Checkout />
+                </Elements>}
+                */}
 
-            <BrowserRouter>
-                <Header />
-                
-                <Switch>
-                    <Route exact path='/'>
-                        <Home />
-                    </Route>
-                    <Route path='/product'>
-                        <ProductDetail />
-                    </Route>
-                    <Route path='/store-locations'>
-                        <h1>store locations</h1>
-                    </Route>
-                    <Route path='/cart'>
-                        <h1>cart</h1>
-                    </Route>
-                    <Route path='/'>
-                        <ProductSearch />
-                    </Route>
-                </Switch>
+                <BrowserRouter>
+                    <Header />
+                    
+                    <Switch>
+                        <Route exact path='/'>
+                            <Home />
+                        </Route>
+                        <Route path='/product'>
+                            <ProductDetail />
+                        </Route>
+                        <Route path='/store-locations'>
+                            <h1>store locations</h1>
+                        </Route>
+                        <Route path='/cart'>
+                            <h1>cart</h1>
+                        </Route>
+                        <Route path='/'>
+                            <ProductSearch />
+                        </Route>
+                    </Switch>
 
-                <Footer />
-            </BrowserRouter>
-            
+                    <Footer />
+                </BrowserRouter>
+            </ThemeProvider>
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { Button, TextField } from '@material-ui/core';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
@@ -110,9 +111,29 @@ function Header() {
 
                     {/* login modal form */}
                     <form className='header__modal-form'>
-                        <input type='email' placeholder='EMAIL ADDRESS' />
-                        <input type='password' placeholder='PASSWORD' />
-                        <button>{menu ? 'LOGIN' : 'SIGNUP'}</button>
+                        <TextField 
+                            type='email' 
+                            placeholder='EMAIL ADDRESS' 
+                            size='small' 
+                            variant='outlined' 
+                            color='primary' 
+                            style={{ marginBottom: '15px' }}
+                            inputProps={{ style: { fontSize: 16, fontWeight: 300, wordSpacing: 3 } }}
+                            required 
+                        />
+
+                        <TextField 
+                            type='password' 
+                            placeholder='PASSWORD' 
+                            size='small' 
+                            variant='outlined' 
+                            color='primary' 
+                            style={{ marginBottom: '15px' }}
+                            inputProps={{ style: { fontSize: 16, fontWeight: 300, wordSpacing: 3 } }}
+                            required 
+                        />
+
+                        <Button variant='contained' color='primary'><p className='font-bold font-wide'>{menu ? 'LOGIN' : 'SIGNUP'}</p></Button>
                     </form>
                     
                 </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, TextField } from '@material-ui/core';
 import '../stylesheets/Footer.css';
 
 // TODO: navigation
@@ -45,8 +46,15 @@ function Footer() {
                     <h2>Subscribe for news on latest products and special offers. No spams!</h2>
                     
                     <form>
-                        <input type='email' placeholder='EMAIL ADDRESS' />
-                        <button>SUBSCRIBE</button>
+                        <TextField 
+                            type='email' 
+                            placeholder='EMAIL ADDRESS' 
+                            size='small' 
+                            style={{ marginTop: '10px' }}
+                            inputProps={{ style: { fontSize: 16, fontWeight: 300, wordSpacing: 3 } }}
+                            required 
+                        />
+                        <Button variant='contained'><p className='font-bold font-wide'>SUBSCRIBE</p></Button>
                     </form>
                 </div>
             </div>
