@@ -1,0 +1,13 @@
+.productSearchFilter {
+    padding-right: 50px;
+}
+
+.productSearchFilter > div {
+    margin-bottom: 40px;
+}
+
+.productSearchFilter__options {
+    display: flex;
+    align-items: center;
+    margin-left: -10px;
+}

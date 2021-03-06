@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { IconButton } from '@material-ui/core';
+import { IconButton, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -13,7 +13,7 @@ import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
 import '../stylesheets/ProductDetail.css';
 
-// TODO: add to wishlist, correct price for each variation
+// TODO: add to cart, add to wishlist
 
 function ProductDetail() {
     const [ { looking }, dispatch ] = useStateValue();
@@ -30,7 +30,8 @@ function ProductDetail() {
             setProduct({
                 id: looking.id,
                 item: looking.item,
-                variation: looking.variation
+                variation: looking.variation,
+                price: looking.price
             });
         }
         else {
@@ -38,7 +39,8 @@ function ProductDetail() {
                 setProduct({ 
                     id: looking.id,
                     item: doc.data(),
-                    variation: looking.variation
+                    variation: looking.variation,
+                    price: looking.price
                 })
             ));
         }
@@ -47,7 +49,7 @@ function ProductDetail() {
     // set initial image and get products from †he same category
     useEffect(() => {
         // set initial image
-        setImage(product?.item.gallery[product.variation][0]);
+        setImage(product?.item.gallery[product?.variation][0]);
 
         // get related products
         db.collection('products').get().then(collection => {
@@ -55,12 +57,28 @@ function ProductDetail() {
                 if (doc.data().category === product?.item.category && doc.id !== product?.id) {
                     if (doc.data().galleryBy !== 'standard') {
                         for (let variant in doc.data().gallery) {
-                            if (variant !== 'standard')
-                                setRelated(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0] } ]);
+                            if (variant !== 'standard') {
+                                let curPrice = doc.data().price[0];
+                                let index = -1;
+
+                                if (doc.data().priceBy !== 'standard') {
+                                    // find index
+                                    doc.data()[doc.data().priceBy].forEach((content, i) => {
+                                        if (content.toLowerCase().split(' ')[0] === variant)
+                                            index = i;
+                                    });
+
+                                    // set price
+                                    if (index !== -1)
+                                        curPrice = doc.data().price[index];
+                                }
+
+                                setRelated(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice } ]);
+                            }
                         }
                     }
                     else {
-                        setRelated(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard' } ]);
+                        setRelated(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard', price: doc.data().price[0] } ]);
                     }
                 }
             });
@@ -68,14 +86,15 @@ function ProductDetail() {
     }, [product]);
 
     // change options
-    const changeOption = (group, changeTo) => {
+    const changeOption = (group, changeTo, index) => {
         if (product?.item[group].length === 1)
             return;
 
         setProduct({ 
             id: product.id,
             item: product.item,
-            variation: changeTo.toLowerCase()
+            variation: changeTo.toLowerCase().split(' ')[0],
+            price: product.item.priceBy === 'standard' ? product.price : product.item.price[index]
         });
     }
 
@@ -86,9 +105,9 @@ function ProductDetail() {
                 <div>
                     <h6><small>{menu.toUpperCase()} :</small></h6>
                     <div className='productDetail__option'>
-                        {product?.item[menu].map(option => (
-                            <p key={option} onClick={() => changeOption(menu, option)}
-                               className={`font-light ${(option.toLowerCase() === product?.variation || product?.item[menu].length === 1) && 'productDetail__option-selected'}`}>
+                        {product?.item[menu].map((option, i) => (
+                            <p key={i} onClick={() => changeOption(menu, option, i)}
+                               className={`font-light ${(option.toLowerCase().split(' ')[0] === product?.variation || product?.item[menu].length === 1) && 'productDetail__option-selected'}`}>
                                 {option}
                             </p>
                         ))}
@@ -113,7 +132,7 @@ function ProductDetail() {
 
                     {/* small image section */}
                     <div className='productDetail__product-gallery-panel'>
-                        {product?.item.gallery[product.variation].map((img, i) => (
+                        {product?.item.gallery[product?.variation].map((img, i) => (
                             <img key={`a${i}`} src={img} alt={img} onClick={() => setImage(img)} />
                         ))}
 
@@ -134,11 +153,11 @@ function ProductDetail() {
 
                     {/* sale price */}
                     {product?.item.sale !== 0 && <h4 className='font-wide font-light'>
-                        <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${product?.item.price[0]}</span> HK${product?.item.price[0] - product?.item.sale}
+                        <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${product?.price}</span> HK${product?.price - product?.item.sale}
                     </h4>}
 
                     {/* normal price */}
-                    {product?.item.sale === 0 && <h4 className='font-wide font-light'>HK${product?.item.price[0]}</h4>}
+                    {product?.item.sale === 0 && <h4 className='font-wide font-light'>HK${product?.price}</h4>}
                     
                     {/* description */}
                     <div>
@@ -169,7 +188,7 @@ function ProductDetail() {
 
                     {/* buttons */}
                     <div className='productDetail__product-buttons'>
-                        <button>ADD TO CART</button>
+                        <Button variant='contained' color='primary'>ADD TO CART</Button>
                         <div><FavoriteBorderIcon /><p>ADD TO WISHLIST</p></div>
                     </div>
                 </div>

@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { IconButton } from '@material-ui/core';
+import { IconButton, MenuItem } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ArrowBackIosOutlinedIcon from '@material-ui/icons/ArrowBackIosOutlined';
 import ArrowForwardIosOutlinedIcon from '@material-ui/icons/ArrowForwardIosOutlined';
 
 import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
+import ProductSearchFilter from './ProductSearchFilter';
 
 import { db } from '../firebase';
 import '../stylesheets/ProductSearch.css';
 
-// TODO: price filter
-
 function ProductSearch() {
     const location = useLocation();
     const [ products, setProducts ] = useState([]);
+    const [ filteredProducts, setFilteredProducts ] = useState([]);
 
     const perPage = 12;
     const [ curPage, setCurPage ] = useState(1);
@@ -24,14 +25,28 @@ function ProductSearch() {
     const [ firstPage, setFirstPage ] = useState(true);
     const [ lastPage, setLastPage ] = useState(false);
 
-    const [ filterMaterial, setFilterMaterial ] = useState([]);
-    const [ filterColor, setFilterColor ] = useState([]);
+    const [ initialState, setInitialState ] = useState(null);
+    const [ isOpen, setIsOpen ] = useState(false);
+
+    const updateFilteredProducts = (data) => setFilteredProducts(data);
+
+    const sortProducts = (order) => {
+        setIsOpen(false);
+
+        if (order === 'low')
+            filteredProducts.sort((a, b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
+        else 
+            filteredProducts.sort((a, b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0));
+
+    }
 
     // change page products
     const changePage = (num) => {
         setCurPage(num);
         setLastPage(num === totalPages ? true : false);
         setFirstPage(num === 1 ? true : false);  
+
+        window.scrollTo(0, 0);
     };
 
     // get products at page num
@@ -39,40 +54,73 @@ function ProductSearch() {
         const last = num * perPage;
         const first = last - perPage;
 
-        return [...products].splice(first, last);
-    }
+        return [...filteredProducts].splice(first, last);
+    };
+
+    // mouse click tracking
+    useEffect(() => {
+        const clickOutside = (event) => {
+            if (event.target.parentNode.id !== 'productSearch__sort-menu') 
+                setIsOpen(false);
+        };
+
+        document.addEventListener('mousedown', clickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', clickOutside);
+        };
+    }, []);
 
     // fetch data and expand + track all material and color filters
     useEffect(() => {
         if (!products.length) {
-            var materials = [];
-            var colors = [];
+            let materials = [];
+            let colors = [];
+            let prices = [10000, 0];
 
             db.collection('products').onSnapshot(snapshot => {
                 snapshot.forEach(doc => {
                     if (doc.data().category === location.pathname.slice(1)) {
+
+                        // expand products
                         if (doc.data().galleryBy !== 'standard') {
                             for (let variant in doc.data().gallery) {
-                                if (variant !== 'standard')
-                                    setProducts(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0] } ]);
+                                if (variant !== 'standard') {
+                                    let curPrice = doc.data().price[0];
+                                    let index = -1;
+
+                                    if (doc.data().priceBy !== 'standard') {
+                                        // find index
+                                        doc.data()[doc.data().priceBy].forEach((content, i) => {
+                                            if (content.toLowerCase().split(' ')[0] === variant)
+                                                index = i;
+                                        });
+
+                                        // set price
+                                        if (index !== -1)
+                                            curPrice = doc.data().price[index];
+                                    }
+
+                                    setProducts(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice } ]);
+                                }
                             }
                         }
                         else {
-                            setProducts(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard' } ]);
+                            setProducts(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard', price: doc.data().price[0] } ]);
                         }
-                        
+
                         // look for material filters
                         doc.data().material.forEach(mat => {                              
                             const exist = materials.find(content => {
-                                return content.material === mat;
+                                return content.text === mat;
                             });
                 
                             if (!exist) {
-                                materials.push({ material: mat, quantity: 1 });
+                                materials.push({ text: mat, quantity: 1, checked: false });
                             }
                             else {
                                 materials.find(content => {
-                                    return content.material === mat;
+                                    return content.text === mat;
                                 }).quantity += 1;
                             }
                         });
@@ -80,24 +128,33 @@ function ProductSearch() {
                         // look for color filters
                         doc.data().color.forEach(col => {                              
                             const exist = colors.find(content => {
-                                return content.color === col;
+                                return content.text === col;
                             });
                 
                             if (!exist) {
-                                colors.push({ color: col, quantity: 1 });
+                                colors.push({ text: col, quantity: 1, checked: false });
                             }
                             else {
                                 colors.find(content => {
-                                    return content.color === col;
+                                    return content.text === col;
                                 }).quantity += 1;
                             }
                         });
 
+                        // look for price filters
+                        const low = Math.min(...doc.data().price);
+                        const high = Math.max(...doc.data().price);
+
+                        prices[0] = (low < prices[0]) ? low : prices[0];
+                        prices[1] = (high > prices[1]) ? high : prices[1];
                     }
                 });
+            });
 
-                setFilterMaterial(materials);
-                setFilterColor(colors);
+            setInitialState({
+                prices: prices,
+                colors: colors,
+                materials: materials
             });
         }
 
@@ -106,13 +163,16 @@ function ProductSearch() {
 
     // update variables when products are loaded
     useEffect(() => {
+        setFilteredProducts(products);
         setTotalPages(Math.ceil(products.length / perPage));
         setLastPage(Math.ceil(products.length / perPage) === 1 ? true : false);
 
         // eslint-disable-next-line
     }, [products]);
 
-    // subcomponent for page numbers
+    // components ---------------------------
+
+    // page numbers component
     const Pagination = () => {
         return (
             <p>
@@ -132,45 +192,31 @@ function ProductSearch() {
                 </IconButton>
             </p>
         );
-    }
+    };
     
     return (
         <div className='productSearch'>
             <Subheader path={['home', location.pathname.split('/')[1]]} />
             
             <div className='productSearch__container'>
-
-                {/* side bar */}
-                <div className='productSearch__filters'>
-
-                    {/* color filter */}
-                    <div>
-                        <h6 className='font-bold'>COLOR</h6>
-                        {filterColor.map((content, i) => (
-                            <p key={i} className='font-light'>{content.color.toUpperCase()} ({content.quantity})</p>
-                        ))}
-                    </div>
-
-                    {/* material filter */}
-                    <div>
-                        <h6 className='font-bold'>MATERIAL</h6>
-                        {filterMaterial.map((content, i) => (
-                            <p key={i} className='font-light'>{content.material.toUpperCase()} ({content.quantity})</p>
-                        ))}
-                    </div>
-
-                    {/* price filter */}
-                    <div>
-                        <h6>PRICE</h6>
-                    </div>
-                </div>
+                {products && initialState && <ProductSearchFilter products={products} update={updateFilteredProducts} initialState={initialState} />}
 
                 {/* products search results */}
                 <div className='productSearch__results'>
 
                     {/* sort order and pagination */}
                     <div className='productSearch__results-header'>
-                        <div style={{ flex: 1 }}><h6 className='font-bold'>SORT BY</h6></div>
+                        <div className='productSearch__results-sort'>
+                            <div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setIsOpen(true)}>
+                                <h6 className='font-bold' style={{ marginRight: '10px' }}>SORT BY</h6>
+                                <ExpandMoreIcon fontSize='small' color='primary' />
+                            </div>
+
+                            <div id='productSearch__sort-menu' className='productSearch__sort-menu' style={{ display: `${isOpen ? 'flex' : 'none'}` }}>
+                                <MenuItem onClick={() => sortProducts('low')}>Price low to high</MenuItem>
+                                <MenuItem onClick={() => sortProducts('high')}>Price high to low</MenuItem>
+                            </div>
+                        </div>
 
                         <Pagination />
                     </div>
@@ -188,6 +234,6 @@ function ProductSearch() {
             </div>
         </div>
     );
-}
+};
 
 export default ProductSearch;

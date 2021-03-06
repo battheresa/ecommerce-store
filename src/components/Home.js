@@ -78,12 +78,28 @@ function Home() {
                     if (doc.data().sale !== 0 || doc.data().trending || doc.data().newArrival || doc.data().limitedEdition) {
                         if (doc.data().galleryBy !== 'standard') {
                             for (let variant in doc.data().gallery) {
-                                if (variant !== 'standard')
-                                    setData(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0] } ]);
+                                if (variant !== 'standard') {
+                                    let curPrice = doc.data().price[0];
+                                    let index = -1;
+
+                                    if (doc.data().priceBy !== 'standard') {
+                                        // find index
+                                        doc.data()[doc.data().priceBy].forEach((content, i) => {
+                                            if (content.toLowerCase().split(' ')[0] === variant)
+                                                index = i;
+                                        });
+
+                                        // set price
+                                        if (index !== -1)
+                                            curPrice = doc.data().price[index];
+                                    }
+
+                                    setData(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice } ]);
+                                }  
                             }
                         }
                         else {
-                            setData(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard' } ]);
+                            setData(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard', price: doc.data().price[0] } ]);
                         }
                     }
                 });

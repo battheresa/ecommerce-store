@@ -6,7 +6,8 @@ export const initialState = {
     looking: {
         id: localStorage.getItem('PRODUCT_ID'),
         item: null,
-        variation: localStorage.getItem('PRODUCT_VARIATION')
+        variation: localStorage.getItem('PRODUCT_VARIATION'),
+        price: localStorage.getItem('PRODUCT_PRICE'),
     }
 };
 
@@ -42,6 +43,8 @@ const reducer = (state, action) => {
         case 'UPDATE_PRODUCT': 
             localStorage.setItem('PRODUCT_ID', action.looking.id);
             localStorage.setItem('PRODUCT_VARIATION', action.looking.variation);
+            localStorage.setItem('PRODUCT_PRICE', action.looking.price);
+            
             return { ...state, user: action.user, looking: action.looking };
 
         default:

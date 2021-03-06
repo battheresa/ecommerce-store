@@ -4,9 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useStateValue } from '../services/StateProvider';
 import '../stylesheets/ProductCard.css';
 
-// TODO: correct price for each variation
-
-function ProductCard({ id, item, variation }) {
+function ProductCard({ id, item, variation, price }) {
     const history = useHistory();
     const [ {}, dispatch ] = useStateValue();
 
@@ -17,11 +15,10 @@ function ProductCard({ id, item, variation }) {
             looking: {
                 id: id,
                 item: item,
-                variation: variation
+                variation: variation,
+                price: price
             }
         });
-
-        console.log(item, variation);
 
         window.scrollTo(0, 0);
         history.push(`/product/${id}`);
@@ -37,11 +34,11 @@ function ProductCard({ id, item, variation }) {
 
             {/* sale price */}
             {item.sale !== 0 && <p className='font-wide font-light'>
-                <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${item.price[0]}</span> HK${item.price[0] - item.sale}
+                <span style={{ color: '#7F7F7F', textDecoration: 'line-through'}}>HK${price}</span> HK${price - item.sale}
             </p>}
 
             {/* normal price */}
-            {item.sale === 0 && <p className='font-wide font-light'>HK${item.price[0]}</p>}
+            {item.sale === 0 && <p className='font-wide font-light'>HK${price}</p>}
 
             {/* tags */}
             <div className='productCard__tag'>

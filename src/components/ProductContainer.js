@@ -6,7 +6,7 @@ function ProductContainer({ products, size }) {
     return (
         <div className={`productContainer productContainer__${size}`} >
             {products.map((content, i) => ( 
-                <ProductCard key={i} id={content.id} item={content.item} variation={content.variation} />
+                <ProductCard key={i} id={content.id} item={content.item} variation={content.variation} price={content.price} />
             ))}
         </div>
     );
