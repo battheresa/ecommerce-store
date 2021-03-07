@@ -10,7 +10,7 @@ import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
 import ProductSearchFilter from './ProductSearchFilter';
 
-import { db } from '../firebase';
+import { fetchByCategory } from '../services/Gateway';
 import '../stylesheets/ProductSearch.css';
 
 function ProductSearch() {
@@ -28,8 +28,10 @@ function ProductSearch() {
     const [ initialState, setInitialState ] = useState(null);
     const [ isOpen, setIsOpen ] = useState(false);
 
+    // update filtered products
     const updateFilteredProducts = (data) => setFilteredProducts(data);
 
+    // sort products
     const sortProducts = (order) => {
         setIsOpen(false);
 
@@ -37,8 +39,7 @@ function ProductSearch() {
             filteredProducts.sort((a, b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
         else 
             filteredProducts.sort((a, b) => (a.price < b.price) ? 1 : ((b.price < a.price) ? -1 : 0));
-
-    }
+    };
 
     // change page products
     const changePage = (num) => {
@@ -57,109 +58,31 @@ function ProductSearch() {
         return [...filteredProducts].splice(first, last);
     };
 
-    // mouse click tracking
+    // mouse click listener
     useEffect(() => {
-        const clickOutside = (event) => {
-            if (event.target.parentNode.id !== 'productSearch__sort-menu') 
-                setIsOpen(false);
-        };
+        const clickOutside = (event) => setIsOpen(event.target.parentNode.id === 'productSearch__sort-menu');
 
         document.addEventListener('mousedown', clickOutside);
 
         return () => {
             document.removeEventListener('mousedown', clickOutside);
         };
-    }, []);
-
-    // fetch data and expand + track all material and color filters
-    useEffect(() => {
-        if (!products.length) {
-            let materials = [];
-            let colors = [];
-            let prices = [10000, 0];
-
-            db.collection('products').onSnapshot(snapshot => {
-                snapshot.forEach(doc => {
-                    if (doc.data().category === location.pathname.slice(1)) {
-
-                        // expand products
-                        if (doc.data().galleryBy !== 'standard') {
-                            for (let variant in doc.data().gallery) {
-                                if (variant !== 'standard') {
-                                    let curPrice = doc.data().price[0];
-                                    let index = -1;
-
-                                    if (doc.data().priceBy !== 'standard') {
-                                        // find index
-                                        doc.data()[doc.data().priceBy].forEach((content, i) => {
-                                            if (content.toLowerCase().split(' ')[0] === variant)
-                                                index = i;
-                                        });
-
-                                        // set price
-                                        if (index !== -1)
-                                            curPrice = doc.data().price[index];
-                                    }
-
-                                    setProducts(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice } ]);
-                                }
-                            }
-                        }
-                        else {
-                            setProducts(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard', price: doc.data().price[0] } ]);
-                        }
-
-                        // look for material filters
-                        doc.data().material.forEach(mat => {                              
-                            const exist = materials.find(content => {
-                                return content.text === mat;
-                            });
-                
-                            if (!exist) {
-                                materials.push({ text: mat, quantity: 1, checked: false });
-                            }
-                            else {
-                                materials.find(content => {
-                                    return content.text === mat;
-                                }).quantity += 1;
-                            }
-                        });
-
-                        // look for color filters
-                        doc.data().color.forEach(col => {                              
-                            const exist = colors.find(content => {
-                                return content.text === col;
-                            });
-                
-                            if (!exist) {
-                                colors.push({ text: col, quantity: 1, checked: false });
-                            }
-                            else {
-                                colors.find(content => {
-                                    return content.text === col;
-                                }).quantity += 1;
-                            }
-                        });
-
-                        // look for price filters
-                        const low = Math.min(...doc.data().price);
-                        const high = Math.max(...doc.data().price);
-
-                        prices[0] = (low < prices[0]) ? low : prices[0];
-                        prices[1] = (high > prices[1]) ? high : prices[1];
-                    }
-                });
-            });
-
-            setInitialState({
-                prices: prices,
-                colors: colors,
-                materials: materials
-            });
-        }
 
         // eslint-disable-next-line
     }, []);
+
+    // fetch products
+    useEffect(() => {
+        fetchByCategory(location.pathname.slice(1)).then(content => {
+            setInitialState({
+                colors: content.colors,
+                materials: content.materials,
+                prices: content.prices
+            });
+
+            setProducts(content.products);
+        });
+    }, [location.pathname]);
 
     // update variables when products are loaded
     useEffect(() => {
@@ -169,8 +92,6 @@ function ProductSearch() {
 
         // eslint-disable-next-line
     }, [products]);
-
-    // components ---------------------------
 
     // page numbers component
     const Pagination = () => {
@@ -212,7 +133,7 @@ function ProductSearch() {
                                 <ExpandMoreIcon fontSize='small' color='primary' />
                             </div>
 
-                            <div id='productSearch__sort-menu' className='productSearch__sort-menu' style={{ display: `${isOpen ? 'flex' : 'none'}` }}>
+                            <div id='productSearch__sort-menu' className='popup-menu' style={{ display: `${isOpen ? 'flex' : 'none'}`, top: '0', left: '70px' }}>
                                 <MenuItem onClick={() => sortProducts('low')}>Price low to high</MenuItem>
                                 <MenuItem onClick={() => sortProducts('high')}>Price high to low</MenuItem>
                             </div>

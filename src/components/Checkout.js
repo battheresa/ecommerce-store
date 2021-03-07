@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-import axios from '../axios.js';
-
+import axios from '../services/axios';
 
 function Checkout() {
     const [ input, setInput ] = useState(0);
