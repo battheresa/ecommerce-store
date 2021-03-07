@@ -1,0 +1,31 @@
+.storeLocation__container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 50px 100px;
+    height: 75vh;
+}
+
+.storeLocation__section {
+    overflow: scroll;
+    height: 100%;
+
+}
+
+.storeLocation__map {
+    padding-left: 50px;
+}
+
+.storeLocation__address {
+    cursor: pointer;
+    border-bottom: 0.8px solid black;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.storeLocation__address > div {
+    display: flex;
+}
+
+.storeLocation__address > div > p {
+    padding-left: 10px;
+}

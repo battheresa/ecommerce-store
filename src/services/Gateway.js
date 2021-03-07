@@ -182,7 +182,6 @@ export const fetchByKeyword = async (keyword) => {
 //     });
 // };
 
-
 // promo code --------------------------------------
 
 var storedPromoCode = [];
@@ -263,3 +262,28 @@ export const fetchByWishlist = async (wishlist) => {
     // console.log('wishlist by user id: ', products);
     return products;
 }
+
+// store locations ---------------------------------
+
+var storedLocations;
+
+export const fetchStoreLocations = async () => {
+    if (storedLocations)
+        return storedLocations;
+    
+    var locations = [];
+    const all = await db.collection('store-locations').get();
+
+    all.forEach(doc => {
+        locations.push({
+            name: doc.data().name, 
+            address: doc.data().address, 
+            coordinates: doc.data().coordinates,
+            hours: doc.data().hours, 
+            link: doc.data().link
+        });
+    });
+
+    // console.log('store locations: ', locations);
+    return locations;
+};
