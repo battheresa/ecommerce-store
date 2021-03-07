@@ -95,7 +95,7 @@ function ProductSearch() {
                 setProducts(content.products);
             });
         }
-    }, [location]);
+    }, [location.pathname]);
 
     // update variables when products are loaded
     useEffect(() => {

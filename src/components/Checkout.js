@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import { TextField } from '@material-ui/core';
-
 import { useStateValue } from '../services/StateProvider';
 
 import Subheader from './Subheader';
