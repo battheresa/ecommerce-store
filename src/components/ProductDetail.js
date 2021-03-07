@@ -6,7 +6,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-import { db } from '../firebase';
+import { fetchById, fetchRelated } from '../services/Gateway';
 import { useStateValue } from '../services/StateProvider';
 
 import Subheader from './Subheader';
@@ -24,7 +24,7 @@ function ProductDetail() {
     
     const [ related, setRelated ] = useState([]);
 
-    // fetch data from database
+    // fetch product
     useEffect(() => {
         if (looking.item !== null) {
             setProduct({
@@ -35,54 +35,19 @@ function ProductDetail() {
             });
         }
         else {
-            db.collection('products').doc(looking.id).get().then(doc => (
-                setProduct({ 
-                    id: looking.id,
-                    item: doc.data(),
-                    variation: looking.variation,
-                    price: looking.price
-                })
-            ));
+            fetchById(looking.id).then(content => setProduct({ 
+                id: looking.id,
+                item: content,
+                variation: looking.variation,
+                price: looking.price
+            }));
         }
     }, [looking]);
 
     // set initial image and get products from †he same category
     useEffect(() => {
-        // set initial image
-        setImage(product?.item.gallery[product?.variation][0]);
-
-        // get related products
-        db.collection('products').get().then(collection => {
-            collection.forEach(doc => {
-                if (doc.data().category === product?.item.category && doc.id !== product?.id) {
-                    if (doc.data().galleryBy !== 'standard') {
-                        for (let variant in doc.data().gallery) {
-                            if (variant !== 'standard') {
-                                let curPrice = doc.data().price[0];
-                                let index = -1;
-
-                                if (doc.data().priceBy !== 'standard') {
-                                    // find index
-                                    doc.data()[doc.data().priceBy].forEach((content, i) => {
-                                        if (content.toLowerCase().split(' ')[0] === variant)
-                                            index = i;
-                                    });
-
-                                    // set price
-                                    if (index !== -1)
-                                        curPrice = doc.data().price[index];
-                                }
-
-                                setRelated(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice } ]);
-                            }
-                        }
-                    }
-                    else {
-                        setRelated(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard', price: doc.data().price[0] } ]);
-                    }
-                }
-            });
-        });
+        setImage(product?.item.gallery[product.variation][0]);
+        fetchRelated(product?.id, product?.item.category).then(content => setRelated(content));
     }, [product]);
 
     // change options
@@ -96,28 +61,27 @@ function ProductDetail() {
             variation: changeTo.toLowerCase().split(' ')[0],
             price: product.item.priceBy === 'standard' ? product.price : product.item.price[index]
         });
-    }
+    };
 
     // options component
     const ProductOption = ({ menu }) => {
-        if (product?.item[menu].length > 0) {
-            return (
-                <div>
-                    <h6><small>{menu.toUpperCase()} :</small></h6>
-                    <div className='productDetail__option'>
-                        {product?.item[menu].map((option, i) => (
-                            <p key={i} onClick={() => changeOption(menu, option, i)}
-                               className={`font-light ${(option.toLowerCase().split(' ')[0] === product?.variation || product?.item[menu].length === 1) && 'productDetail__option-selected'}`}>
-                                {option}
-                            </p>
-                        ))}
-                    </div>
-                </div>
-            );
-        }
+        if (product?.item[menu].length <= 0) 
+            return ( <p></p> );
 
-        return ( <p></p> );
-    }
+        return (
+            <div>
+                <h6><small>{menu.toUpperCase()} :</small></h6>
+                <div className='productDetail__option'>
+                    {product?.item[menu].map((option, i) => (
+                        <p key={i} onClick={() => changeOption(menu, option, i)}
+                            className={`font-light ${(option.toLowerCase().split(' ')[0] === product?.variation || product?.item[menu].length === 1) && 'productDetail__option-selected'}`}>
+                            {option}
+                        </p>
+                    ))}
+                </div>
+            </div>
+        );
+    };
 
     return (
         <div className='productDetail'>

@@ -22,7 +22,7 @@ function ProductCard({ id, item, variation, price }) {
 
         window.scrollTo(0, 0);
         history.push(`/product/${id}`);
-    }
+    };
     
     return (
         <div className='productCard' onClick={() => seeDetail()}>

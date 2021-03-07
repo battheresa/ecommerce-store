@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, TextField } from '@material-ui/core';
 import '../stylesheets/Footer.css';
 
-// TODO: navigation
+// TODO: navigation, subscribe
 
 function Footer() {
     return (
@@ -29,13 +29,11 @@ function Footer() {
                 <div className='footer__section'>
                     <h2>SHOP</h2>
                     <div className='footer__shop'>
-                        <h2>Accessories</h2>
                         <h2>Electronics</h2>
                         <h2>Fabrics</h2>
                         <h2>Furnitures</h2>
                         <h2>Housekeeping</h2>
                         <h2>Kitchenwares</h2>
-                        <h2>Stationaries</h2>
                         <h2>Storages</h2>
                     </div>
                 </div>

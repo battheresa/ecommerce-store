@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, MenuItem } from '@material-ui/core';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 import '../stylesheets/Header.css';
 
-// TODO: authentication
+// TODO: authentication, search
 
 function Header() {
     const history = useHistory();
@@ -18,9 +18,13 @@ function Header() {
     const [ modal, setModal ] = useState(false);
     const [ menu, setMenu ] = useState(true);   // true = login, false = signup
 
+    // mouse click listener
     useEffect(() => {
         const clickOutside = (event) => {
-            if (event.target.parentNode.id !== 'header__dropdown-content') 
+            console.log(event.target.parentNode.id);
+            console.log('mosse down dropdown: ', dropdown);
+            
+            if (event.target.parentNode.id !== 'header__dropdown-content')
                 setDropdown(false);
             
             if (event.target.parentNode.id !== 'header__search-field') 
@@ -37,27 +41,31 @@ function Header() {
         };
     }, []);
 
+    // click search by category
+    const searchCategory = (path) => {
+        history.push(path);
+        setDropdown(false);
+    };
+
     return (
         <div className='flex-center-row header'>
             {/* shop, store locations */}
             <div className='header__nav'>
 
                 {/* shop */}
-                <div className='header__dropdown' onClick={() => setDropdown(true)}>
+                <div className='header__dropdown'>
                     
                     {/* shop link */}
-                    <h2 className='font-wide header__menu' style={{ color: `${dropdown ? '#7F7F7F' : ''}` }}>SHOP</h2>
+                    <h2 className='font-wide header__menu' style={{ color: `${dropdown ? '#7F7F7F' : ''}` }} onClick={() => setDropdown(true)}>SHOP</h2>
 
                     {/* shop dropdown */}
-                    <div id='header__dropdown-content' className='header__dropdown-content' style={{ display: `${dropdown ? 'block' : 'none'}` }}>
-                        <p>ACCESSORIES</p>
-                        <p>ELECTRONICS</p>
-                        <p>FABRICS</p>
-                        <p>FURNITURES</p>
-                        <p>HOUSEKEEPING</p>
-                        <p>KITCHENWARES</p>
-                        <p>STATIONARIES</p>
-                        <p>STORAGES</p>
+                    <div id='header__dropdown-content' className='popup-menu' style={{ display: `${dropdown ? 'flex' : 'none'}`, top: '40px' }}>
+                        <MenuItem onClick={() => searchCategory('/electronics')}>Electronics</MenuItem>
+                        <MenuItem onClick={() => searchCategory('/fabrics')}>Fabrics</MenuItem>
+                        <MenuItem onClick={() => searchCategory('/furnitures')}>Furnitures</MenuItem>
+                        <MenuItem onClick={() => searchCategory('/housekeeping')}>Housekeeping</MenuItem>
+                        <MenuItem onClick={() => searchCategory('/kitchenwares')}>Kitchenwares</MenuItem>
+                        <MenuItem onClick={() => searchCategory('/storages')}>Storages</MenuItem>
                     </div>
                 </div>
 
@@ -94,7 +102,6 @@ function Header() {
                     {/* search field */}
                     <form id='header__search-field' className='header__search-field' style={{ display: `${search ? 'flex' : 'none'}` }}>
                         <input type='text' placeholder='SEARCH' />
-                        <SearchOutlinedIcon />
                     </form>
                 </div>
             </div>

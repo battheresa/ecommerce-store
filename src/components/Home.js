@@ -7,8 +7,7 @@ import ArrowForwardIosOutlinedIcon from '@material-ui/icons/ArrowForwardIosOutli
 import Carousel from './Carousel';
 import ProductContainer from './ProductContainer';
 
-// import dataFile from '../data.json';
-import { db } from '../firebase';
+import { fetchPromotional } from '../services/Gateway';
 import '../stylesheets/Home.css';
 
 function Home() {
@@ -38,7 +37,14 @@ function Home() {
         const first = last - perPage;
 
         return [...display].splice(first, last);
-    }
+    };
+
+    // re-filter display products when menu change
+    const changeMenu = (num) => {
+        const menuText = ['sale', 'trending', 'newArrival', 'limitedEdition'];
+        updateMenuDisplay(menuText[num]);
+        setMenu(num);
+    };
 
     // re-filter display products when menu change
     const updateMenuDisplay = (menu) => {
@@ -55,64 +61,17 @@ function Home() {
 
         setFirstPage(true);
         setLastPage(Math.ceil(length / perPage) === 1 ? true : false);
-    }
-
-    // re-filter display products when menu change
-    const changeMenu = (num) => {
-        const menuText = ['sale', 'trending', 'newArrival', 'limitedEdition'];
-        updateMenuDisplay(menuText[num]);
-        setMenu(num);
     };
 
-    // fetch and expand products
-    useEffect(() => {
-        // for (let category in dataFile) {
-        //     dataFile[category].forEach(product => {
-        //         db.collection('products').doc().set(product);
-        //     });
-        // };
-
-        if (!data.length) {
-            db.collection('products').onSnapshot(snapshot => {
-                snapshot.forEach(doc => {
-                    if (doc.data().sale !== 0 || doc.data().trending || doc.data().newArrival || doc.data().limitedEdition) {
-                        if (doc.data().galleryBy !== 'standard') {
-                            for (let variant in doc.data().gallery) {
-                                if (variant !== 'standard') {
-                                    let curPrice = doc.data().price[0];
-                                    let index = -1;
-
-                                    if (doc.data().priceBy !== 'standard') {
-                                        // find index
-                                        doc.data()[doc.data().priceBy].forEach((content, i) => {
-                                            if (content.toLowerCase().split(' ')[0] === variant)
-                                                index = i;
-                                        });
-
-                                        // set price
-                                        if (index !== -1)
-                                            curPrice = doc.data().price[index];
-                                    }
-
-                                    setData(data => [...data, { id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice } ]);
-                                }  
-                            }
-                        }
-                        else {
-                            setData(data => [...data, { id: doc.id, item: doc.data(), variation: 'standard', price: doc.data().price[0] } ]);
-                        }
-                    }
-                });
-            });
-        }
-
-        // eslint-disable-next-line
+    // fetch promotionals products
+    useEffect(() => { 
+        fetchPromotional().then(content => setData(content)); 
     }, []);
-    
-    // get all items for initial menu (sale)
+
+    // get all items for initial menu
     useEffect(() => {
         updateMenuDisplay('sale');
-        
+
         // eslint-disable-next-line
     }, [data]);
 
