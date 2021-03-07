@@ -82,7 +82,7 @@ function ProductSearch() {
 
             setProducts(content.products);
         });
-    }, [location.pathname.slice(1)]);
+    }, [location.pathname]);
 
     // update variables when products are loaded
     useEffect(() => {
