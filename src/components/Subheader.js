@@ -1,10 +1,7 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import '../stylesheets/Subheader.css';
 
 function Subheader({ path }) {
-    const history = useHistory();
-
     return (
         <div className='subheader'>
             {path?.map((location, i) => (

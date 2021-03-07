@@ -23,23 +23,6 @@
     position: relative;
 }
 
-.productSearch__sort-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-
-    width: 180px;
-    height: 85px;
-
-    box-shadow: 0px 0px 8px lightgrey;
-
-    position: absolute;
-    top: 0;
-    left: 70px;
-    z-index: 1;
-}
-
 .productSearch__results-products {
     margin: 20px 0px;
 }

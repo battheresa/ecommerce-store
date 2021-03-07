@@ -17,12 +17,12 @@ function ProductSearchFilter({ products, update, initialState }) {
         return `$${price}`;
     };
 
+    // update filter choices
     const changeChecked = (filter, text) => {
         if (filter === 'materials') {
             const newFilters = [...filterMaterial];
             newFilters.find(content => content.text === text).checked = !newFilters.find(content => content.text === text).checked;
             setFilterMaterial(newFilters);
-
             return;
         }
 
@@ -30,11 +30,11 @@ function ProductSearchFilter({ products, update, initialState }) {
             const newFilters = [...filterColor];
             newFilters.find(content => content.text === text).checked = !newFilters.find(content => content.text === text).checked;
             setFilterColor(newFilters);
-            
             return;
         }
     };
 
+    // reset filter choices
     const resetFilter = () => {
         const colors = [...filterColor];
         colors.forEach(content => content.checked = false);
@@ -48,6 +48,7 @@ function ProductSearchFilter({ products, update, initialState }) {
         update(products);
     };
 
+    // search filter 
     const searchFilter = () => {
         var result = [];
 
