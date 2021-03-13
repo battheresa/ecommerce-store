@@ -15,23 +15,17 @@ function Header() {
 
     const [ dropdown, setDropdown ] = useState(false);
     const [ search, setSearch ] = useState(false);
-    const [ modal, setModal ] = useState(false);
-    const [ menu, setMenu ] = useState(true);   // true = login, false = signup
+    const [ loginModal, setLoginModal ] = useState(false);
+    const [ menu, setMenu ] = useState(true);
 
     // mouse click listener
     useEffect(() => {
         const clickOutside = (event) => {
-            console.log(event.target.parentNode.id);
-            console.log('mosse down dropdown: ', dropdown);
+            setDropdown(event.target.parentNode.id === 'header__dropdown-content');            
+            setSearch(event.target.parentNode.id === 'header__search-field');
             
-            if (event.target.parentNode.id !== 'header__dropdown-content')
-                setDropdown(false);
-            
-            if (event.target.parentNode.id !== 'header__search-field') 
-                setSearch(false);
-            
-            if (event.target.id === 'header__modal') 
-                setModal(false);
+            if (event.target.id === 'header__modal')
+                setLoginModal(false);
         };
 
         document.addEventListener('mousedown', clickOutside);
@@ -86,7 +80,7 @@ function Header() {
                 </div>
 
                 {/* login */}
-                <div className='header__menu' onClick={() => setModal(true)}>
+                <div className='header__menu' onClick={() => setLoginModal(true)}>
                     <PermIdentityOutlinedIcon className='header__icon' fontSize='small' />
                     <h2 className='font-wide'>LOGIN</h2>
                 </div>
@@ -107,8 +101,8 @@ function Header() {
             </div>
 
             {/* login modal */}
-            <div id='header__modal' className='header__modal' style={{ display: `${modal ? 'flex' : 'none'}` }}>
-                <div className='header__modal-content'>
+            <div id='header__modal' className='modal-background' style={{ display: `${loginModal ? 'flex' : 'none'}` }}>
+                <div className='header__modal'>
 
                     {/* login modal menu */}
                     <div className='header__modal-menu'>
@@ -118,28 +112,8 @@ function Header() {
 
                     {/* login modal form */}
                     <form className='header__modal-form'>
-                        <TextField 
-                            type='email' 
-                            placeholder='EMAIL ADDRESS' 
-                            size='small' 
-                            variant='outlined' 
-                            color='primary' 
-                            style={{ marginBottom: '15px' }}
-                            inputProps={{ style: { fontSize: 16, fontWeight: 300, wordSpacing: 3 } }}
-                            required 
-                        />
-
-                        <TextField 
-                            type='password' 
-                            placeholder='PASSWORD' 
-                            size='small' 
-                            variant='outlined' 
-                            color='primary' 
-                            style={{ marginBottom: '15px' }}
-                            inputProps={{ style: { fontSize: 16, fontWeight: 300, wordSpacing: 3 } }}
-                            required 
-                        />
-
+                        <TextField type='email' placeholder='EMAIL ADDRESS' style={{ marginBottom: '15px' }} required />
+                        <TextField type='password' placeholder='PASSWORD' style={{ marginBottom: '15px' }} required />
                         <Button variant='contained' color='primary'><p className='font-bold font-wide'>{menu ? 'LOGIN' : 'SIGNUP'}</p></Button>
                     </form>
                     

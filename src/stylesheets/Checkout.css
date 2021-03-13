@@ -1,0 +1,41 @@
+.checkout__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 100px;
+}
+
+.checkout__personal {
+    border-right: 0.8px solid black;
+    padding-right: 40px;
+}
+
+.checkout__oneline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+
+.checkout__multiline {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout__change-address-button {
+    cursor: pointer;
+    text-decoration: underline;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.checkout__address-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 500px;
+    max-width: 100%;
+
+    padding: 30px 40px 50px 50px;
+    background-color: white;
+    box-shadow: 0px 0px 10px lightgray;
+}

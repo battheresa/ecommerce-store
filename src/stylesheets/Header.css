@@ -76,23 +76,6 @@
 
 .header__modal {
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100vw;
-    height: 100vh;
-
-    top: 0;
-    left: 0;
-    z-index: 1;
-    position: fixed;
-
-    box-shadow: 0px 0px 8px lightgray;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.header__modal-content {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -101,7 +84,7 @@
 
     padding: 30px 40px 50px 40px;
     background-color: white;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px lightgray;
 }
 
 .header__modal-menu {
