@@ -1,5 +1,7 @@
 import { db } from './firebase';
 
+// products ----------------------------------------
+
 var storedProducts;
 
 // fetch all products
@@ -30,7 +32,7 @@ export const fetchAll = async () => {
                     }
 
                     products.push({ id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice });
-                }  
+                }
             }
         }
         else {
@@ -138,3 +140,32 @@ export const fetchByCategory = async (category) => {
 //         db.collection('products').doc().set(product);
 //     });
 // };
+
+
+// promo code --------------------------------------
+
+var storedPromoCode = [];
+
+// fetch all promo codes
+export const fetchAllCodes = async () => {
+    if (storedPromoCode)
+        return storedPromoCode;
+    
+    var codes = [];
+    const all = await db.collection('products').get();
+
+    all.forEach(doc => codes.push(doc.data()));
+    storedPromoCode = codes;
+
+    console.log('all promocodes: ', codes);
+    return codes;
+}
+
+// fetch promo code by code id
+export const fetchCode = async (promocode) => {
+    var code;
+    await fetchAllCodes().then(content => code = content.find(data => data.code === promocode));
+
+    console.log('discount: ', code);
+    return code;
+}

@@ -20,7 +20,7 @@ function App() {
     const [ promise, setPromise ] = useState('');
 
     useEffect(() => {
-        // fetch strip key
+        // fetch stripe key
         const getPromise = async () => {
             await axios.get('/key').then((response) => {
                 setPromise(loadStripe(response.data));
@@ -33,13 +33,6 @@ function App() {
     return (
         <div className='app'>
             <ThemeProvider theme={theme}>
-
-                {/*
-                {promise && <Elements stripe={promise}>
-                <Checkout />
-                </Elements>}
-                */}
-
                 <BrowserRouter>
                     <Header />
                     
@@ -49,6 +42,13 @@ function App() {
                         </Route>
                         <Route path='/product'>
                             <ProductDetail />
+                        </Route>
+                        <Route path='/checkout'>
+                            {promise && <Elements stripe={promise}>
+                                <Checkout />
+                            </Elements>}
+
+                            {!promise && <div style={{ height: '50vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }} />}
                         </Route>
                         <Route path='/store-locations'>
                             <h1>store locations</h1>

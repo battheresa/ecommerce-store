@@ -8,7 +8,7 @@
 - [x] Product Search Results
 - [x] Product Details
 - [ ] Cart
-- [ ] Payment
+- [ ] Checkout
 - [ ] Store Locations
 - [ ] Contact
 - [x] Login/Signup
@@ -25,7 +25,7 @@
 - [x] Product Search Results
 - [x] Product Details
 - [ ] Cart
-- [ ] Payment
+- [ ] Checkout
 - [ ] Store Locations
 - [ ] Contact
 - [ ] Login/Signup
@@ -42,7 +42,7 @@
 - [ ] Product Search Results
 - [ ] Product Details
 - [ ] Cart
-- [ ] Payment
+- [ ] Checkout
 - [ ] Store Locations
 - [ ] Contact
 - [ ] Login/Signup

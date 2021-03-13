@@ -5,7 +5,7 @@ export const theme = createMuiTheme({
         fontFamily: [
             'Lato',
             'sans-serif'
-        ].join(','),
+        ].join(',')
     },
     palette: {
         primary: {
@@ -30,7 +30,15 @@ export const theme = createMuiTheme({
         },
         MuiTextField: {
             color: 'primary',
-            variant: 'outlined'
+            variant: 'outlined',
+            size: 'small',
+            inputProps: {
+                style: { 
+                    fontSize: 16, 
+                    fontWeight: 300, 
+                    wordSpacing: 3
+                }
+            },
         }
     }
 });
