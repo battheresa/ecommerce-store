@@ -10,7 +10,7 @@ import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
 import ProductSearchFilter from './ProductSearchFilter';
 
-import { fetchByCategory } from '../services/Gateway';
+import { fetchByCategory, fetchByKeyword } from '../services/Gateway';
 import '../stylesheets/ProductSearch.css';
 
 function ProductSearch() {
@@ -73,16 +73,29 @@ function ProductSearch() {
 
     // fetch products
     useEffect(() => {
-        fetchByCategory(location.pathname.slice(1)).then(content => {
-            setInitialState({
-                colors: content.colors,
-                materials: content.materials,
-                prices: content.prices
-            });
+        if (location.pathname === '/search') {    
+            fetchByKeyword(location.search.split('=')[1]).then(content => {
+                setInitialState({
+                    colors: content.colors,
+                    materials: content.materials,
+                    prices: content.prices
+                });
 
-            setProducts(content.products);
-        });
-    }, [location.pathname]);
+                setProducts(content.products);
+            });
+        }
+        else {
+            fetchByCategory(location.pathname.slice(1)).then(content => {
+                setInitialState({
+                    colors: content.colors,
+                    materials: content.materials,
+                    prices: content.prices
+                });
+
+                setProducts(content.products);
+            });
+        }
+    }, [location]);
 
     // update variables when products are loaded
     useEffect(() => {

@@ -8,13 +8,14 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 import '../stylesheets/Header.css';
 
-// TODO: authentication, search
+// TODO: authentication
 
 function Header() {
     const history = useHistory();
 
-    const [ dropdown, setDropdown ] = useState(false);
+    const [ keyword, setKeyword ] = useState('');
     const [ search, setSearch ] = useState(false);
+    const [ dropdown, setDropdown ] = useState(false);
     const [ loginModal, setLoginModal ] = useState(false);
     const [ menu, setMenu ] = useState(true);
 
@@ -35,11 +36,19 @@ function Header() {
         };
     }, []);
 
-    // click search by category
+    // search by category
     const searchCategory = (path) => {
         history.push(path);
         setDropdown(false);
     };
+
+    // search by keyword
+    const searchKeyword = (event) => {
+        event.preventDefault();
+        history.push({ pathname: '/search', search: `?keyword=${keyword}` });
+        setKeyword('');
+        setSearch(false);
+    }
 
     return (
         <div className='flex-center-row header'>
@@ -94,8 +103,8 @@ function Header() {
                     </div>
 
                     {/* search field */}
-                    <form id='header__search-field' className='header__search-field' style={{ display: `${search ? 'flex' : 'none'}` }}>
-                        <input type='text' placeholder='SEARCH' />
+                    <form id='header__search-field' onSubmit={(e) => searchKeyword(e)} className='header__search-field' style={{ display: `${search ? 'flex' : 'none'}` }}>
+                        <input type='text' placeholder='SEARCH' value={keyword} onChange={(e) => setKeyword(e.target.value)} />
                     </form>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { colors } from '@material-ui/core';
 import { db } from './firebase';
 
 // products ----------------------------------------
@@ -84,28 +85,13 @@ export const fetchById = async (id) => {
     return product.data();
 }
 
-// fetch product by category
-export const fetchByCategory = async (category) => {
-    var products = [];
-
-    var condense = [];
+const searchFilter = (products) => {
     var colors = [];
     var materials = [];
     var prices = [10000, -1];
 
-    await fetchAll().then(content => 
-        content.forEach(data => {
-            if (data.item.category === category) {
-                if (condense.find(temp => temp.item.name === data.item.name) === undefined)
-                    condense.push(data)
-
-                products.push(data);
-            }
-        }) 
-    );
-
     // for each product in condense array
-    condense.forEach(content => {
+    products.forEach(content => {
 
         // look for color filters
         content.item.color.forEach(data => {
@@ -131,8 +117,52 @@ export const fetchByCategory = async (category) => {
         prices[1] = (high > prices[1]) ? high : prices[1];
     });
 
-    console.log('products by category: ', { colors: colors, materials: materials, prices: prices, products: products });
-    return { colors: colors, materials: materials, prices: prices, products: products };
+    console.log('search filters: ', { colors: colors, materials: materials, prices: prices });
+    return { colors: colors, materials: materials, prices: prices };
+}
+
+// fetch product by category
+export const fetchByCategory = async (category) => {
+    var products = [];
+    var condense = [];
+
+    await fetchAll().then(content => 
+        content.forEach(data => {
+            if (data.item.category === category) {
+                if (condense.find(temp => temp.item.name === data.item.name) === undefined)
+                    condense.push(data)
+
+                products.push(data);
+            }
+        }) 
+    );
+
+    var filters = searchFilter(condense);
+
+    console.log('products by category: ', products);
+    return { colors: filters.colors, materials: filters.materials, prices: filters.prices, products: products };
+}
+
+// fetch products by keyword
+export const fetchByKeyword = async (keyword) => {
+    var products = [];
+    var condense = [];
+
+    await fetchAll().then(content => 
+        content.forEach(data => {
+            if (data.item.name.toLowerCase().includes(keyword.toLowerCase())) {
+                if (condense.find(temp => temp.item.name === data.item.name) === undefined)
+                    condense.push(data)
+
+                products.push(data);
+            }
+        }) 
+    );
+
+    var filters = searchFilter(condense);
+
+    console.log('products by keyword: ', products);
+    return { colors: filters.colors, materials: filters.materials, prices: filters.prices, products: products };
 }
 
 // for (let category in dataFile) {
