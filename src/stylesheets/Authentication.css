@@ -1,0 +1,41 @@
+.authentication__modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 280px;
+
+    padding: 30px 40px 50px 40px;
+    background-color: white;
+    box-shadow: 0px 0px 10px lightgray;
+}
+
+.authentication__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
+.authentication__menu > h1 {
+    cursor: pointer;
+    margin: 0px 20px 20px 20px;
+}
+
+.authentication__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.authentication__form > input {
+    flex: 1;
+    margin: 8px 0px;
+}
+
+.authentication__form > button {
+    margin-top: 12px;
+}
