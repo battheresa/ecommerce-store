@@ -1,32 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Button, TextField, MenuItem } from '@material-ui/core';
+import { MenuItem } from '@material-ui/core';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
+import { auth } from '../services/firebase';
+import { useStateValue } from '../services/StateProvider';
+
+import Authentication from './Authentication';
 import '../stylesheets/Header.css';
 
-// TODO: authentication
-
 function Header() {
+    const [ { user }, dispatch ] = useStateValue();
     const history = useHistory();
 
     const [ keyword, setKeyword ] = useState('');
     const [ search, setSearch ] = useState(false);
-    const [ dropdown, setDropdown ] = useState(false);
+
+    const [ shopDropdown, setShopDropdown ] = useState(false);
+    const [ profileDropdown, setProfileDropdown ] = useState(false);
     const [ loginModal, setLoginModal ] = useState(false);
-    const [ menu, setMenu ] = useState(true);
+
+    const setOpen = (mode) => setLoginModal(mode);
 
     // mouse click listener
     useEffect(() => {
         const clickOutside = (event) => {
-            setDropdown(event.target.parentNode.id === 'header__dropdown-content');            
             setSearch(event.target.parentNode.id === 'header__search-field');
-            
-            if (event.target.id === 'header__modal')
-                setLoginModal(false);
+            setShopDropdown(event.target.parentNode.id === 'header__shop-dropdown');
+            setProfileDropdown(event.target.parentNode.id === 'header__profile-dropdown');
         };
 
         document.addEventListener('mousedown', clickOutside);
@@ -38,20 +42,34 @@ function Header() {
 
     // search by category
     const searchCategory = (path) => {
+        setShopDropdown(false);
         history.push(path);
-        setDropdown(false);
     };
 
     // search by keyword
     const searchKeyword = (event) => {
         event.preventDefault();
-        history.push({ pathname: '/search', search: `?keyword=${keyword}` });
         setKeyword('');
         setSearch(false);
+        history.push({ pathname: '/search', search: `?keyword=${keyword}` });
+    }
+
+    // open profile
+    const openProfile = () => {
+        setProfileDropdown(false);
+        history.push('/user');
+    }
+
+    // logout
+    const logout = () => {
+        setProfileDropdown(false);
+        history.push('/');
+        auth.signOut();
     }
 
     return (
         <div className='flex-center-row header'>
+
             {/* shop, store locations */}
             <div className='header__nav'>
 
@@ -59,10 +77,10 @@ function Header() {
                 <div className='header__dropdown'>
                     
                     {/* shop link */}
-                    <h2 className='font-wide header__menu' style={{ color: `${dropdown ? '#7F7F7F' : ''}` }} onClick={() => setDropdown(true)}>SHOP</h2>
+                    <h2 className='font-wide header__menu' style={{ color: `${shopDropdown ? '#7F7F7F' : ''}` }} onClick={() => setShopDropdown(true)}>SHOP</h2>
 
                     {/* shop dropdown */}
-                    <div id='header__dropdown-content' className='popup-menu' style={{ display: `${dropdown ? 'flex' : 'none'}`, top: '40px' }}>
+                    <div id='header__shop-dropdown' className='popup-menu' style={{ display: `${shopDropdown ? 'flex' : 'none'}`, top: '40px' }}>
                         <MenuItem onClick={() => searchCategory('/electronics')}>Electronics</MenuItem>
                         <MenuItem onClick={() => searchCategory('/fabrics')}>Fabrics</MenuItem>
                         <MenuItem onClick={() => searchCategory('/furnitures')}>Furnitures</MenuItem>
@@ -89,9 +107,17 @@ function Header() {
                 </div>
 
                 {/* login */}
-                <div className='header__menu' onClick={() => setLoginModal(true)}>
-                    <PermIdentityOutlinedIcon className='header__icon' fontSize='small' />
-                    <h2 className='font-wide'>LOGIN</h2>
+                <div className='header__dropdown'>
+                    <div className='header__menu' onClick={() => user ? setProfileDropdown(true) : setLoginModal(true)}>
+                        <PermIdentityOutlinedIcon className='header__icon' fontSize='small' />
+                        <h2 className='font-wide'>{user ? 'PROFILE' : 'LOGIN'}</h2>
+                    </div>
+
+                    {/* profile dropdown */}
+                    <div id='header__profile-dropdown' className='popup-menu' style={{ display: `${profileDropdown ? 'flex' : 'none'}`, top: '40px', right: '40px', width: '150px' }}>
+                        <MenuItem onClick={() => openProfile()}>My Profile</MenuItem>
+                        <MenuItem onClick={() => logout()}>Logout</MenuItem>
+                    </div>
                 </div>
 
                 {/* search */}
@@ -109,25 +135,8 @@ function Header() {
                 </div>
             </div>
 
-            {/* login modal */}
-            <div id='header__modal' className='modal-background' style={{ display: `${loginModal ? 'flex' : 'none'}` }}>
-                <div className='header__modal'>
-
-                    {/* login modal menu */}
-                    <div className='header__modal-menu'>
-                        <h1 style={{ color: `${menu ? 'black' : '#CCCCCC'}` }} onClick={() => setMenu(true)}><small>LOGIN</small></h1>
-                        <h1 style={{ color: `${menu ? '#CCCCCC' : 'black'}` }} onClick={() => setMenu(false)}><small>SIGNUP</small></h1>
-                    </div>
-
-                    {/* login modal form */}
-                    <form className='header__modal-form'>
-                        <TextField type='email' placeholder='EMAIL ADDRESS' style={{ marginBottom: '15px' }} required />
-                        <TextField type='password' placeholder='PASSWORD' style={{ marginBottom: '15px' }} required />
-                        <Button variant='contained' color='primary'><p className='font-bold font-wide'>{menu ? 'LOGIN' : 'SIGNUP'}</p></Button>
-                    </form>
-                    
-                </div>
-            </div>
+            {/* authentication modal */}
+            <Authentication open={loginModal} setOpen={setOpen} />
         </div>
     );
 }

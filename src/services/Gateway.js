@@ -6,7 +6,7 @@ import { db } from './firebase';
 var storedProducts;
 
 // fetch all products
-export const fetchAll = async () => {
+export const fetchAllProducts = async () => {
     if (storedProducts)
         return storedProducts;
     
@@ -51,7 +51,7 @@ export const fetchAll = async () => {
 export const fetchPromotional = async () => {
     var products = [];
     
-    await fetchAll().then(content => 
+    await fetchAllProducts().then(content => 
         content.forEach(data => {
             if (data.item.sale !== 0 || data.item.trending || data.item.newArrival || data.item.limitedEdition)
                 products.push(data);
@@ -126,7 +126,7 @@ export const fetchByCategory = async (category) => {
     var products = [];
     var condense = [];
 
-    await fetchAll().then(content => 
+    await fetchAllProducts().then(content => 
         content.forEach(data => {
             if (data.item.category === category) {
                 if (condense.find(temp => temp.item.name === data.item.name) === undefined)
@@ -148,7 +148,7 @@ export const fetchByKeyword = async (keyword) => {
     var products = [];
     var condense = [];
 
-    await fetchAll().then(content => 
+    await fetchAllProducts().then(content => 
         content.forEach(data => {
             if (data.item.name.toLowerCase().includes(keyword.toLowerCase())) {
                 if (condense.find(temp => temp.item.name === data.item.name) === undefined)
@@ -192,10 +192,41 @@ export const fetchAllCodes = async () => {
 }
 
 // fetch promo code by code id
-export const fetchCode = async (promocode) => {
+export const fetchCodeById = async (promocode) => {
     var code;
     await fetchAllCodes().then(content => code = content.find(data => data.code === promocode));
 
     console.log('discount: ', code);
     return code;
+}
+
+// user account ------------------------------------
+
+var storedUsers = [];
+
+export const createUser = async (user) => {
+    await db.collection('users').doc().set(user);
+}
+
+export const fetchAllUsers = async () => {
+    if (storedUsers)
+        return storedUsers;
+
+    var users = [];
+    const all = await db.collection('users').get();
+
+    console.log(all);
+
+    all.forEach(doc => users.push(doc.data()));
+    storedUsers = users;
+
+    console.log('all users: ', users);
+    return users;
+}
+
+export const fetchUserById = async (id) => {
+    const user = await db.collection('users').doc(id).get();
+
+    console.log('user by id: ', user.data());
+    return user.data();
 }

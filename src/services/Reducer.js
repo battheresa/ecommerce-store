@@ -4,7 +4,7 @@ export const initialState = {
     // user: {
     //     firstname: 'firstname',
     //     lastname: 'lastname',
-    //     email: 'test.test@example.com',
+    //     email: 'test@example.com',
     //     addresses: [
     //         {
     //             default: true,

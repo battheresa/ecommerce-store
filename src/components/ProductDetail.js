@@ -13,7 +13,7 @@ import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
 import '../stylesheets/ProductDetail.css';
 
-// TODO: add to cart, add to wishlist
+// TODO: add to cart, add to wishlist, remove looking from reducer and fetch using url
 
 function ProductDetail() {
     const [ { looking }, dispatch ] = useStateValue();
