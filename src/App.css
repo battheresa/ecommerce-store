@@ -15,7 +15,7 @@ h1, h2, h3 {
     font-family: 'Roboto', sans-serif;
 }
 
-h4, h5, h6, p, a, button, input, input::placeholder {
+h4, h5, h6, p, a, td, th, button, input, input::placeholder {
     font-family: 'Lato', sans-serif;
 }
 
@@ -64,9 +64,6 @@ a, a:link, a:visited, a:active, a:hover {
 }
 
 input {
-    font-size: 16px;
-    font-weight: 300;
-
     outline: none;
     padding: 2px 12px;
     border: 0.8px solid black;
@@ -85,6 +82,21 @@ button {
     border: none;
     padding: 5px;
     width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 5px 8px;
+}
+
+.table-first-col-left tr td:first-child {
+    width: 150px;
+    text-align: right;
 }
 
 .popup-menu {

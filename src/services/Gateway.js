@@ -1,4 +1,3 @@
-import { colors } from '@material-ui/core';
 import { db } from './firebase';
 
 // products ----------------------------------------
@@ -85,6 +84,7 @@ export const fetchById = async (id) => {
     return product.data();
 }
 
+// search filters for each product set
 const searchFilter = (products) => {
     var colors = [];
     var materials = [];
@@ -202,31 +202,53 @@ export const fetchCodeById = async (promocode) => {
 
 // user account ------------------------------------
 
-var storedUsers = [];
-
+// create user
 export const createUser = async (user) => {
     await db.collection('users').doc().set(user);
 }
 
-export const fetchAllUsers = async () => {
-    if (storedUsers)
-        return storedUsers;
-
-    var users = [];
-    const all = await db.collection('users').get();
-
-    console.log(all);
-
-    all.forEach(doc => users.push(doc.data()));
-    storedUsers = users;
-
-    console.log('all users: ', users);
-    return users;
+// update user info
+export const updateUser = async (id, data) => {
+    await db.collection('users').doc(id).update(data);
 }
 
+// fetch user by id
 export const fetchUserById = async (id) => {
     const user = await db.collection('users').doc(id).get();
 
     console.log('user by id: ', user.data());
     return user.data();
+}
+
+// fetch orders by user id
+export const fetchOrdersByUserId = async (id) => {
+    var orders = [];
+    const all = await db.collection('users').doc(id).collection('orders').get();
+
+    all.forEach(doc => orders.push(doc.data()));
+
+    console.log('orders by user id: ', orders);
+    return orders;
+}
+
+// fetch wishlist from array of product id
+export const fetchByWishlist = async (wishlist) => {
+    var products = [];
+    var condense = [];
+
+    await fetchAllProducts().then(content => 
+        content.forEach(data => {
+            if (condense.find(temp => temp.item.name === data.item.name) === undefined)
+                condense.push(data)
+        })
+    );
+
+    wishlist.forEach(id => {
+        const product = condense.find(temp => temp.id === id);
+        if (product !== undefined)
+            products.push(product);
+    });
+
+    console.log('wishlist by user id: ', products);
+    return products;
 }

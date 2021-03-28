@@ -24,7 +24,7 @@ function StripeForm() {
     // mouse click listener
     useEffect(() => {
         const clickOutside = (event) => {
-            if (event.target.id === 'checkout__order-modal')
+            if (event.target.id === 'stripeForm__order-modal')
                 setReviewModal(false);
         };
 
@@ -113,8 +113,8 @@ function StripeForm() {
             </form>
 
             {/* review order modal */}
-            <div id='checkout__order-modal' className='modal-background' style={{ display: `${reviewModal ? 'flex' : 'none'}` }}>
-                <div className='checkout__order-modal'>
+            <div id='stripeForm__order-modal' className='modal-background' style={{ display: `${reviewModal ? 'flex' : 'none'}` }}>
+                <div className='stripeForm__order-modal'>
 
                     {/* close button */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>

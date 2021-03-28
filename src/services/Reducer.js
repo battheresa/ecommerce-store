@@ -1,29 +1,6 @@
 // initial state of the cart
 export const initialState = {
-    user: null,
-    // user: {
-    //     firstname: 'firstname',
-    //     lastname: 'lastname',
-    //     email: 'test@example.com',
-    //     addresses: [
-    //         {
-    //             default: true,
-    //             name: 'home',
-    //             address1: '0/F Building A',
-    //             address2: 'AAA Road, some more address',
-    //             district: 'Kowloon',
-    //             country: 'Thailand'
-    //         },
-    //         {
-    //             default: false,
-    //             name: 'office',
-    //             address1: '1/F Building B',
-    //             address2: 'BBB Road, some more address',
-    //             district: 'Kowloon',
-    //             country: 'Hong Kong (SAR)'
-    //         }
-    //     ]
-    // },
+    user: localStorage.getItem('USER_ID'),
     cart: [],
     promo: {
         code: 'test',
@@ -51,6 +28,7 @@ export const getSubtotal = (cart) => cart?.reduce((amount, item) => item.price +
 const reducer = (state, action) => {
     switch(action.type) {
         case 'SET_USER':
+            localStorage.setItem('USER_ID', action.user?.id);
             return { ...state, user: action.user };
 
         case 'ADD_CART':

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
 import { Button, TextField } from '@material-ui/core';
 
 import { auth } from '../services/firebase';
+import { fetchUserById } from '../services/Gateway';
+import { useStateValue } from '../services/StateProvider';
 import '../stylesheets/Authentication.css';
 
-// show message when login fail
+// show alert when login fail
 
 function Authentication({ open, setOpen }) {
-    const history = useHistory();
+    const [ {}, dispatch ] = useStateValue();
     const [ menu, setMenu ] = useState(true);
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -25,19 +26,36 @@ function Authentication({ open, setOpen }) {
         return () => {
             document.removeEventListener('mousedown', clickOutside);
         };
+
+        // eslint-disable-next-line
     }, []);
+
+    // update user
+    const updateUser = () => {
+        setOpen(false);
+        setEmail('');
+        setPassword('');
+
+        auth.onAuthStateChanged(authUser => {
+            if (authUser) {
+                fetchUserById(authUser.uid).then(user => {
+                    if (user)
+                        dispatch({ type: 'SET_USER', user: user });
+                });
+            }
+            else {
+                dispatch({ type: 'SET_USER', user: null });
+            }
+        });
+    }
 
     // login
     const login = (event) => {
         event.preventDefault();
 
         auth.signInWithEmailAndPassword(email, password).then((auth) => {
-            if (auth) {
-                setOpen(false);
-                setEmail('');
-                setPassword('');
-                history.push('/');
-            }
+            if (auth) 
+                updateUser();
         });
     }
 
@@ -46,12 +64,8 @@ function Authentication({ open, setOpen }) {
         event.preventDefault();
 
         auth.createUserWithEmailAndPassword(email, password).then((auth) => {
-            if (auth) {
-                setOpen(false);
-                setEmail('');
-                setPassword('');
-                history.push('/user');
-            }
+            if (auth) 
+                updateUser();
         });
     }
 

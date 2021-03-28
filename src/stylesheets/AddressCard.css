@@ -1,0 +1,35 @@
+.addressCard {
+    border: 0.8px solid #7F7F7F;
+}
+
+.addressCard__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: relative;
+
+    padding: 10px 20px;
+    background-color: #F8F8F8;
+    border-bottom: 0.8px solid #7F7F7F;
+}
+
+.addressCard__header > div {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.addressCard__tag {
+    font-size: '15px';
+    margin-left: 5px;
+}
+
+.addressCard__edit {
+    cursor: pointer;
+}
+
+.addressCard__body {
+    padding: 10px 20px;
+}
