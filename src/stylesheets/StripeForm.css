@@ -27,7 +27,7 @@
     margin: 20px 0px 0px 180px;
 }
 
-.checkout__order-modal {
+.stripeForm__order-modal {
     display: flex;
     flex-direction: column;
     justify-content: center;

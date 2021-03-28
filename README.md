@@ -13,7 +13,7 @@
 - [ ] Contact
 - [x] Login/Signup
 - [ ] User Account
-- [ ] Return and Refund/Terms and Condition
+- [ ] Terms and Conditions
 
 <br>
 
@@ -25,12 +25,12 @@
 - [x] Product Search Results
 - [x] Product Details
 - [ ] Cart
-- [ ] Checkout
+- [x] Checkout
 - [ ] Store Locations
 - [ ] Contact
-- [ ] Login/Signup
+- [x] Login/Signup
 - [ ] User Account
-- [ ] ~~Return and Refund/Terms and Condition~~
+- [ ] Terms and Conditions
 
 <br>
 
@@ -47,4 +47,4 @@
 - [ ] Contact
 - [ ] Login/Signup
 - [ ] User Account
-- [ ] Return and Refund/Terms and Condition
+- [ ] Terms and Condition
