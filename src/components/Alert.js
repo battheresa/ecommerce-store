@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import CancelIcon from '@material-ui/icons/Cancel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
@@ -12,6 +12,8 @@ function Alert({ status, message, open, setOpen }) {
         }, 3000);
 
         return () => clearInterval(interval);
+
+        // eslint-disable-next-line
     }, []);
 
     return (

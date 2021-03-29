@@ -4,15 +4,19 @@ import { Button, TextField } from '@material-ui/core';
 import { auth } from '../services/firebase';
 import { fetchUserById } from '../services/Gateway';
 import { useStateValue } from '../services/StateProvider';
-import '../stylesheets/Authentication.css';
 
-// show alert when login fail
+import Alert from './Alert';
+import '../stylesheets/Authentication.css';
 
 function Authentication({ open, setOpen }) {
     const [ {}, dispatch ] = useStateValue();
     const [ menu, setMenu ] = useState(true);
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+
+    const [ alertModal, setAlertModal ] = useState(false);
+    const [ alertStatus, setAlertStatus ] = useState(false);
+    const [ alertMessage, setAlertMessage ] = useState('');
 
     // mouse click listener
     useEffect(() => {
@@ -29,6 +33,13 @@ function Authentication({ open, setOpen }) {
 
         // eslint-disable-next-line
     }, []);
+
+    // open alert modal
+    const setOpenAlert = (status, message, mode) => {
+        setAlertStatus(status);
+        setAlertMessage(message);
+        setAlertModal(mode);
+    };
 
     // update user
     const updateUser = () => {
@@ -56,7 +67,9 @@ function Authentication({ open, setOpen }) {
         auth.signInWithEmailAndPassword(email, password).then((auth) => {
             if (auth) 
                 updateUser();
-        });
+        }).catch((error => {
+            setOpenAlert(false, error.message, true);
+        }));
     }
 
     // signup 
@@ -66,6 +79,9 @@ function Authentication({ open, setOpen }) {
         auth.createUserWithEmailAndPassword(email, password).then((auth) => {
             if (auth) 
                 updateUser();
+        }).catch(error => {
+            console.log(error);
+            setOpenAlert(false, error.message, true);
         });
     }
 
@@ -86,6 +102,9 @@ function Authentication({ open, setOpen }) {
                     <Button variant='contained' color='primary' type='submit'><p className='font-bold font-wide'>{menu ? 'LOGIN' : 'SIGNUP'}</p></Button>
                 </form>
             </div>
+
+            {/* alert */}
+            {alertModal && <Alert status={alertStatus} message={alertMessage} open={alertModal} setOpen={setOpenAlert} />}
         </div>
     );
 }
