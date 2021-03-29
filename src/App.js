@@ -14,6 +14,8 @@ import Home from './components/Home';
 import ProductDetail from './components/ProductDetail';
 import ProductSearch from './components/ProductSearch';
 import Checkout from './components/Checkout';
+import StoreLocation from './components/StoreLocation';
+import ContactUs from './components/ContactUs';
 import './App.css';
 
 function App() {
@@ -51,7 +53,10 @@ function App() {
                             <ProductDetail />
                         </Route>
                         <Route path='/store-locations'>
-                            <h1>store locations</h1>
+                            <StoreLocation />
+                        </Route>
+                        <Route path='/contact-us'>
+                            <ContactUs />
                         </Route>
                         <Route path='/cart'>
                             <h1>cart</h1>

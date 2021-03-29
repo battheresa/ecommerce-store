@@ -138,3 +138,27 @@ export const fetchByCategory = async (category) => {
 //         db.collection('products').doc().set(product);
 //     });
 // };
+
+var storedLocations;
+
+export const fetchStoreLocations = async () => {
+    // async + promise
+    if (storedLocations)
+        return storedLocations;
+    
+    var locations = []; // array of objects
+    const all = await db.collection('store-locations').get();
+
+    all.forEach(doc => {
+        locations.push({
+            name: doc.data().name,  // string
+            address: doc.data().address,    // string
+            coordinates: doc.data().coordinates,    // array of number [ 12.1234, 12.1234 ]
+            hours: doc.data().hours,     // array of string ["10am", "9pm"]
+            link: doc.data().link
+        });
+    });
+
+    console.log('store locations: ', locations);
+    return locations;
+};
