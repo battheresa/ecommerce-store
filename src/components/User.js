@@ -5,7 +5,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import { auth } from '../services/firebase';
 import { useStateValue } from '../services/StateProvider';
-import { updateUser, fetchUserById, fetchByWishlist, fetchOrdersByUserId } from '../services/Gateway';
+import { updateUser, fetchByWishlist, fetchOrdersByUserId } from '../services/Gateway';
 
 import Subheader from './Subheader';
 import ProductSummary from './ProductSummary';
@@ -15,8 +15,6 @@ import AddressCard from './AddressCard';
 import '../stylesheets/User.css'
 import AddressModal from './AddressModal';
 import Alert from './Alert';
-
-// TODO: order product details (component from cart page)
 
 function User() {
     const [ { user }, dispatch ] = useStateValue();
