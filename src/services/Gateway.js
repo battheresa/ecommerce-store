@@ -84,6 +84,17 @@ export const fetchById = async (id) => {
     return product.data();
 }
 
+export const fetchByIdAndVariation = async (id, variation) => {
+    var product;
+
+    await fetchAllProducts().then(content => {
+        product = content.find(data => data.id === id && data.variation === variation);
+    });
+
+    console.log('product by id and variant: ', product);
+    return product;
+}
+
 // search filters for each product set
 const searchFilter = (products) => {
     var colors = [];

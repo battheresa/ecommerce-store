@@ -64,6 +64,9 @@ a, a:link, a:visited, a:active, a:hover {
 }
 
 input {
+    font-size: 15px;
+    font-weight: 300;
+
     outline: none;
     padding: 2px 12px;
     border: 0.8px solid black;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { IconButton, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
@@ -6,43 +7,31 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-import { fetchById, fetchRelated } from '../services/Gateway';
-import { useStateValue } from '../services/StateProvider';
+import { fetchByIdAndVariation, fetchRelated } from '../services/Gateway';
 
 import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
 import '../stylesheets/ProductDetail.css';
 
-// TODO: add to cart, add to wishlist, remove looking from reducer and fetch using url
+// TODO: add to cart, add to wishlist
 
 function ProductDetail() {
-    const [ { looking }, dispatch ] = useStateValue();
+    const history = useHistory();
+    const location = useLocation();
 
     const [ product, setProduct ] = useState();
     const [ quantity, setQuantity ] = useState(0);
     const [ image, setImage ] = useState();
-    
+
     const [ related, setRelated ] = useState([]);
 
     // fetch product
     useEffect(() => {
-        if (looking.item !== null) {
-            setProduct({
-                id: looking.id,
-                item: looking.item,
-                variation: looking.variation,
-                price: looking.price
-            });
-        }
-        else {
-            fetchById(looking.id).then(content => setProduct({ 
-                id: looking.id,
-                item: content,
-                variation: looking.variation,
-                price: looking.price
-            }));
-        }
-    }, [looking]);
+        const id = location.search.split('&')[0].split('=')[1];
+        const variation = location.search.split('&')[1].split('=')[1];
+
+        fetchByIdAndVariation(id, variation).then(content => setProduct(content));
+    }, [location.search]);
 
     // set initial image and get products from †he same category
     useEffect(() => {
@@ -61,6 +50,8 @@ function ProductDetail() {
             variation: changeTo.toLowerCase().split(' ')[0],
             price: product.item.priceBy === 'standard' ? product.price : product.item.price[index]
         });
+
+        history.push({ pathname: '/product', search: `?id=${product.id}&variant=${changeTo.toLowerCase().split(' ')[0]}` });
     };
 
     // options component
