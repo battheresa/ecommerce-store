@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { MenuItem } from '@material-ui/core';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
@@ -15,6 +15,7 @@ import '../stylesheets/Header.css';
 function Header() {
     const [ { user }, dispatch ] = useStateValue();
     const history = useHistory();
+    const location = useLocation();
 
     const [ keyword, setKeyword ] = useState('');
     const [ search, setSearch ] = useState(false);
@@ -63,8 +64,10 @@ function Header() {
     // logout
     const logout = () => {
         setProfileDropdown(false);
-        history.push('/');
         auth.signOut();
+
+        if (location.pathname === '/user')
+            history.push('/');
     }
 
     return (

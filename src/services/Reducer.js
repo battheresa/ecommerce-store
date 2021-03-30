@@ -11,13 +11,6 @@ export const initialState = {
         method: 'test',
         cost: 100
     },
-    products: [],
-    looking: {
-        id: localStorage.getItem('PRODUCT_ID'),
-        item: null,
-        variation: localStorage.getItem('PRODUCT_VARIATION'),
-        price: localStorage.getItem('PRODUCT_PRICE'),
-    }
 };
 
 // get total cost in the cart
@@ -47,16 +40,6 @@ const reducer = (state, action) => {
 
         case 'EMPTY_CART':
             return { ...state, user: action.user, cart: [] };
-
-        case 'ALL_PRODUCTS':
-            return { ...state, products: action.products };
-
-        case 'UPDATE_PRODUCT': 
-            localStorage.setItem('PRODUCT_ID', action.looking.id);
-            localStorage.setItem('PRODUCT_VARIATION', action.looking.variation);
-            localStorage.setItem('PRODUCT_PRICE', action.looking.price);
-            
-            return { ...state, user: action.user, looking: action.looking };
 
         default:
             return state;

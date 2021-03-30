@@ -147,7 +147,7 @@ function User() {
             <Subheader path={['home', 'profile', menu]} />
 
             {!user && <div className='modal-background'>
-                <Authentication open={loginModal} setOpen={setOpenLogin} />
+                <Authentication open={true} setOpen={setOpenLogin} />
             </div>}
 
             <div className='user__content'>
