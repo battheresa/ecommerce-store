@@ -1,0 +1,50 @@
+.contactUs__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* border: solid red; */
+    padding: 50px 100px 170px 100px;
+    height: 75vh; 
+}
+
+.contactUs__InfoContainer{
+    display: grid;
+    grid-template-columns: auto ;
+    grid-gap: 30px 10px;
+    /* border: solid blue; */
+    padding-right: 90px;
+}
+
+.contactUs__InfoContainerInput{
+    display: grid;
+    grid-template-columns: auto ;
+    grid-gap: 10px 10px;
+    /* border: solid green; */
+}
+
+.contactUs__InfoContainerInputName{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0px 10px;
+    /* border: solid green; */
+}
+
+.contactUs__MessageContainer{
+    padding: 0px 0px 0px 50px;
+    border-left: solid black;
+}
+
+.contactUs__MessageContainerInput{
+    display: grid;
+    grid-template-columns: auto ;
+    grid-gap: 10px 10px;
+    border: solid blue;
+}
+
+.contactUs__buttoncontainer{
+    float: right;
+    border: solid blue;
+}
+
+.contactUs__button{
+    width: 180px;
+}
