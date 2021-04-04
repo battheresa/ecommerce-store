@@ -10,18 +10,12 @@ function ProductCard({ id, item, variation, price }) {
 
     // save selected product to context
     const seeDetail = () => {
-        dispatch({ 
-            type: 'UPDATE_PRODUCT', 
-            looking: {
-                id: id,
-                item: item,
-                variation: variation,
-                price: price
-            }
-        });
-
         window.scrollTo(0, 0);
+<<<<<<< HEAD
         history.push(`/product/${id}`);
+=======
+        history.push({ pathname: '/product', search: `?id=${id}&variant=${variation}` });
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     };
     
     return (

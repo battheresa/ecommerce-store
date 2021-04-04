@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { IconButton, Button } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
@@ -6,8 +7,12 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
+<<<<<<< HEAD
 import { fetchById, fetchRelated } from '../services/Gateway';
 import { useStateValue } from '../services/StateProvider';
+=======
+import { fetchByIdAndVariation, fetchRelated } from '../services/Gateway';
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 
 import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
@@ -16,16 +21,18 @@ import '../stylesheets/ProductDetail.css';
 // TODO: add to cart, add to wishlist
 
 function ProductDetail() {
-    const [ { looking }, dispatch ] = useStateValue();
+    const history = useHistory();
+    const location = useLocation();
 
     const [ product, setProduct ] = useState();
     const [ quantity, setQuantity ] = useState(0);
     const [ image, setImage ] = useState();
-    
+
     const [ related, setRelated ] = useState([]);
 
     // fetch product
     useEffect(() => {
+<<<<<<< HEAD
         if (looking.item !== null) {
             setProduct({
                 id: looking.id,
@@ -43,6 +50,13 @@ function ProductDetail() {
             }));
         }
     }, [looking]);
+=======
+        const id = location.search.split('&')[0].split('=')[1];
+        const variation = location.search.split('&')[1].split('=')[1];
+
+        fetchByIdAndVariation(id, variation).then(content => setProduct(content));
+    }, [location.search]);
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 
     // set initial image and get products from †he same category
     useEffect(() => {
@@ -61,6 +75,11 @@ function ProductDetail() {
             variation: changeTo.toLowerCase().split(' ')[0],
             price: product.item.priceBy === 'standard' ? product.price : product.item.price[index]
         });
+<<<<<<< HEAD
+=======
+
+        history.push({ pathname: '/product', search: `?id=${product.id}&variant=${changeTo.toLowerCase().split(' ')[0]}` });
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     };
 
     // options component

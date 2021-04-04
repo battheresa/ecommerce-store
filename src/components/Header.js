@@ -1,23 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
+<<<<<<< HEAD
 import { Button, TextField, MenuItem } from '@material-ui/core';
+=======
+import { MenuItem } from '@material-ui/core';
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
-import '../stylesheets/Header.css';
+import { auth } from '../services/firebase';
+import { useStateValue } from '../services/StateProvider';
 
+<<<<<<< HEAD
 // TODO: authentication, search
+=======
+import Authentication from './Authentication';
+import '../stylesheets/Header.css';
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 
 function Header() {
+    const [ { user }, dispatch ] = useStateValue();
     const history = useHistory();
+    const location = useLocation();
 
-    const [ dropdown, setDropdown ] = useState(false);
+    const [ keyword, setKeyword ] = useState('');
     const [ search, setSearch ] = useState(false);
-    const [ modal, setModal ] = useState(false);
-    const [ menu, setMenu ] = useState(true);   // true = login, false = signup
 
+<<<<<<< HEAD
     // mouse click listener
     useEffect(() => {
         const clickOutside = (event) => {
@@ -32,6 +43,20 @@ function Header() {
             
             if (event.target.id === 'header__modal') 
                 setModal(false);
+=======
+    const [ shopDropdown, setShopDropdown ] = useState(false);
+    const [ profileDropdown, setProfileDropdown ] = useState(false);
+    const [ loginModal, setLoginModal ] = useState(false);
+
+    const setOpen = (mode) => setLoginModal(mode);
+
+    // mouse click listener
+    useEffect(() => {
+        const clickOutside = (event) => {
+            setSearch(event.target.parentNode.id === 'header__search-field');
+            setShopDropdown(event.target.parentNode.id === 'header__shop-dropdown');
+            setProfileDropdown(event.target.parentNode.id === 'header__profile-dropdown');
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
         };
 
         document.addEventListener('mousedown', clickOutside);
@@ -41,14 +66,47 @@ function Header() {
         };
     }, []);
 
+<<<<<<< HEAD
     // click search by category
     const searchCategory = (path) => {
         history.push(path);
         setDropdown(false);
     };
 
+=======
+    // search by category
+    const searchCategory = (path) => {
+        setShopDropdown(false);
+        history.push(path);
+    };
+
+    // search by keyword
+    const searchKeyword = (event) => {
+        event.preventDefault();
+        setKeyword('');
+        setSearch(false);
+        history.push({ pathname: '/search', search: `?keyword=${keyword}` });
+    }
+
+    // open profile
+    const openProfile = () => {
+        setProfileDropdown(false);
+        history.push('/user');
+    }
+
+    // logout
+    const logout = () => {
+        setProfileDropdown(false);
+        auth.signOut();
+
+        if (location.pathname === '/user')
+            history.push('/');
+    }
+
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     return (
         <div className='flex-center-row header'>
+
             {/* shop, store locations */}
             <div className='header__nav'>
 
@@ -56,10 +114,17 @@ function Header() {
                 <div className='header__dropdown'>
                     
                     {/* shop link */}
+<<<<<<< HEAD
                     <h2 className='font-wide header__menu' style={{ color: `${dropdown ? '#7F7F7F' : ''}` }} onClick={() => setDropdown(true)}>SHOP</h2>
 
                     {/* shop dropdown */}
                     <div id='header__dropdown-content' className='popup-menu' style={{ display: `${dropdown ? 'flex' : 'none'}`, top: '40px' }}>
+=======
+                    <h2 className='font-wide header__menu' style={{ color: `${shopDropdown ? '#7F7F7F' : ''}` }} onClick={() => setShopDropdown(true)}>SHOP</h2>
+
+                    {/* shop dropdown */}
+                    <div id='header__shop-dropdown' className='popup-menu' style={{ display: `${shopDropdown ? 'flex' : 'none'}`, top: '40px' }}>
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
                         <MenuItem onClick={() => searchCategory('/electronics')}>Electronics</MenuItem>
                         <MenuItem onClick={() => searchCategory('/fabrics')}>Fabrics</MenuItem>
                         <MenuItem onClick={() => searchCategory('/furnitures')}>Furnitures</MenuItem>
@@ -86,9 +151,17 @@ function Header() {
                 </div>
 
                 {/* login */}
-                <div className='header__menu' onClick={() => setModal(true)}>
-                    <PermIdentityOutlinedIcon className='header__icon' fontSize='small' />
-                    <h2 className='font-wide'>LOGIN</h2>
+                <div className='header__dropdown'>
+                    <div className='header__menu' onClick={() => user ? setProfileDropdown(true) : setLoginModal(true)}>
+                        <PermIdentityOutlinedIcon className='header__icon' fontSize='small' />
+                        <h2 className='font-wide'>{user ? 'PROFILE' : 'LOGIN'}</h2>
+                    </div>
+
+                    {/* profile dropdown */}
+                    <div id='header__profile-dropdown' className='popup-menu' style={{ display: `${profileDropdown ? 'flex' : 'none'}`, top: '40px', right: '40px', width: '150px' }}>
+                        <MenuItem onClick={() => openProfile()}>My Profile</MenuItem>
+                        <MenuItem onClick={() => logout()}>Logout</MenuItem>
+                    </div>
                 </div>
 
                 {/* search */}
@@ -100,51 +173,19 @@ function Header() {
                     </div>
 
                     {/* search field */}
+<<<<<<< HEAD
                     <form id='header__search-field' className='header__search-field' style={{ display: `${search ? 'flex' : 'none'}` }}>
                         <input type='text' placeholder='SEARCH' />
+=======
+                    <form id='header__search-field' onSubmit={(e) => searchKeyword(e)} className='header__search-field' style={{ display: `${search ? 'flex' : 'none'}` }}>
+                        <input type='text' placeholder='SEARCH' value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
                     </form>
                 </div>
             </div>
 
-            {/* login modal */}
-            <div id='header__modal' className='header__modal' style={{ display: `${modal ? 'flex' : 'none'}` }}>
-                <div className='header__modal-content'>
-
-                    {/* login modal menu */}
-                    <div className='header__modal-menu'>
-                        <h1 style={{ color: `${menu ? 'black' : '#CCCCCC'}` }} onClick={() => setMenu(true)}><small>LOGIN</small></h1>
-                        <h1 style={{ color: `${menu ? '#CCCCCC' : 'black'}` }} onClick={() => setMenu(false)}><small>SIGNUP</small></h1>
-                    </div>
-
-                    {/* login modal form */}
-                    <form className='header__modal-form'>
-                        <TextField 
-                            type='email' 
-                            placeholder='EMAIL ADDRESS' 
-                            size='small' 
-                            variant='outlined' 
-                            color='primary' 
-                            style={{ marginBottom: '15px' }}
-                            inputProps={{ style: { fontSize: 16, fontWeight: 300, wordSpacing: 3 } }}
-                            required 
-                        />
-
-                        <TextField 
-                            type='password' 
-                            placeholder='PASSWORD' 
-                            size='small' 
-                            variant='outlined' 
-                            color='primary' 
-                            style={{ marginBottom: '15px' }}
-                            inputProps={{ style: { fontSize: 16, fontWeight: 300, wordSpacing: 3 } }}
-                            required 
-                        />
-
-                        <Button variant='contained' color='primary'><p className='font-bold font-wide'>{menu ? 'LOGIN' : 'SIGNUP'}</p></Button>
-                    </form>
-                    
-                </div>
-            </div>
+            {/* authentication modal */}
+            <Authentication open={loginModal} setOpen={setOpen} />
         </div>
     );
 }

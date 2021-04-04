@@ -1,9 +1,18 @@
 import { db } from './firebase';
 
+<<<<<<< HEAD
 var storedProducts;
 
 // fetch all products
 export const fetchAll = async () => {
+=======
+// products ----------------------------------------
+
+var storedProducts;
+
+// fetch all products
+export const fetchAllProducts = async () => {
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     if (storedProducts)
         return storedProducts;
     
@@ -30,7 +39,11 @@ export const fetchAll = async () => {
                     }
 
                     products.push({ id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice });
+<<<<<<< HEAD
                 }  
+=======
+                }
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
             }
         }
         else {
@@ -48,7 +61,11 @@ export const fetchAll = async () => {
 export const fetchPromotional = async () => {
     var products = [];
     
+<<<<<<< HEAD
     await fetchAll().then(content => 
+=======
+    await fetchAllProducts().then(content => 
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
         content.forEach(data => {
             if (data.item.sale !== 0 || data.item.trending || data.item.newArrival || data.item.limitedEdition)
                 products.push(data);
@@ -82,15 +99,32 @@ export const fetchById = async (id) => {
     return product.data();
 }
 
+<<<<<<< HEAD
 // fetch product by category
 export const fetchByCategory = async (category) => {
     var products = [];
 
     var condense = [];
+=======
+export const fetchByIdAndVariation = async (id, variation) => {
+    var product;
+
+    await fetchAllProducts().then(content => {
+        product = content.find(data => data.id === id && data.variation === variation);
+    });
+
+    console.log('product by id and variant: ', product);
+    return product;
+}
+
+// search filters for each product set
+const searchFilter = (products) => {
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     var colors = [];
     var materials = [];
     var prices = [10000, -1];
 
+<<<<<<< HEAD
     await fetchAll().then(content => 
         content.forEach(data => {
             if (data.item.category === category) {
@@ -104,6 +138,10 @@ export const fetchByCategory = async (category) => {
 
     // for each product in condense array
     condense.forEach(content => {
+=======
+    // for each product in condense array
+    products.forEach(content => {
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 
         // look for color filters
         content.item.color.forEach(data => {
@@ -129,8 +167,57 @@ export const fetchByCategory = async (category) => {
         prices[1] = (high > prices[1]) ? high : prices[1];
     });
 
+<<<<<<< HEAD
     console.log('products by category: ', { colors: colors, materials: materials, prices: prices, products: products });
     return { colors: colors, materials: materials, prices: prices, products: products };
+=======
+    console.log('search filters: ', { colors: colors, materials: materials, prices: prices });
+    return { colors: colors, materials: materials, prices: prices };
+}
+
+// fetch product by category
+export const fetchByCategory = async (category) => {
+    var products = [];
+    var condense = [];
+
+    await fetchAllProducts().then(content => 
+        content.forEach(data => {
+            if (data.item.category === category) {
+                if (condense.find(temp => temp.item.name === data.item.name) === undefined)
+                    condense.push(data)
+
+                products.push(data);
+            }
+        }) 
+    );
+
+    var filters = searchFilter(condense);
+
+    console.log('products by category: ', products);
+    return { colors: filters.colors, materials: filters.materials, prices: filters.prices, products: products };
+}
+
+// fetch products by keyword
+export const fetchByKeyword = async (keyword) => {
+    var products = [];
+    var condense = [];
+
+    await fetchAllProducts().then(content => 
+        content.forEach(data => {
+            if (data.item.name.toLowerCase().includes(keyword.toLowerCase())) {
+                if (condense.find(temp => temp.item.name === data.item.name) === undefined)
+                    condense.push(data)
+
+                products.push(data);
+            }
+        }) 
+    );
+
+    var filters = searchFilter(condense);
+
+    console.log('products by keyword: ', products);
+    return { colors: filters.colors, materials: filters.materials, prices: filters.prices, products: products };
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 }
 
 // for (let category in dataFile) {
@@ -139,6 +226,7 @@ export const fetchByCategory = async (category) => {
 //     });
 // };
 
+<<<<<<< HEAD
 var storedLocations;
 
 export const fetchStoreLocations = async () => {
@@ -162,3 +250,86 @@ export const fetchStoreLocations = async () => {
     console.log('store locations: ', locations);
     return locations;
 };
+=======
+
+// promo code --------------------------------------
+
+var storedPromoCode = [];
+
+// fetch all promo codes
+export const fetchAllCodes = async () => {
+    if (storedPromoCode)
+        return storedPromoCode;
+    
+    var codes = [];
+    const all = await db.collection('products').get();
+
+    all.forEach(doc => codes.push(doc.data()));
+    storedPromoCode = codes;
+
+    console.log('all promocodes: ', codes);
+    return codes;
+}
+
+// fetch promo code by code id
+export const fetchCodeById = async (promocode) => {
+    var code;
+    await fetchAllCodes().then(content => code = content.find(data => data.code === promocode));
+
+    console.log('discount: ', code);
+    return code;
+}
+
+// user account ------------------------------------
+
+// create user
+export const createUser = async (user) => {
+    await db.collection('users').doc().set(user);
+}
+
+// update user info
+export const updateUser = async (id, data) => {
+    await db.collection('users').doc(id).update(data);
+}
+
+// fetch user by id
+export const fetchUserById = async (id) => {
+    const user = await db.collection('users').doc(id).get();
+
+    console.log('user by id: ', user.data());
+    return user.data();
+}
+
+// fetch orders by user id
+export const fetchOrdersByUserId = async (id) => {
+    var orders = [];
+    const all = await db.collection('users').doc(id).collection('orders').get();
+
+    all.forEach(doc => orders.push(doc.data()));
+
+    console.log('orders by user id: ', orders);
+    return orders;
+}
+
+// fetch wishlist from array of product id
+export const fetchByWishlist = async (wishlist) => {
+    var products = [];
+    var condense = [];
+
+    await fetchAllProducts().then(content => 
+        content.forEach(data => {
+            if (condense.find(temp => temp.item.name === data.item.name) === undefined)
+                condense.push(data)
+        })
+    );
+
+    wishlist.forEach(id => {
+        const product = condense.find(temp => temp.id === id);
+        if (product !== undefined)
+            products.push(product);
+    });
+
+    console.log('wishlist by user id: ', products);
+    return products;
+}
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7

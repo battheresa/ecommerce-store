@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Slider, Checkbox, Button } from '@material-ui/core';
 import '../stylesheets/ProductSearchFilter.css';
 
 function ProductSearchFilter({ products, update, initialState }) {
-    const [ filterColor, setFilterColor ] = useState(initialState.colors);
-    const [ filterMaterial, setFilterMaterial ] = useState(initialState.materials);
-    const [ priceRange, setPriceRange ] = useState(initialState.prices);
+    const [ filterColor, setFilterColor ] = useState();
+    const [ filterMaterial, setFilterMaterial ] = useState();
+    const [ priceRange, setPriceRange ] = useState();
+
+    // reset filters
+    useEffect(() => {
+        setFilterColor(initialState.colors);
+        setFilterMaterial(initialState.materials);
+        setPriceRange(initialState.prices);
+    }, [initialState]);
 
     // update price range as slider moves
     const changePriceRange = (event, newPrice) => {
@@ -118,7 +125,7 @@ function ProductSearchFilter({ products, update, initialState }) {
             {/* color filter */}
             <div>
                 <h6 className='font-bold font-wide'>COLOR</h6>
-                {filterColor.map((content, i) => (
+                {filterColor?.map((content, i) => (
                     <Filter key={i} type='colors' content={content} />
                 ))}
             </div>
@@ -126,7 +133,7 @@ function ProductSearchFilter({ products, update, initialState }) {
             {/* material filter */}
             <div>
                 <h6 className='font-bold font-wide'>MATERIAL</h6>
-                {filterMaterial.map((content, i) => (
+                {filterMaterial?.map((content, i) => (
                     <Filter key={i} type='materials' content={content} />
                 ))}
             </div>
@@ -134,7 +141,7 @@ function ProductSearchFilter({ products, update, initialState }) {
             {/* price filter */}
             <div>
                 <h6 id='price-range-slider' className='font-bold font-wide'>PRICE RANGE</h6>
-                {(priceRange[0] !== 10000 && priceRange[1] !== 0) && 
+                {(priceRange && priceRange[0] !== 10000 && priceRange[1] !== 0) && 
                     <Slider 
                         value={priceRange} 
                         min={initialState.prices[0]}
@@ -146,7 +153,7 @@ function ProductSearchFilter({ products, update, initialState }) {
                         style={{ color: 'black' }} 
                     />
                 }
-                <p className='font-light'><small>PRICE: ${priceRange[0]} - ${priceRange[1]}</small></p>
+                <p className='font-light'><small>PRICE: ${priceRange ? priceRange[0] : '0'} - ${priceRange ? priceRange[1] : '0'}</small></p>
             </div>
 
             {/* filter button */}

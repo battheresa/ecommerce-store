@@ -22,14 +22,12 @@
     margin: 0px 100px;
 }
 
-.header__nav > div {
+.header__menu {
+    cursor: pointer;
+
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.header__menu {
-    cursor: pointer;
     margin-right: 40px;
 }
 
@@ -71,6 +69,7 @@
 
 .header__search-field > input {
     border: none;
+<<<<<<< HEAD
     width: 100%;
 }
 
@@ -110,25 +109,7 @@
     justify-content: center;
     align-items: center;
 
+=======
+>>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     width: 100%;
-}
-
-.header__modal-menu > h1 {
-    cursor: pointer;
-    margin: 0px 20px 20px 20px;
-}
-
-.header__modal-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.header__modal-form > input {
-    flex: 1;
-    margin: 8px 0px;
-}
-
-.header__modal-form > button {
-    margin-top: 12px;
 }

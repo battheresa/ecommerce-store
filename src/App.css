@@ -15,7 +15,7 @@ h1, h2, h3 {
     font-family: 'Roboto', sans-serif;
 }
 
-h4, h5, h6, p, a, button, input::placeholder {
+h4, h5, h6, p, a, td, th, button, input, input::placeholder {
     font-family: 'Lato', sans-serif;
 }
 
@@ -70,7 +70,7 @@ iframe {
 }
 
 input {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
 
     outline: none;
@@ -80,8 +80,8 @@ input {
 
 input::placeholder {
     color: #CCCCCC;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 300;
 }
 
 button {
@@ -91,6 +91,21 @@ button {
     border: none;
     padding: 5px;
     width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 5px 8px;
+}
+
+.table-first-col-left tr td:first-child {
+    width: 150px;
+    text-align: right;
 }
 
 .popup-menu {
@@ -121,4 +136,21 @@ button {
 
 ::-webkit-scrollbar {
     width: 0px;
+}
+
+.modal-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: fixed;
+
+    box-shadow: 0px 0px 8px lightgray;
+    background-color: rgba(0, 0, 0, 0.1);
 }

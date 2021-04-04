@@ -1,26 +1,33 @@
 // initial state of the cart
 export const initialState = {
-    user: null,
+    user: localStorage.getItem('USER_ID'),
     cart: [],
-    products: [],
-    looking: {
-        id: localStorage.getItem('PRODUCT_ID'),
-        item: null,
-        variation: localStorage.getItem('PRODUCT_VARIATION'),
-        price: localStorage.getItem('PRODUCT_PRICE'),
-    }
+    promo: {
+        code: 'test',
+        discount: 5,
+        unit: 'percent'
+    },
+    delivery: {
+        method: 'test',
+        cost: 100
+    },
 };
 
 // get total cost in the cart
-export const getTotalCost = (cart) => cart?.reduce((amount, item) => item.price + amount, 0);
+// export const getSubtotal = (cart) => 500;
+export const getSubtotal = (cart) => cart?.reduce((amount, item) => item.price + amount, 0);
 
 // action function
 const reducer = (state, action) => {
     switch(action.type) {
-        case 'ADD':
+        case 'SET_USER':
+            localStorage.setItem('USER_ID', action.user?.id);
+            return { ...state, user: action.user };
+
+        case 'ADD_CART':
             return { ...state, user: action.user, cart: [...state.cart, action.item] };
 
-        case 'REMOVE':
+        case 'REMOVE_CART':
             const index = state.cart.findIndex((item) => item.id === action.id);
             let temp = [...state.cart];
 
@@ -31,21 +38,8 @@ const reducer = (state, action) => {
 
             return { state, user: action.user, cart: temp };
 
-        case 'EMPTY':
+        case 'EMPTY_CART':
             return { ...state, user: action.user, cart: [] };
-
-        case 'SET_USER':
-            return { ...state, user: action.user };
-
-        case 'ALL_PRODUCTS':
-            return { ...state, products: action.products };
-
-        case 'UPDATE_PRODUCT': 
-            localStorage.setItem('PRODUCT_ID', action.looking.id);
-            localStorage.setItem('PRODUCT_VARIATION', action.looking.variation);
-            localStorage.setItem('PRODUCT_PRICE', action.looking.price);
-            
-            return { ...state, user: action.user, looking: action.looking };
 
         default:
             return state;
