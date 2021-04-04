@@ -80,10 +80,11 @@ export const fetchRelated = async (id, category) => {
 export const fetchById = async (id) => {
     const product = await db.collection('products').doc(id).get();
 
-    console.log('product by id: ', product.data());
+    // console.log('product by id: ', product.data());
     return product.data();
 }
 
+// fetch product by id and variation
 export const fetchByIdAndVariation = async (id, variation) => {
     var product;
 
@@ -182,6 +183,31 @@ export const fetchByKeyword = async (keyword) => {
 //     });
 // };
 
+// store locations ---------------------------------
+
+var storedLocations;
+
+export const fetchStoreLocations = async () => {
+    if (storedLocations)
+        return storedLocations;
+    
+    var locations = [];
+    const all = await db.collection('store-locations').get();
+
+    all.forEach(doc => {
+        locations.push({
+            name: doc.data().name, 
+            address: doc.data().address,
+            coordinates: doc.data().coordinates, 
+            hours: doc.data().hours, 
+            link: doc.data().link
+        });
+    });
+
+    // console.log('store locations: ', locations);
+    return locations;
+};
+
 // promo code --------------------------------------
 
 var storedPromoCode = [];
@@ -262,28 +288,3 @@ export const fetchByWishlist = async (wishlist) => {
     // console.log('wishlist by user id: ', products);
     return products;
 }
-
-// store locations ---------------------------------
-
-var storedLocations;
-
-export const fetchStoreLocations = async () => {
-    if (storedLocations)
-        return storedLocations;
-    
-    var locations = [];
-    const all = await db.collection('store-locations').get();
-
-    all.forEach(doc => {
-        locations.push({
-            name: doc.data().name, 
-            address: doc.data().address, 
-            coordinates: doc.data().coordinates,
-            hours: doc.data().hours, 
-            link: doc.data().link
-        });
-    });
-
-    // console.log('store locations: ', locations);
-    return locations;
-};

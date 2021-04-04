@@ -19,6 +19,7 @@ import ProductSearch from './components/ProductSearch';
 import Checkout from './components/Checkout';
 import StoreLocation from './components/StoreLocation';
 import ContactUs from './components/ContactUs';
+import User from './components/User';
 import './App.css';
 
 function App() {

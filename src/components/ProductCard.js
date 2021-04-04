@@ -6,7 +6,6 @@ import '../stylesheets/ProductCard.css';
 
 function ProductCard({ id, item, variation, price }) {
     const history = useHistory();
-    const [ {}, dispatch ] = useStateValue();
 
     // save selected product to context
     const seeDetail = () => {
