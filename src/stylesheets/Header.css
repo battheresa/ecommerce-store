@@ -69,7 +69,6 @@
 
 .header__search-field > input {
     border: none;
-<<<<<<< HEAD
     width: 100%;
 }
 
@@ -108,8 +107,4 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
-=======
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
-    width: 100%;
 }

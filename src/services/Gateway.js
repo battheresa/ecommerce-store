@@ -1,18 +1,11 @@
 import { db } from './firebase';
 
-<<<<<<< HEAD
-var storedProducts;
-
-// fetch all products
-export const fetchAll = async () => {
-=======
 // products ----------------------------------------
 
 var storedProducts;
 
 // fetch all products
 export const fetchAllProducts = async () => {
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     if (storedProducts)
         return storedProducts;
     
@@ -39,11 +32,7 @@ export const fetchAllProducts = async () => {
                     }
 
                     products.push({ id: doc.id, item: doc.data(), variation: variant.toLowerCase().split(' ')[0], price: curPrice });
-<<<<<<< HEAD
-                }  
-=======
                 }
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
             }
         }
         else {
@@ -53,7 +42,7 @@ export const fetchAllProducts = async () => {
 
     storedProducts = products;
 
-    console.log('all products: ', products);
+    // console.log('all products: ', products);
     return products;
 }
 
@@ -61,18 +50,14 @@ export const fetchAllProducts = async () => {
 export const fetchPromotional = async () => {
     var products = [];
     
-<<<<<<< HEAD
-    await fetchAll().then(content => 
-=======
     await fetchAllProducts().then(content => 
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
         content.forEach(data => {
             if (data.item.sale !== 0 || data.item.trending || data.item.newArrival || data.item.limitedEdition)
                 products.push(data);
         }) 
     );
 
-    console.log('promotional products: ', products);
+    // console.log('promotional products: ', products);
     return products;
 }
 
@@ -87,7 +72,7 @@ export const fetchRelated = async (id, category) => {
         })
     );
 
-    console.log('related products: ', products);
+    // console.log('related products: ', products);
     return products;
 }
 
@@ -95,17 +80,11 @@ export const fetchRelated = async (id, category) => {
 export const fetchById = async (id) => {
     const product = await db.collection('products').doc(id).get();
 
-    console.log('product by id: ', product.data());
+    // console.log('product by id: ', product.data());
     return product.data();
 }
 
-<<<<<<< HEAD
-// fetch product by category
-export const fetchByCategory = async (category) => {
-    var products = [];
-
-    var condense = [];
-=======
+// fetch product by id and variation
 export const fetchByIdAndVariation = async (id, variation) => {
     var product;
 
@@ -113,35 +92,18 @@ export const fetchByIdAndVariation = async (id, variation) => {
         product = content.find(data => data.id === id && data.variation === variation);
     });
 
-    console.log('product by id and variant: ', product);
+    // console.log('product by id and variant: ', product);
     return product;
 }
 
 // search filters for each product set
 const searchFilter = (products) => {
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     var colors = [];
     var materials = [];
     var prices = [10000, -1];
 
-<<<<<<< HEAD
-    await fetchAll().then(content => 
-        content.forEach(data => {
-            if (data.item.category === category) {
-                if (condense.find(temp => temp.item.name === data.item.name) === undefined)
-                    condense.push(data)
-
-                products.push(data);
-            }
-        }) 
-    );
-
-    // for each product in condense array
-    condense.forEach(content => {
-=======
     // for each product in condense array
     products.forEach(content => {
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 
         // look for color filters
         content.item.color.forEach(data => {
@@ -167,11 +129,7 @@ const searchFilter = (products) => {
         prices[1] = (high > prices[1]) ? high : prices[1];
     });
 
-<<<<<<< HEAD
-    console.log('products by category: ', { colors: colors, materials: materials, prices: prices, products: products });
-    return { colors: colors, materials: materials, prices: prices, products: products };
-=======
-    console.log('search filters: ', { colors: colors, materials: materials, prices: prices });
+    // console.log('search filters: ', { colors: colors, materials: materials, prices: prices });
     return { colors: colors, materials: materials, prices: prices };
 }
 
@@ -193,7 +151,7 @@ export const fetchByCategory = async (category) => {
 
     var filters = searchFilter(condense);
 
-    console.log('products by category: ', products);
+    // console.log('products by category: ', products);
     return { colors: filters.colors, materials: filters.materials, prices: filters.prices, products: products };
 }
 
@@ -215,9 +173,8 @@ export const fetchByKeyword = async (keyword) => {
 
     var filters = searchFilter(condense);
 
-    console.log('products by keyword: ', products);
+    // console.log('products by keyword: ', products);
     return { colors: filters.colors, materials: filters.materials, prices: filters.prices, products: products };
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 }
 
 // for (let category in dataFile) {
@@ -226,31 +183,30 @@ export const fetchByKeyword = async (keyword) => {
 //     });
 // };
 
-<<<<<<< HEAD
+// store locations ---------------------------------
+
 var storedLocations;
 
 export const fetchStoreLocations = async () => {
-    // async + promise
     if (storedLocations)
         return storedLocations;
     
-    var locations = []; // array of objects
+    var locations = [];
     const all = await db.collection('store-locations').get();
 
     all.forEach(doc => {
         locations.push({
-            name: doc.data().name,  // string
-            address: doc.data().address,    // string
-            coordinates: doc.data().coordinates,    // array of number [ 12.1234, 12.1234 ]
-            hours: doc.data().hours,     // array of string ["10am", "9pm"]
+            name: doc.data().name, 
+            address: doc.data().address,
+            coordinates: doc.data().coordinates, 
+            hours: doc.data().hours, 
             link: doc.data().link
         });
     });
 
-    console.log('store locations: ', locations);
+    // console.log('store locations: ', locations);
     return locations;
 };
-=======
 
 // promo code --------------------------------------
 
@@ -267,7 +223,7 @@ export const fetchAllCodes = async () => {
     all.forEach(doc => codes.push(doc.data()));
     storedPromoCode = codes;
 
-    console.log('all promocodes: ', codes);
+    // console.log('all promocodes: ', codes);
     return codes;
 }
 
@@ -276,7 +232,7 @@ export const fetchCodeById = async (promocode) => {
     var code;
     await fetchAllCodes().then(content => code = content.find(data => data.code === promocode));
 
-    console.log('discount: ', code);
+    // console.log('discount: ', code);
     return code;
 }
 
@@ -296,7 +252,7 @@ export const updateUser = async (id, data) => {
 export const fetchUserById = async (id) => {
     const user = await db.collection('users').doc(id).get();
 
-    console.log('user by id: ', user.data());
+    // console.log('user by id: ', user.data());
     return user.data();
 }
 
@@ -307,7 +263,7 @@ export const fetchOrdersByUserId = async (id) => {
 
     all.forEach(doc => orders.push(doc.data()));
 
-    console.log('orders by user id: ', orders);
+    // console.log('orders by user id: ', orders);
     return orders;
 }
 
@@ -329,7 +285,6 @@ export const fetchByWishlist = async (wishlist) => {
             products.push(product);
     });
 
-    console.log('wishlist by user id: ', products);
+    // console.log('wishlist by user id: ', products);
     return products;
 }
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7

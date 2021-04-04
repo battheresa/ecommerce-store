@@ -12,9 +12,9 @@ import ProductSummary from './ProductSummary';
 import ProductContainer from './ProductContainer';
 import Authentication from './Authentication';
 import AddressCard from './AddressCard';
-import '../stylesheets/User.css'
 import AddressModal from './AddressModal';
 import Alert from './Alert';
+import '../stylesheets/User.css'
 
 function User() {
     const [ { user }, dispatch ] = useStateValue();

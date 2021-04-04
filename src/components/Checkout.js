@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-<<<<<<< HEAD
-import axios from '../services/axios';
-=======
 import { TextField } from '@material-ui/core';
-
 import { useStateValue } from '../services/StateProvider';
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 
 import Subheader from './Subheader';
 import StripeForm from './StripeForm';
 import '../stylesheets/Checkout.css';
-
-// TODO: review checkout (wait for component from cart page)
 
 function Checkout() {
     const [ { user }, dispatch ] = useStateValue();

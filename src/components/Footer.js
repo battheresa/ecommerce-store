@@ -31,21 +31,12 @@ function Footer() {
                 <div className='footer__section'>
                     <h2>SHOP</h2>
                     <div className='footer__shop'>
-<<<<<<< HEAD
-                        <h2>Electronics</h2>
-                        <h2>Fabrics</h2>
-                        <h2>Furnitures</h2>
-                        <h2>Housekeeping</h2>
-                        <h2>Kitchenwares</h2>
-                        <h2>Storages</h2>
-=======
                         <h2 onClick={() => history.push('/electronics')}>Electronics</h2>
                         <h2 onClick={() => history.push('/fabrics')}>Fabrics</h2>
                         <h2 onClick={() => history.push('/furnitures')}>Furnitures</h2>
                         <h2 onClick={() => history.push('/housekeeping')}>Housekeeping</h2>
                         <h2 onClick={() => history.push('/kitchenwares')}>Kitchenwares</h2>
                         <h2 onClick={() => history.push('/storages')}>Storages</h2>
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
                     </div>
                 </div>
 

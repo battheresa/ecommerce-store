@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-<<<<<<< HEAD
-import axios from './services/axios';
-=======
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -21,12 +17,9 @@ import Home from './components/Home';
 import ProductDetail from './components/ProductDetail';
 import ProductSearch from './components/ProductSearch';
 import Checkout from './components/Checkout';
-<<<<<<< HEAD
 import StoreLocation from './components/StoreLocation';
 import ContactUs from './components/ContactUs';
-=======
 import User from './components/User';
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 import './App.css';
 
 function App() {

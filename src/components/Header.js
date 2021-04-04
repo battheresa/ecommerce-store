@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
-<<<<<<< HEAD
-import { Button, TextField, MenuItem } from '@material-ui/core';
-=======
 import { MenuItem } from '@material-ui/core';
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
@@ -13,12 +9,8 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { auth } from '../services/firebase';
 import { useStateValue } from '../services/StateProvider';
 
-<<<<<<< HEAD
-// TODO: authentication, search
-=======
 import Authentication from './Authentication';
 import '../stylesheets/Header.css';
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
 
 function Header() {
     const [ { user }, dispatch ] = useStateValue();
@@ -28,22 +20,6 @@ function Header() {
     const [ keyword, setKeyword ] = useState('');
     const [ search, setSearch ] = useState(false);
 
-<<<<<<< HEAD
-    // mouse click listener
-    useEffect(() => {
-        const clickOutside = (event) => {
-            console.log(event.target.parentNode.id);
-            console.log('mosse down dropdown: ', dropdown);
-            
-            if (event.target.parentNode.id !== 'header__dropdown-content')
-                setDropdown(false);
-            
-            if (event.target.parentNode.id !== 'header__search-field') 
-                setSearch(false);
-            
-            if (event.target.id === 'header__modal') 
-                setModal(false);
-=======
     const [ shopDropdown, setShopDropdown ] = useState(false);
     const [ profileDropdown, setProfileDropdown ] = useState(false);
     const [ loginModal, setLoginModal ] = useState(false);
@@ -56,7 +32,6 @@ function Header() {
             setSearch(event.target.parentNode.id === 'header__search-field');
             setShopDropdown(event.target.parentNode.id === 'header__shop-dropdown');
             setProfileDropdown(event.target.parentNode.id === 'header__profile-dropdown');
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
         };
 
         document.addEventListener('mousedown', clickOutside);
@@ -66,14 +41,6 @@ function Header() {
         };
     }, []);
 
-<<<<<<< HEAD
-    // click search by category
-    const searchCategory = (path) => {
-        history.push(path);
-        setDropdown(false);
-    };
-
-=======
     // search by category
     const searchCategory = (path) => {
         setShopDropdown(false);
@@ -103,7 +70,6 @@ function Header() {
             history.push('/');
     }
 
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
     return (
         <div className='flex-center-row header'>
 
@@ -114,17 +80,10 @@ function Header() {
                 <div className='header__dropdown'>
                     
                     {/* shop link */}
-<<<<<<< HEAD
-                    <h2 className='font-wide header__menu' style={{ color: `${dropdown ? '#7F7F7F' : ''}` }} onClick={() => setDropdown(true)}>SHOP</h2>
-
-                    {/* shop dropdown */}
-                    <div id='header__dropdown-content' className='popup-menu' style={{ display: `${dropdown ? 'flex' : 'none'}`, top: '40px' }}>
-=======
                     <h2 className='font-wide header__menu' style={{ color: `${shopDropdown ? '#7F7F7F' : ''}` }} onClick={() => setShopDropdown(true)}>SHOP</h2>
 
                     {/* shop dropdown */}
                     <div id='header__shop-dropdown' className='popup-menu' style={{ display: `${shopDropdown ? 'flex' : 'none'}`, top: '40px' }}>
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
                         <MenuItem onClick={() => searchCategory('/electronics')}>Electronics</MenuItem>
                         <MenuItem onClick={() => searchCategory('/fabrics')}>Fabrics</MenuItem>
                         <MenuItem onClick={() => searchCategory('/furnitures')}>Furnitures</MenuItem>
@@ -173,13 +132,8 @@ function Header() {
                     </div>
 
                     {/* search field */}
-<<<<<<< HEAD
-                    <form id='header__search-field' className='header__search-field' style={{ display: `${search ? 'flex' : 'none'}` }}>
-                        <input type='text' placeholder='SEARCH' />
-=======
                     <form id='header__search-field' onSubmit={(e) => searchKeyword(e)} className='header__search-field' style={{ display: `${search ? 'flex' : 'none'}` }}>
                         <input type='text' placeholder='SEARCH' value={keyword} onChange={(e) => setKeyword(e.target.value)} />
->>>>>>> 3e43ce5ab61890ce8e18924eaaa123180da019e7
                     </form>
                 </div>
             </div>
