@@ -32,7 +32,7 @@ function Header() {
             setSearch(event.target.parentNode.id === 'header__search-field');
             setShopDropdown(event.target.parentNode.id === 'header__shop-dropdown');
             setProfileDropdown(event.target.parentNode.id === 'header__profile-dropdown');
-        }
+        };
 
         document.addEventListener('mousedown', clickOutside);
 
