@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import moment from 'moment';
+
 import { Button, TextField, Checkbox, IconButton } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -12,11 +14,12 @@ import ProductSummary from './ProductSummary';
 import ProductContainer from './ProductContainer';
 import Authentication from './Authentication';
 import AddressCard from './AddressCard';
-import '../stylesheets/User.css'
 import AddressModal from './AddressModal';
 import Alert from './Alert';
+import '../stylesheets/User.css';
 
 function User() {
+    const location = useLocation();
     const [ { user }, dispatch ] = useStateValue();
     const [ menu, setMenu ] = useState('profile');
     const [ loginModal, setLoginModal ] = useState(false);
@@ -71,6 +74,11 @@ function User() {
         setAlertModal(mode);
     };
 
+    // set tab
+    useEffect(() => {
+        setMenu(location.search.split('=')[1]);
+    }, [location]);
+
     // load data when user updates
     useEffect(() => {
         if (user !== null && user.email !== undefined && user.email != null) {
@@ -100,7 +108,7 @@ function User() {
         }).then(response => {
             setOpenAlert(true, 'Profile updated!', true);
         });
-    }
+    };
 
     // update email
     const updateEmail = () => {
@@ -121,7 +129,7 @@ function User() {
         });
 
         updateUser(user.id, { email: newEmail });
-    }
+    };
 
     // update password
     const updatePassword = () => {
@@ -140,7 +148,7 @@ function User() {
                 setOpenAlert(true, 'Password updated!', true);
             });;
         });
-    }
+    };
 
     return (
         <div className='user'>

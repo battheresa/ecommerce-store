@@ -64,8 +64,7 @@ function StripeForm() {
                 });
             });
         });
-    }
-
+    };
 
     return (
         <div className='stripeForm'>

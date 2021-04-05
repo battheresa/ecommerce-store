@@ -8,8 +8,6 @@ import Subheader from './Subheader';
 import StripeForm from './StripeForm';
 import '../stylesheets/Checkout.css';
 
-// TODO: review checkout (wait for component from cart page)
-
 function Checkout() {
     const [ { user }, dispatch ] = useStateValue();
     const defaultAddress = user?.addresses.find(content => content.default === true);

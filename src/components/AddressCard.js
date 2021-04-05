@@ -23,7 +23,7 @@ function AddressCard({ address, setOpen }) {
                 <p className='font-light'>{address.address1}</p>
                 <p className='font-light'>{address.address2}</p>
                 <p className='font-light'>{address.district}, {address.country}</p>
-            </div>            
+            </div>
         </div>
     );
 }
