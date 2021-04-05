@@ -42,7 +42,7 @@ export const fetchAllProducts = async () => {
 
     storedProducts = products;
 
-    console.log('all products: ', products);
+    // console.log('all products: ', products);
     return products;
 }
 
@@ -57,7 +57,7 @@ export const fetchPromotional = async () => {
         }) 
     );
 
-    console.log('promotional products: ', products);
+    // console.log('promotional products: ', products);
     return products;
 }
 
@@ -72,7 +72,7 @@ export const fetchRelated = async (id, category) => {
         })
     );
 
-    console.log('related products: ', products);
+    // console.log('related products: ', products);
     return products;
 }
 
@@ -91,7 +91,7 @@ export const fetchByIdAndVariation = async (id, variation) => {
         product = content.find(data => data.id === id && data.variation === variation);
     });
 
-    console.log('product by id and variant: ', product);
+    // console.log('product by id and variant: ', product);
     return product;
 }
 
@@ -128,7 +128,7 @@ const searchFilter = (products) => {
         prices[1] = (high > prices[1]) ? high : prices[1];
     });
 
-    console.log('search filters: ', { colors: colors, materials: materials, prices: prices });
+    // console.log('search filters: ', { colors: colors, materials: materials, prices: prices });
     return { colors: colors, materials: materials, prices: prices };
 }
 
@@ -150,7 +150,7 @@ export const fetchByCategory = async (category) => {
 
     var filters = searchFilter(condense);
 
-    console.log('products by category: ', products);
+    // console.log('products by category: ', products);
     return { colors: filters.colors, materials: filters.materials, prices: filters.prices, products: products };
 }
 
@@ -172,7 +172,7 @@ export const fetchByKeyword = async (keyword) => {
 
     var filters = searchFilter(condense);
 
-    console.log('products by keyword: ', products);
+    // console.log('products by keyword: ', products);
     return { colors: filters.colors, materials: filters.materials, prices: filters.prices, products: products };
 }
 
@@ -198,7 +198,7 @@ export const fetchAllCodes = async () => {
     all.forEach(doc => codes.push(doc.data()));
     storedPromoCode = codes;
 
-    console.log('all promocodes: ', codes);
+    // console.log('all promocodes: ', codes);
     return codes;
 }
 
@@ -207,7 +207,7 @@ export const fetchCodeById = async (promocode) => {
     var code;
     await fetchAllCodes().then(content => code = content.find(data => data.code === promocode));
 
-    console.log('discount: ', code);
+    // console.log('discount: ', code);
     return code;
 }
 
@@ -227,7 +227,7 @@ export const updateUser = async (id, data) => {
 export const fetchUserById = async (id) => {
     const user = await db.collection('users').doc(id).get();
 
-    console.log('user by id: ', user.data());
+    // console.log('user by id: ', user.data());
     return user.data();
 }
 
@@ -238,7 +238,7 @@ export const fetchOrdersByUserId = async (id) => {
 
     all.forEach(doc => orders.push(doc.data()));
 
-    console.log('orders by user id: ', orders);
+    // console.log('orders by user id: ', orders);
     return orders;
 }
 
@@ -260,6 +260,6 @@ export const fetchByWishlist = async (wishlist) => {
             products.push(product);
     });
 
-    console.log('wishlist by user id: ', products);
+    // console.log('wishlist by user id: ', products);
     return products;
 }

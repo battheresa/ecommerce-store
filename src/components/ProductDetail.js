@@ -7,37 +7,90 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-import { fetchByIdAndVariation, fetchRelated } from '../services/Gateway';
+import { useStateValue } from '../services/StateProvider';
+import { fetchByIdAndVariation, fetchRelated, updateUser } from '../services/Gateway';
 
+import Alert from './Alert';
 import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
 import '../stylesheets/ProductDetail.css';
 
-// TODO: add to cart, add to wishlist
-
 function ProductDetail() {
+    const [ { user }, dispatch ] = useStateValue();
     const history = useHistory();
     const location = useLocation();
 
     const [ product, setProduct ] = useState();
-    const [ quantity, setQuantity ] = useState(0);
+    const [ quantity, setQuantity ] = useState(1);
     const [ image, setImage ] = useState();
+    const [ inWishlist, setInWishlist ] = useState();
 
     const [ related, setRelated ] = useState([]);
+
+    const [ alertModal, setAlertModal ] = useState(false);
+    const [ alertStatus, setAlertStatus ] = useState(false);
+    const [ alertMessage, setAlertMessage ] = useState('');
 
     // fetch product
     useEffect(() => {
         const id = location.search.split('&')[0].split('=')[1];
         const variation = location.search.split('&')[1].split('=')[1];
 
-        fetchByIdAndVariation(id, variation).then(content => setProduct(content));
-    }, [location.search]);
+        fetchByIdAndVariation(id, variation).then(content => {
+            setProduct(content)
+
+            if (user && user.wishlist)
+                setInWishlist(user.wishlist.includes(content.id));
+        });
+    }, [user, location.search]);
 
     // set initial image and get products from †he same category
     useEffect(() => {
         setImage(product?.item.gallery[product.variation][0]);
         fetchRelated(product?.id, product?.item.category).then(content => setRelated(content));
     }, [product]);
+
+    // open alert modal
+    const setOpenAlert = (status, message, mode) => {
+        setAlertStatus(status);
+        setAlertMessage(message);
+        setAlertModal(mode);
+    };
+
+    // add to cart
+    const addToCart = () => {
+        dispatch({
+            type: 'ADD_CART',
+            item: product,
+            quantity: quantity
+        });
+    };
+
+    // add to wishlist
+    const addToWishlist = () => {
+        if (!user)
+            return; // open login popup
+        
+        var newWishlist = user.wishlist;
+        newWishlist.push(product.id);
+
+        updateUser(user.id, { wishlist : newWishlist }).then(() => {
+            setInWishlist(true);
+            setOpenAlert(true, 'Added to wishlist!', true);
+        });
+    };
+
+    // remove from wishlist
+    const removeFromWishlist = () => {
+        var newWishlist = user.wishlist;
+        newWishlist.splice(user.wishlist.indexOf(product.id), 1);
+
+        console.log('wishlist: ', newWishlist);
+        updateUser(user.id, { wishlist : newWishlist }).then(() => {
+            setInWishlist(false);
+            setOpenAlert(true, 'Removed from wishlist!', true);
+        });
+    };
 
     // change options
     const changeOption = (group, changeTo, index) => {
@@ -143,8 +196,8 @@ function ProductDetail() {
 
                     {/* buttons */}
                     <div className='productDetail__product-buttons'>
-                        <Button variant='contained' color='primary'>ADD TO CART</Button>
-                        <div><FavoriteBorderIcon /><p>ADD TO WISHLIST</p></div>
+                        <Button variant='contained' color='primary' onClick={() => addToCart()}>ADD TO CART</Button>
+                        <div onClick={() => inWishlist ? removeFromWishlist() : addToWishlist()}>{inWishlist ? <FavoriteIcon style={{ color: '#cc3333' }} /> : <FavoriteBorderIcon style={{ color: '#de6d6d' }} />}<p>ADD TO WISHLIST</p></div>
                     </div>
                 </div>
             </div>
@@ -157,6 +210,9 @@ function ProductDetail() {
                     <ProductContainer products={related.slice(0, 4)} size='tiny' />
                 </div>
             </div>
+
+            {/* alert */}
+            {alertModal && <Alert status={alertStatus} message={alertMessage} open={alertModal} setOpen={setOpenAlert} />}
         </div>
     );
 }
