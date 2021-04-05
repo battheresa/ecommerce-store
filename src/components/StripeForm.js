@@ -7,6 +7,7 @@ import axios from '../services/axios';
 import { getSubtotal } from '../services/Reducer';
 import { useStateValue } from '../services/StateProvider';
 
+import ProductSummary from './ProductSummary';
 import StripeTextField from './StripeTextField';
 import '../stylesheets/StripeForm.css';
 
@@ -115,11 +116,16 @@ function StripeForm() {
             <div id='stripeForm__order-modal' className='modal-background' style={{ display: `${reviewModal ? 'flex' : 'none'}` }}>
                 <div className='stripeForm__order-modal'>
 
-                    {/* close button */}
+                    {/* header and close button */}
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                         <h4>REVIEW ORDERS</h4>
                         <IconButton style={{ width: 'fit-content' }} onClick={() => setReviewModal(false)}><CloseIcon /></IconButton>
                     </div>
+
+                    {/* orders */}
+                    {cart.map((product, i) => (
+                        <ProductSummary key={i} product={product} editable={false} />
+                    ))}
                 </div>
             </div>
         </div>
