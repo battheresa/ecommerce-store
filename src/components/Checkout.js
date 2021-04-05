@@ -10,16 +10,14 @@ import '../stylesheets/Checkout.css';
 
 function Checkout() {
     const [ { user }, dispatch ] = useStateValue();
-    const defaultAddress = user?.addresses.find(content => content.default === true);
-
     const [ addressModal, setAddressModal ] = useState();
 
-    const [ firstname, setFirstname ] = useState(user?.firstname);
-    const [ lastname, setLastname ] = useState(user?.lastname);
-    const [ email, setEmail ] = useState(user?.email);
-    const [ address1, setAddress1 ] = useState(defaultAddress?.country === 'Hong Kong (SAR)' ? defaultAddress?.address1 : '');
-    const [ address2, setAddress2 ] = useState(defaultAddress?.country === 'Hong Kong (SAR)' ? defaultAddress?.address2 : '');
-    const [ district, setDistrict ] = useState(defaultAddress?.country === 'Hong Kong (SAR)' ? defaultAddress?.district : '');
+    const [ firstname, setFirstname ] = useState('');
+    const [ lastname, setLastname ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ address1, setAddress1 ] = useState('');
+    const [ address2, setAddress2 ] = useState('');
+    const [ district, setDistrict ] = useState('');
 
     // mouse click listener
     useEffect(() => {
@@ -34,6 +32,23 @@ function Checkout() {
             document.removeEventListener('mousedown', clickOutside);
         };
     }, []);
+
+    // set default values for fields
+    useEffect(() => {
+        if (user && user.addresses) {
+            const defaultAddress = user.addresses.find(content => content.default === true);
+
+            if (defaultAddress && defaultAddress.country === 'Hong Kong (SAR)') {
+                setAddress1(defaultAddress.address1);
+                setAddress2(defaultAddress.address2);
+                setDistrict(defaultAddress.district);
+            }
+
+            setFirstname(user.firstname);
+            setLastname(user.lastname);
+            setEmail(user.email);
+        }
+    }, [user]);
 
     return (
         <div className='checkout'>
@@ -70,7 +85,7 @@ function Checkout() {
                     </div>
 
                     {/* delivery note */}
-                    <p className='font-light font-wide' style={{ color: 'crimson', marginTop: '-8px', opacity: '0.8' }}><small>IMPORTANT NOTE: We only ship within Hong Kong.</small></p>
+                    <p className='font-light font-wide' style={{ color: 'crimson', marginTop: '-8px', opacity: '0.8' }}><small>IMPORTANT NOTE: Shipment available within Hong Kong only.</small></p>
                 </div>
 
                 {/* payment info */}
@@ -82,7 +97,7 @@ function Checkout() {
                 <div className='checkout__address-modal'>
                     <h4>YOUR ADDRESSES</h4>
 
-                    {user?.addresses.map(content => (
+                    {user?.addresses?.map(content => (
                         <div>
                             <h6>{content.name}</h6>
                             <p className='font-light'>{content.address1} {content.address2} {content.country} {content.zipcode}</p>
