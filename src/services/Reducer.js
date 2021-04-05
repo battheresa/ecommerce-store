@@ -11,7 +11,7 @@ export const initialState = {
         method: 'test',
         cost: 100
     },
-};
+}
 
 // get total cost in the cart
 // export const getSubtotal = (cart) => 500;
@@ -19,22 +19,34 @@ export const getSubtotal = (cart) => cart?.reduce((amount, item) => item.price +
 
 // action function
 const reducer = (state, action) => {
+    var temp = [...state.cart];
+    
     switch(action.type) {
         case 'SET_USER':
             localStorage.setItem('USER_ID', action.user?.id);
             return { ...state, user: action.user };
 
         case 'ADD_CART':
-            return { ...state, user: action.user, cart: [...state.cart, action.item] };
+            if (action.quantity === 0)
+                return { ...state, user: action.user, cart: state.cart };
+
+            const indexAdd = state.cart.findIndex(item => item.item.id === action.item.id);
+
+            if (indexAdd >= 0)
+                temp[indexAdd].quantity += action.quantity;
+            else 
+                temp = [...state.cart, { item: action.item, quantity: action.quantity } ];
+
+            console.log(temp);
+            return { ...state, user: action.user, cart: temp };
 
         case 'REMOVE_CART':
-            const index = state.cart.findIndex((item) => item.id === action.id);
-            let temp = [...state.cart];
+            const indexRemove = state.cart.findIndex(item => item.id === action.item.id);
 
-            if (index >= 0)
-                temp.splice(index, 1);
+            if (indexRemove >= 0)
+                temp[indexRemove].quantity -= action.quantity;
             else
-                console.warn('ERROR: Item not found');
+                console.warn('ERROR REMOVE: Item not found');
 
             return { state, user: action.user, cart: temp };
 
