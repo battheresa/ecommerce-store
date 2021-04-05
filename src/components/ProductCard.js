@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { useStateValue } from '../services/StateProvider';
 import '../stylesheets/ProductCard.css';
 
 function ProductCard({ id, item, variation, price }) {

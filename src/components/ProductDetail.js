@@ -13,6 +13,7 @@ import { fetchByIdAndVariation, fetchRelated, updateUser } from '../services/Gat
 import Alert from './Alert';
 import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
+import Authentication from './Authentication';
 import '../stylesheets/ProductDetail.css';
 
 function ProductDetail() {
@@ -26,6 +27,8 @@ function ProductDetail() {
     const [ inWishlist, setInWishlist ] = useState();
 
     const [ related, setRelated ] = useState([]);
+    
+    const [ loginModal, setLoginModal ] = useState(false);
 
     const [ alertModal, setAlertModal ] = useState(false);
     const [ alertStatus, setAlertStatus ] = useState(false);
@@ -50,6 +53,9 @@ function ProductDetail() {
         fetchRelated(product?.id, product?.item.category).then(content => setRelated(content));
     }, [product]);
 
+    // open login modal
+    const setOpenLogin = (mode) => setLoginModal(mode);
+
     // open alert modal
     const setOpenAlert = (status, message, mode) => {
         setAlertStatus(status);
@@ -68,8 +74,10 @@ function ProductDetail() {
 
     // add to wishlist
     const addToWishlist = () => {
-        if (!user)
-            return; // open login popup
+        if (!user) {
+            setOpenLogin(true);
+            return;
+        }
         
         var newWishlist = user.wishlist;
         newWishlist.push(product.id);
@@ -210,6 +218,9 @@ function ProductDetail() {
                     <ProductContainer products={related.slice(0, 4)} size='tiny' />
                 </div>
             </div>
+
+            {/* login */}
+            {loginModal && <Authentication open={loginModal} setOpen={setOpenLogin} />}
 
             {/* alert */}
             {alertModal && <Alert status={alertStatus} message={alertMessage} open={alertModal} setOpen={setOpenAlert} />}

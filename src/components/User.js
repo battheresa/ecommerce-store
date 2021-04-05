@@ -150,13 +150,18 @@ function User() {
         });
     };
 
+    // open login popup if no user logged in
+    if (!user) {
+        return (
+            <div className='modal-background'>
+                <Authentication open={true} setOpen={setOpenLogin} />
+            </div>
+        );
+    }
+
     return (
         <div className='user'>
             <Subheader path={['home', 'profile', menu]} />
-
-            {!user && <div className='modal-background'>
-                <Authentication open={true} setOpen={setOpenLogin} />
-            </div>}
 
             <div className='user__content'>
                 

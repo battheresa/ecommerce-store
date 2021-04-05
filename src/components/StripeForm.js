@@ -19,7 +19,6 @@ function StripeForm() {
 
     const stripe = useStripe();
     const elements = useElements();
-    const [ error, setError ] = useState('');
     const [ reviewModal, setReviewModal ] = useState(false);
 
     // mouse click listener
@@ -35,12 +34,6 @@ function StripeForm() {
             document.removeEventListener('mousedown', clickOutside);
         };
     }, []);
-
-    // update error as user input card info
-    const updateError = ({ error }) => {
-        if (error) 
-            setError(error.message);
-    };
 
     // get secret key
     const makePurchase = async (event) => {
