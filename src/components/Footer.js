@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Button, TextField } from '@material-ui/core';
 import '../stylesheets/Footer.css';
 
-// TODO: navigation, subscribe
+// TODO: subscribe
 
 function Footer() {
     const history = useHistory();
@@ -16,14 +16,14 @@ function Footer() {
                 {/* additional information */}
                 <div className='footer__section'>
                     <h2>MY ACCOUNT</h2>
-                    <h2>Profile</h2>
-                    <h2>Orders</h2>
-                    <h2>Wishlist</h2>
+                    <h2 onClick={() => history.push({ pathname: '/user', search: `?tab=profile` })}>Profile</h2>
+                    <h2 onClick={() => history.push({ pathname: '/user', search: `?tab=orders` })}>Orders</h2>
+                    <h2 onClick={() => history.push({ pathname: '/user', search: `?tab=wishlist` })}>Wishlist</h2>
                 </div>
                 <div className='footer__section'>
                     <h2>SERVICES</h2>
-                    <h2>Contact Us</h2>
-                    <h2>Store Locations</h2>
+                    <h2 onClick={() => history.push('/contact-us')}>Contact Us</h2>
+                    <h2 onClick={() => history.push('/store-locations')}>Store Locations</h2>
                     <h2>Terms &amp; Conditions</h2>
                 </div>
 

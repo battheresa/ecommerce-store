@@ -13,7 +13,7 @@ import Authentication from './Authentication';
 import '../stylesheets/Header.css';
 
 function Header() {
-    const [ { user }, dispatch ] = useStateValue();
+    const [ { user, cart }, dispatch ] = useStateValue();
     const history = useHistory();
     const location = useLocation();
 
@@ -53,13 +53,13 @@ function Header() {
         setKeyword('');
         setSearch(false);
         history.push({ pathname: '/search', search: `?keyword=${keyword}` });
-    }
+    };
 
     // open profile
     const openProfile = () => {
         setProfileDropdown(false);
-        history.push('/user');
-    }
+        history.push({ pathname: '/user', search: `?tab=profile` });
+    };
 
     // logout
     const logout = () => {
@@ -68,7 +68,7 @@ function Header() {
 
         if (location.pathname === '/user')
             history.push('/');
-    }
+    };
 
     return (
         <div className='flex-center-row header'>
@@ -106,7 +106,7 @@ function Header() {
                 {/* cart */}
                 <div className='header__menu' onClick={() => history.push('/cart')}>
                     <ShoppingCartOutlinedIcon className='header__icon' fontSize='small' />
-                    <h2 className='font-wide'>CART (0)</h2>
+                    <h2 className='font-wide'>CART ({cart.length})</h2>
                 </div>
 
                 {/* login */}

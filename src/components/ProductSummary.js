@@ -4,7 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import '../stylesheets/ProductSummary.css';
 
-// TODO: modify quantity
+// TODO: add delete button
 
 function ProductSummary({ product, editable }) {
     const [ quantity, setQuantity ] = useState(product.quantity);

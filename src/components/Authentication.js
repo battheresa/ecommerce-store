@@ -58,7 +58,7 @@ function Authentication({ open, setOpen }) {
                 dispatch({ type: 'SET_USER', user: null });
             }
         });
-    }
+    };
 
     // login
     const login = (event) => {
@@ -70,7 +70,7 @@ function Authentication({ open, setOpen }) {
         }).catch((error => {
             setOpenAlert(false, error.message, true);
         }));
-    }
+    };
 
     // signup 
     const signup = (event) => {
@@ -83,7 +83,7 @@ function Authentication({ open, setOpen }) {
             console.log(error);
             setOpenAlert(false, error.message, true);
         });
-    }
+    };
 
     return (
         <div id='authentication' className='modal-background' style={{ display: `${open ? 'flex' : 'none'}` }}>

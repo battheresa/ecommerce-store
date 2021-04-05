@@ -1,7 +1,5 @@
 import React, { useRef, useImperativeHandle } from 'react';
 
-// test font on https
-
 function StripeTextField({ component: Component, inputRef, ...props }) {
     const elementRef = useRef();
 

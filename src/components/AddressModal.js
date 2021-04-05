@@ -31,6 +31,7 @@ function AddressModal({ address, open, setOpen, setAlert }) {
         // eslint-disable-next-line
     }, []);
 
+    // set initial values
     useEffect(() => {
         setMenu(address.name === '');
         setName(address.name);
@@ -63,7 +64,7 @@ function AddressModal({ address, open, setOpen, setAlert }) {
             setOpen(null, false);
             setAlert(true, 'Address added!', true);
         });
-    }
+    };
     
     // update address
     const updateAddress = () => {
@@ -88,7 +89,7 @@ function AddressModal({ address, open, setOpen, setAlert }) {
             setOpen(null, false);
             setAlert(true, 'Address updated!', true);
         });
-    }
+    };
 
     // delete address 
     const deleteAddress = () => {
@@ -99,7 +100,7 @@ function AddressModal({ address, open, setOpen, setAlert }) {
             setOpen(null, false);
             setAlert(true, 'Address deleted!', true);
         });
-    }
+    };
 
     return (
         <div id='addressModal' className='modal-background' style={{ display: `${open ? 'flex' : 'none'}` }}>
