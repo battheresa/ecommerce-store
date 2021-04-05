@@ -8,28 +8,28 @@
 - [x] Product Search Results
 - [x] Product Details
 - [ ] Cart
-- [ ] Checkout
-- [ ] Store Locations
-- [ ] Contact
+- [x] Checkout
+- [x] Store Locations
+- [x] Contact
 - [x] Login/Signup
-- [ ] User Account
+- [x] User Account
 - [ ] Terms and Conditions
 
 <br>
 
 ## **Backend Tasks**
 
-- [ ] Header
+- [x] Header
 - [ ] Footer
 - [x] Home
 - [x] Product Search Results
 - [x] Product Details
 - [ ] Cart
 - [x] Checkout
-- [ ] Store Locations
+- [x] Store Locations
 - [ ] Contact
 - [x] Login/Signup
-- [ ] User Account
+- [x] User Account
 - [ ] Terms and Conditions
 
 <br>

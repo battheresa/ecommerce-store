@@ -95,6 +95,8 @@ function ProductSearch() {
                 setProducts(content.products);
             });
         }
+
+        // eslint-disable-next-line
     }, [location.pathname]);
 
     // update variables when products are loaded
