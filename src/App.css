@@ -15,7 +15,7 @@ h1, h2, h3 {
     font-family: 'Roboto', sans-serif;
 }
 
-h4, h5, h6, p, a, button, input::placeholder {
+h4, h5, h6, p, a, td, th, button, input::placeholder {
     font-family: 'Lato', sans-serif;
 }
 

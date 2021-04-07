@@ -1,24 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, TextField} from '@material-ui/core';
 
-import Alert from './Alert';
 import Subheader from './Subheader';
 import '../stylesheets/ContactUs.css';
 
 // TODO: send a message (maybe?)
 
-function ContactUs() {
-    const [ alertModal, setAlertModal ] = useState(false);
-    const [ alertStatus, setAlertStatus ] = useState(false);
-    const [ alertMessage, setAlertMessage ] = useState('');
-
-    // open alert modal
-    const setOpenAlert = (status, message, mode) => {
-        setAlertStatus(status);
-        setAlertMessage(message);
-        setAlertModal(mode);
-    };
-
+function ContactUs({ openAlert }) {
     return (
         <div className='contactUs'>
             <Subheader path={['home', 'contact us']} />
@@ -55,12 +43,10 @@ function ContactUs() {
 
                     {/* button */}
                     <div className='contactUs__button'>
-                        <Button variant='contained' onClick={() => setOpenAlert(true, 'Message Sent!', true)}>SEND</Button>
+                        <Button variant='contained' onClick={() => openAlert(true, true, 'Message Sent!')}>SEND</Button>
                     </div>
                 </div>
             </div>
-
-            {alertModal && <Alert status={alertStatus} message={alertMessage} open={alertModal} setOpen={setOpenAlert} />}
         </div>
     );
 }

@@ -5,7 +5,7 @@ import { updateUser } from '../services/Gateway';
 import { useStateValue } from '../services/StateProvider';
 import '../stylesheets/AddressModal.css';
 
-function AddressModal({ address, open, setOpen, setAlert }) {
+function AddressModal({ address, open, setOpen, openAlert }) {
     const [ { user }, dispatch ] = useStateValue();
     const [ menu, setMenu ] = useState(false);
 
@@ -60,9 +60,9 @@ function AddressModal({ address, open, setOpen, setAlert }) {
             country: 'Hong Kong (SAR)'
         });
         
-        updateUser(user.id, { addresses: newAddress }).then(response => {
+        updateUser(user.id, { addresses: newAddress }).then(() => {
             setOpen(null, false);
-            setAlert(true, 'Address added!', true);
+            openAlert(true, true, 'Address added!');
         });
     };
     
@@ -85,9 +85,9 @@ function AddressModal({ address, open, setOpen, setAlert }) {
             country: 'Hong Kong (SAR)'
         };
 
-        updateUser(user.id, { addresses: newAddress }).then(response => {
+        updateUser(user.id, { addresses: newAddress }).then(() => {
             setOpen(null, false);
-            setAlert(true, 'Address updated!', true);
+            openAlert(true, true, 'Address updated!');
         });
     };
 
@@ -96,9 +96,9 @@ function AddressModal({ address, open, setOpen, setAlert }) {
         var newAddress = user.addresses;
         newAddress.splice(newAddress.indexOf(address), 1);
                 
-        updateUser(user.id, { addresses: newAddress }).then(response => {
+        updateUser(user.id, { addresses: newAddress }).then(() => {
             setOpen(null, false);
-            setAlert(true, 'Address deleted!', true);
+            openAlert(true, true, 'Address deleted!');
         });
     };
 

@@ -10,13 +10,11 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { useStateValue } from '../services/StateProvider';
 import { fetchByIdAndVariation, fetchRelated, updateUser } from '../services/Gateway';
 
-import Alert from './Alert';
 import Subheader from './Subheader';
 import ProductContainer from './ProductContainer';
-import Authentication from './Authentication';
 import '../stylesheets/ProductDetail.css';
 
-function ProductDetail() {
+function ProductDetail({ openAlert, openLogin }) {
     const [ { user }, dispatch ] = useStateValue();
     const history = useHistory();
     const location = useLocation();
@@ -28,12 +26,6 @@ function ProductDetail() {
 
     const [ related, setRelated ] = useState([]);
     
-    const [ loginModal, setLoginModal ] = useState(false);
-
-    const [ alertModal, setAlertModal ] = useState(false);
-    const [ alertStatus, setAlertStatus ] = useState(false);
-    const [ alertMessage, setAlertMessage ] = useState('');
-
     // fetch product
     useEffect(() => {
         const id = location.search.split('&')[0].split('=')[1];
@@ -53,16 +45,6 @@ function ProductDetail() {
         fetchRelated(product?.id, product?.item.category).then(content => setRelated(content));
     }, [product]);
 
-    // open login modal
-    const setOpenLogin = (mode) => setLoginModal(mode);
-
-    // open alert modal
-    const setOpenAlert = (status, message, mode) => {
-        setAlertStatus(status);
-        setAlertMessage(message);
-        setAlertModal(mode);
-    };
-
     // add to cart
     const addToCart = () => {
         dispatch({
@@ -75,7 +57,7 @@ function ProductDetail() {
     // add to wishlist
     const addToWishlist = () => {
         if (!user) {
-            setOpenLogin(true);
+            openLogin(true);
             return;
         }
         
@@ -84,7 +66,7 @@ function ProductDetail() {
 
         updateUser(user.id, { wishlist : newWishlist }).then(() => {
             setInWishlist(true);
-            setOpenAlert(true, 'Added to wishlist!', true);
+            openAlert(true, true, 'Added to wishlist!');
         });
     };
 
@@ -96,7 +78,7 @@ function ProductDetail() {
         console.log('wishlist: ', newWishlist);
         updateUser(user.id, { wishlist : newWishlist }).then(() => {
             setInWishlist(false);
-            setOpenAlert(true, 'Removed from wishlist!', true);
+            openAlert(true, true, 'Removed from wishlist!');
         });
     };
 
@@ -218,12 +200,6 @@ function ProductDetail() {
                     <ProductContainer products={related.slice(0, 4)} size='tiny' />
                 </div>
             </div>
-
-            {/* login */}
-            {loginModal && <Authentication open={loginModal} setOpen={setOpenLogin} />}
-
-            {/* alert */}
-            {alertModal && <Alert status={alertStatus} message={alertMessage} open={alertModal} setOpen={setOpenAlert} />}
         </div>
     );
 }

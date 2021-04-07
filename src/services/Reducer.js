@@ -28,7 +28,7 @@ const reducer = (state, action) => {
 
         case 'ADD_CART':
             if (action.quantity === 0)
-                return { ...state, user: action.user, cart: state.cart };
+                return { ...state, cart: state.cart };
 
             const indexAdd = state.cart.findIndex(item => item.item.id === action.item.id);
 
@@ -38,7 +38,7 @@ const reducer = (state, action) => {
                 temp = [...state.cart, { item: action.item, quantity: action.quantity } ];
 
             console.log(temp);
-            return { ...state, user: action.user, cart: temp };
+            return { ...state, cart: temp };
 
         case 'REMOVE_CART':
             const indexRemove = state.cart.findIndex(item => item.id === action.item.id);
@@ -48,10 +48,10 @@ const reducer = (state, action) => {
             else
                 console.warn('ERROR REMOVE: Item not found');
 
-            return { state, user: action.user, cart: temp };
+            return { state, cart: temp };
 
         case 'EMPTY_CART':
-            return { ...state, user: action.user, cart: [] };
+            return { ...state, cart: [] };
 
         default:
             return state;

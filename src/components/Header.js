@@ -9,10 +9,9 @@ import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import { auth } from '../services/firebase';
 import { useStateValue } from '../services/StateProvider';
 
-import Authentication from './Authentication';
 import '../stylesheets/Header.css';
 
-function Header() {
+function Header({ openLogin }) {
     const [ { user, cart }, dispatch ] = useStateValue();
     const history = useHistory();
     const location = useLocation();
@@ -22,9 +21,6 @@ function Header() {
 
     const [ shopDropdown, setShopDropdown ] = useState(false);
     const [ profileDropdown, setProfileDropdown ] = useState(false);
-    const [ loginModal, setLoginModal ] = useState(false);
-
-    const setOpen = (mode) => setLoginModal(mode);
 
     // mouse click listener
     useEffect(() => {
@@ -111,7 +107,7 @@ function Header() {
 
                 {/* login */}
                 <div className='header__dropdown'>
-                    <div className='header__menu' onClick={() => user ? setProfileDropdown(true) : setLoginModal(true)}>
+                    <div className='header__menu' onClick={() => user ? setProfileDropdown(true) : openLogin(true)}>
                         <PermIdentityOutlinedIcon className='header__icon' fontSize='small' />
                         <h2 className='font-wide'>{user ? 'PROFILE' : 'LOGIN'}</h2>
                     </div>
@@ -137,9 +133,6 @@ function Header() {
                     </form>
                 </div>
             </div>
-
-            {/* authentication modal */}
-            <Authentication open={loginModal} setOpen={setOpen} />
         </div>
     );
 }

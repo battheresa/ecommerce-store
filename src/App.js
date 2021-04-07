@@ -13,18 +13,38 @@ import { theme } from './stylesheets/Theme';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Alert from './components/Alert';
+import Authentication from './components/Authentication';
+
 import Home from './components/Home';
+import User from './components/User';
 import ProductDetail from './components/ProductDetail';
 import ProductSearch from './components/ProductSearch';
-import Checkout from './components/Checkout';
 import StoreLocation from './components/StoreLocation';
+import Checkout from './components/Checkout';
 import ContactUs from './components/ContactUs';
-import User from './components/User';
+
 import './App.css';
 
 function App() {
     const [ {}, dispatch ] = useStateValue();
     const [ promise, setPromise ] = useState('');
+
+    const [ login, setLogin ] = useState(false);
+
+    const [ alert, setAlert ] = useState(false);
+    const [ alertStatus, setAlertStatus ] = useState(false);
+    const [ alertMessage, setAlertMessage ] = useState('');
+
+    // open login modal
+    const openLogin = (mode) => setLogin(mode);
+
+    // open alert modal
+    const openAlert = (mode, status, message) => {
+        setAlert(mode);
+        setAlertStatus(status);
+        setAlertMessage(message);
+    };
 
     useEffect(() => {
         // fetch and set user
@@ -56,14 +76,17 @@ function App() {
         <div className='app'>
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
-                    <Header />
+
+                    {/* header */}
+                    <Header openLogin={openLogin} />
                     
+                    {/* body */}
                     <Switch>
                         <Route exact path='/'>
                             <Home />
                         </Route>
                         <Route path='/product'>
-                            <ProductDetail />
+                            <ProductDetail openAlert={openAlert} openLogin={openLogin} />
                         </Route>
                         <Route path='/checkout'>
                             {promise && <Elements stripe={promise}>
@@ -76,20 +99,26 @@ function App() {
                             <StoreLocation />
                         </Route>
                         <Route path='/contact-us'>
-                            <ContactUs />
+                            <ContactUs openAlert={openAlert} />
                         </Route>
                         <Route path='/cart'>
                             <h1>cart</h1>
                         </Route>
                         <Route path='/user'>
-                            <User />
+                            <User openAlert={openAlert} openLogin={openLogin} />
                         </Route>
                         <Route path='/'>
                             <ProductSearch />
                         </Route>
                     </Switch>
 
+                    {/* footer */}
                     <Footer />
+
+                    {/* modal and alerts */}
+                    {login && <Authentication login={login} openLogin={openLogin} openAlert={openAlert} />}
+                    {alert && <Alert status={alertStatus} message={alertMessage} alert={alert} openAlert={openAlert} />}
+
                 </BrowserRouter>
             </ThemeProvider>
         </div>
