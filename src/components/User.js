@@ -12,25 +12,18 @@ import { updateUser, fetchByWishlist, fetchOrdersByUserId } from '../services/Ga
 import Subheader from './Subheader';
 import ProductSummary from './ProductSummary';
 import ProductContainer from './ProductContainer';
-import Authentication from './Authentication';
 import AddressCard from './AddressCard';
 import AddressModal from './AddressModal';
-import Alert from './Alert';
 import '../stylesheets/User.css';
 
-function User() {
+function User({ openAlert, openLogin }) {
     const location = useLocation();
     const [ { user }, dispatch ] = useStateValue();
     const [ menu, setMenu ] = useState('profile');
-    const [ loginModal, setLoginModal ] = useState(false);
 
     const [ selectedAddress, setSelectedAddress ] = useState({ name: '', default: false, address1: '', address2: '', district: '', country: 'Hong Kong (SAR)' });
     const [ addressModal, setAddressModal ] = useState(false);
 
-    const [ alertModal, setAlertModal ] = useState(false);
-    const [ alertStatus, setAlertStatus ] = useState(false);
-    const [ alertMessage, setAlertMessage ] = useState('');
-    
     const [ firstname, setFirstname ] = useState('');
     const [ lastname, setLastname ] = useState('');
     const [ gender, setGender ] = useState('');
@@ -45,9 +38,6 @@ function User() {
     const [ newPassword, setNewPassword ] = useState('');
     const [ confirmPassword, setConfirmPassword ] = useState('');
 
-    // open login modal
-    const setOpenLogin = (mode) => setLoginModal(mode);
-    
     // open address modal
     const setOpenAddress = (address, mode) => {
         if (address === null) {
@@ -65,13 +55,6 @@ function User() {
         
         setSelectedAddress(address);
         setAddressModal(mode);
-    };
-
-    // open alert modal
-    const setOpenAlert = (status, message, mode) => {
-        setAlertStatus(status);
-        setAlertMessage(message);
-        setAlertModal(mode);
     };
 
     // set tab
@@ -105,26 +88,30 @@ function User() {
             firstname: firstname, 
             lastname: lastname, 
             gender: gender
-        }).then(response => {
-            setOpenAlert(true, 'Profile updated!', true);
+        }).then(() => {
+            openAlert(true, true, 'Profile updated!');
         });
     };
 
     // update email
     const updateEmail = () => {
         if (curEmail === '') {
-            setOpenAlert(false, 'Please enter your current email.', true);
+            openAlert(true, false, 'Please enter your current email.');
             return;
         }
 
         if (curEmail === newEmail) {
-            setOpenAlert(false, 'Please enter a different email.', true);
+            openAlert(true, false, 'Please enter a different email.');
             return;
         }
 
         auth.signInWithEmailAndPassword(curEmail, curPassword).then(credential => {
-            credential.user.updateEmail(newEmail).then(response => {
-                setOpenAlert(true, 'Email updated!', true);
+            credential.user.updateEmail(newEmail).then(() => {
+                openAlert(true, true, 'Email updated!');
+
+                setCurEmail('');
+                setNewEmail('');
+                setCurPassword('');
             });;
         });
 
@@ -134,29 +121,29 @@ function User() {
     // update password
     const updatePassword = () => {
         if (curPassword === '') {
-            setOpenAlert(false, 'Please enter your current password.', true);
+            openAlert(true, false, 'Please enter your current password.');
             return;
         }
 
         if (newPassword !== confirmPassword) {
-            setOpenAlert(false, 'Password does not match.', true);
+            openAlert(true, false, 'Password does not match.');
             return;
         }
 
         auth.signInWithEmailAndPassword(user.email, curPassword).then(credential => {
-            credential.user.updatePassword(newPassword).then(response => {
-                setOpenAlert(true, 'Password updated!', true);
-            });;
+            credential.user.updatePassword(newPassword).then(() => {
+                openAlert(true, true, 'Password updated!');
+                
+                setCurPassword('');
+                setNewPassword('');
+                setConfirmPassword('');
+            });
         });
     };
 
     // open login popup if no user logged in
     if (!user) {
-        return (
-            <div className='modal-background'>
-                <Authentication open={true} setOpen={setOpenLogin} />
-            </div>
-        );
+        openLogin(true);
     }
 
     return (
@@ -274,7 +261,7 @@ function User() {
                     </div>
 
                     {/* address modal */}
-                    <AddressModal address={selectedAddress} open={addressModal} setOpen={setOpenAddress} setAlert={setOpenAlert} />
+                    <AddressModal address={selectedAddress} open={addressModal} setOpen={setOpenAddress} openAlert={openAlert} />
                 </div>
 
                 {/* orders tab */}
@@ -302,9 +289,6 @@ function User() {
                     <h4>WISHLIST</h4>
                     {wishlist && <ProductContainer products={wishlist} size='large' />}
                 </div>
-
-                {/* alert modal */}
-                {alertModal && <Alert status={alertStatus} message={alertMessage} open={alertModal} setOpen={setOpenAlert} />}
             </div>
         </div>
     );

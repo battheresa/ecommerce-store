@@ -4,11 +4,11 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import '../stylesheets/Alert.css';
 
-function Alert({ status, message, open, setOpen }) {
+function Alert({ status, message, alert, openAlert }) {
     // change timer after 3 seconds
     useEffect(() => {
         const interval = setInterval(() => {
-            setOpen(false);
+            openAlert(false, false, '');
         }, 3000);
 
         return () => clearInterval(interval);
@@ -17,7 +17,7 @@ function Alert({ status, message, open, setOpen }) {
     }, []);
 
     return (
-        <div className='alert__modal' style={{ display: `${open ? 'flex' : 'none' }` }}>
+        <div className='alert__modal' style={{ display: `${alert ? 'flex' : 'none' }` }}>
             {status && <CheckCircleIcon />}
             {!status && <CancelIcon />}
             <p className='font-light'>{message}</p>
