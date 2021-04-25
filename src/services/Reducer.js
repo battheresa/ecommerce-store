@@ -2,20 +2,20 @@
 export const initialState = {
     user: localStorage.getItem('USER_ID'),
     cart: [],
-    promo: {
-        code: 'test',
-        discount: 5,
-        unit: 'percent'
-    },
-    delivery: {
-        method: 'test',
-        cost: 100
-    },
+    promo: null,
+    delivery: null,
 }
 
 // get total cost in the cart
-// export const getSubtotal = (cart) => 500;
-export const getSubtotal = (cart) => cart?.reduce((amount, item) => item.price + amount, 0);
+export const getSubtotal = (cart) => {
+    var subtotal = 0;
+
+    cart?.forEach(item => {
+        subtotal += item.price * item.quantity;
+    });
+
+    return subtotal;
+}
 
 // action function
 const reducer = (state, action) => {
@@ -26,27 +26,46 @@ const reducer = (state, action) => {
             localStorage.setItem('USER_ID', action.user?.id);
             return { ...state, user: action.user };
 
+        case 'SET_CHECKOUT':
+            return { ...state, promo: action.promo, delivery: action.delivery };
+
         case 'ADD_CART':
             if (action.quantity === 0)
                 return { ...state, cart: state.cart };
 
-            const indexAdd = state.cart.findIndex(item => item.item.id === action.item.id);
+            const indexAdd = state.cart.findIndex(item => 
+                item.id === action.item.id && 
+                item.color === action.item.color && 
+                item.size === action.item.size && 
+                item.material === action.item.material
+            );
 
             if (indexAdd >= 0)
-                temp[indexAdd].quantity += action.quantity;
+                temp[indexAdd].quantity += action.item.quantity;
             else 
-                temp = [...state.cart, { item: action.item, quantity: action.quantity } ];
+                temp.push(action.item);
 
-            console.log(temp);
+            return { ...state, cart: temp };
+
+        case 'UPDATE_CART': 
+            if (action.quantity === 0)
+                return { ...state, cart: state.cart };
+
+            const indexUpdate = state.cart.findIndex(item => item.id === action.item.id);
+            temp[indexUpdate].quantity = action.item.quantity;
+
             return { ...state, cart: temp };
 
         case 'REMOVE_CART':
-            const indexRemove = state.cart.findIndex(item => item.id === action.item.id);
+            const indexRemove = state.cart.findIndex(item => 
+                item.id === action.item.id && 
+                item.color === action.item.color && 
+                item.size === action.item.size && 
+                item.material === action.item.material
+            );
 
             if (indexRemove >= 0)
-                temp[indexRemove].quantity -= action.quantity;
-            else
-                console.warn('ERROR REMOVE: Item not found');
+                temp.splice(indexRemove, 1);
 
             return { state, cart: temp };
 

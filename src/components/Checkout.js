@@ -4,10 +4,11 @@ import { TextField } from '@material-ui/core';
 import { useStateValue } from '../services/StateProvider';
 
 import Subheader from './Subheader';
+import AddressCard from './AddressCard';
 import StripeForm from './StripeForm';
 import '../stylesheets/Checkout.css';
 
-function Checkout() {
+function Checkout({ openAlert, openLogin }) {
     const [ { user }, dispatch ] = useStateValue();
     const [ addressModal, setAddressModal ] = useState();
 
@@ -49,6 +50,14 @@ function Checkout() {
         }
     }, [user]);
 
+    const onSelectAddress = (address) => {
+        setAddress1(address.address1);
+        setAddress2(address.address1);
+        setDistrict(address.district);
+
+        setAddressModal(false);
+    }
+
     return (
         <div className='checkout'>
             <Subheader path={['home', 'cart', 'checkout']} />
@@ -88,7 +97,7 @@ function Checkout() {
                 </div>
 
                 {/* payment info */}
-                <StripeForm />
+                <StripeForm openAlert={openAlert} openLogin={openLogin} />
             </div>
 
             {/* change address modal */}
@@ -96,12 +105,11 @@ function Checkout() {
                 <div className='checkout__address-modal'>
                     <h4>YOUR ADDRESSES</h4>
 
-                    {user?.addresses?.map(content => (
-                        <div>
-                            <h6>{content.name}</h6>
-                            <p className='font-light'>{content.address1} {content.address2} {content.country} {content.zipcode}</p>
-                        </div>
-                    ))}
+                    <div className='checkout__address-list'>
+                        {user?.addresses?.map((content, i) => (<div onClick={() => onSelectAddress(content)}>
+                            <AddressCard key={i} address={content} size={'small'} editable={false} />
+                        </div>))}
+                    </div>
                 </div>
             </div>
         </div>

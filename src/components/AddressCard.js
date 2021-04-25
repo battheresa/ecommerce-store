@@ -4,7 +4,7 @@ import EditIcon from '@material-ui/icons/Edit';
 
 import '../stylesheets/AddressCard.css';
 
-function AddressCard({ address, setOpen }) { 
+function AddressCard({ address, size, editable, setOpen, onSelect }) { 
     return (
         <div className='addressCard'>
             
@@ -15,15 +15,20 @@ function AddressCard({ address, setOpen }) {
                     {address.default && <StarIcon className='addressCard__tag' style={{ fontSize: '16px' }} />}
                 </div>
 
-                <EditIcon className='addressCard__edit' fontSize='small' onClick={() => setOpen(address, true)} />
+                {editable && <EditIcon className='addressCard__edit' fontSize='small' onClick={() => setOpen(address, true)} />}
             </div>
 
             {/* address details */}
-            <div className='addressCard__body'>
+            {size === 'normal' && <div className='addressCard__body'>
                 <p className='font-light'>{address.address1}</p>
                 <p className='font-light'>{address.address2}</p>
                 <p className='font-light'>{address.district}, {address.country}</p>
-            </div>
+            </div>}
+
+            {size === 'small' && <div className='addressCard__body'>
+                <p className='font-light'>{address.address1}, {address.address2}</p>
+                <p className='font-light'>{address.district}, {address.country}</p>
+            </div>}
         </div>
     );
 }

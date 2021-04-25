@@ -21,6 +21,7 @@ import User from './components/User';
 import ProductDetail from './components/ProductDetail';
 import ProductSearch from './components/ProductSearch';
 import StoreLocation from './components/StoreLocation';
+import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import ContactUs from './components/ContactUs';
 
@@ -90,7 +91,7 @@ function App() {
                         </Route>
                         <Route path='/checkout'>
                             {promise && <Elements stripe={promise}>
-                                <Checkout />
+                                <Checkout openAlert={openAlert} openLogin={openLogin} />
                             </Elements>}
 
                             {!promise && <div style={{ height: '50vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }} />}
@@ -102,7 +103,7 @@ function App() {
                             <ContactUs openAlert={openAlert} />
                         </Route>
                         <Route path='/cart'>
-                            <h1>cart</h1>
+                            <Cart />
                         </Route>
                         <Route path='/user'>
                             <User openAlert={openAlert} openLogin={openLogin} />

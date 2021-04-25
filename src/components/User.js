@@ -252,7 +252,7 @@ function User({ openAlert, openLogin }) {
                     {/* addresses */}
                     <div className='user__address'>
                         {addresses.map((address, i) => (
-                            <AddressCard key={i} address={address} open={addressModal} setOpen={setOpenAddress} />
+                            <AddressCard key={i} address={address} size={'normal'} editable={true} open={addressModal} setOpen={setOpenAddress} />
                         ))}
 
                         <div className='user__address-add'>

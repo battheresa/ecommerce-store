@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { TextField, IconButton, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+
 import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from '@stripe/react-stripe-js';
 
 import axios from '../services/axios';
@@ -11,11 +13,13 @@ import ProductSummary from './ProductSummary';
 import StripeTextField from './StripeTextField';
 import '../stylesheets/StripeForm.css';
 
-function StripeForm() {
+function StripeForm({ openAlert, openLogin }) {
+    const history = useHistory();
     const [ { cart, promo, delivery }, dispatch ] = useStateValue();
 
-    const discount = (promo.unit === 'dollars') ? promo.discount : getSubtotal(cart) * promo.discount / 100;
-    const total = getSubtotal(cart) + delivery.cost - discount;
+    var subtotal = getSubtotal(cart);
+    var discount = promo ? (promo.unit === 'dollars') ? promo.discount : subtotal * promo.discount / 100 : 0;
+    var total = subtotal + (delivery ? delivery.cost : 0) - discount;
 
     const stripe = useStripe();
     const elements = useElements();
@@ -43,18 +47,21 @@ function StripeForm() {
             method: 'POST',
             url: `/purchase/order?total=${Math.round(total * 100)}`
         }).then(async (response) => {
-            console.log('secret: ', response.data.secret);
+            // console.log('secret: ', response.data.secret);
 
             await stripe.createPaymentMethod({
                 type: 'card',
                 card: elements.getElement(CardNumberElement)
             }).then(async (result) => {
-                console.log('payment method:', result.paymentMethod);
+                // console.log('payment method:', result.paymentMethod);
                 
                 await stripe.confirmCardPayment(response.data.secret, { 
                     payment_method: result.paymentMethod.id
                 }).then(payload => {
-                    console.log('payload: ', payload);
+                    // console.log('payload: ', payload);
+
+                    openAlert(true, true, 'Order placed successfully!');
+                    history.push('/');
                 });
             });
         });
@@ -83,15 +90,15 @@ function StripeForm() {
                 {/* summary */}
                 <div className='stripeForm__summary-group'>
                     <p className='font-light font-wide' style={{ flex: '1' }}>SUBTOTAL: </p>
-                    <p className='font-light font-wide'>HK${getSubtotal(cart)}</p>
+                    <p className='font-light font-wide'>HK${subtotal}</p>
                 </div>
                 <div className='stripeForm__summary-group'>
-                    <p className='font-light font-wide' style={{ flex: '1' }}>PROMO CODE ({promo.code.toUpperCase()}): </p>
+                    <p className='font-light font-wide' style={{ flex: '1' }}>PROMO CODE ({promo?.code.toUpperCase()}): </p>
                     <p className='font-light font-wide'>-HK${discount}</p>
                 </div>
                 <div className='stripeForm__summary-group'>
-                    <p className='font-light font-wide' style={{ flex: '1' }}>DELIVERY ({delivery.method.toUpperCase()}): </p>
-                    <p className='font-light font-wide'>HK${delivery.cost}</p>
+                    <p className='font-light font-wide' style={{ flex: '1' }}>DELIVERY ({delivery?.method.toUpperCase()}): </p>
+                    <p className='font-light font-wide'>HK${delivery?.cost}</p>
                 </div>
                 <div className='stripeForm__summary-group'>
                     <p className='font-bold font-wide' style={{ flex: '1' }}>TOTAL: </p>
@@ -116,7 +123,7 @@ function StripeForm() {
                     </div>
 
                     {/* orders */}
-                    {cart.map((product, i) => (
+                    {cart?.map((product, i) => (
                         <ProductSummary key={i} product={product} editable={false} />
                     ))}
                 </div>
