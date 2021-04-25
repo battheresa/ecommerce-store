@@ -106,8 +106,8 @@ function Checkout({ openAlert, openLogin }) {
                     <h4>YOUR ADDRESSES</h4>
 
                     <div className='checkout__address-list'>
-                        {user?.addresses?.map((content, i) => (<div onClick={() => onSelectAddress(content)}>
-                            <AddressCard key={i} address={content} size={'small'} editable={false} />
+                        {user?.addresses?.map((content, i) => (<div key={i} onClick={() => onSelectAddress(content)}>
+                            <AddressCard address={content} size={'small'} editable={false} />
                         </div>))}
                     </div>
                 </div>

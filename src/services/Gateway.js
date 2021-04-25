@@ -266,6 +266,11 @@ export const fetchUserById = async (id) => {
     return user.data();
 }
 
+// save orders by user id
+export const saveOrdersByUserId = async (id, orders) => {
+    await db.collection('users').doc(id).collection('orders').add(orders);
+}
+
 // fetch orders by user id
 export const fetchOrdersByUserId = async (id) => {
     var orders = [];
