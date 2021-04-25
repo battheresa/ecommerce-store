@@ -72,6 +72,7 @@ function User({ openAlert, openLogin }) {
 
             fetchOrdersByUserId(user.id).then(orders => {
                 setOrders(orders);
+                console.log(orders);
             });
 
             if (user.wishlist) {
@@ -270,8 +271,8 @@ function User({ openAlert, openLogin }) {
                     {orders?.map((data, i) => (
                         <div key={i} className='user__order'>
                             <div className='user__order-header'>
-                                <h6 className='font-bold font-wide'>ORDER ID:<span className='font-light font-wide' style={{ marginLeft: '10px' }}>{data.id}</span></h6>
-                                <h6 className='font-bold font-wide'>DATE:<span className='font-light font-wide' style={{ marginLeft: '10px' }}>{moment(data.date.toDate()).format('L')}</span></h6>
+                                <h6 className='font-bold font-wide'>ORDER ID:<span className='font-light font-wide' style={{ marginLeft: '10px' }}>{data.id.slice(-16).toUpperCase()}</span></h6>
+                                <h6 className='font-bold font-wide'>DATE:<span className='font-light font-wide' style={{ marginLeft: '10px' }}>{moment(new Date(data.date)).format('L')}</span></h6>
                                 <h6 className='font-bold font-wide'>STATUS:<span className='font-light font-wide' style={{ marginLeft: '10px' }}>{data.status.toUpperCase()}</span></h6>
                                 <h6 className='font-bold font-wide'>TOTAL:<span className='font-light font-wide' style={{ marginLeft: '10px' }}>HK${data.total}</span></h6>
                             </div>

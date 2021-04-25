@@ -40,6 +40,7 @@
 }
 
 .user__order {
+    padding-bottom: 15px;
     margin-bottom: 30px;
     border: 0.8px solid #7F7F7F;
 }

@@ -8,6 +8,7 @@ import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcEl
 import axios from '../services/axios';
 import { getSubtotal } from '../services/Reducer';
 import { useStateValue } from '../services/StateProvider';
+import { saveOrdersByUserId } from '../services/Gateway';
 
 import ProductSummary from './ProductSummary';
 import StripeTextField from './StripeTextField';
@@ -15,7 +16,7 @@ import '../stylesheets/StripeForm.css';
 
 function StripeForm({ openAlert, openLogin }) {
     const history = useHistory();
-    const [ { cart, promo, delivery }, dispatch ] = useStateValue();
+    const [ { user, cart, promo, delivery }, dispatch ] = useStateValue();
 
     var subtotal = getSubtotal(cart);
     var discount = promo ? (promo.unit === 'dollars') ? promo.discount : subtotal * promo.discount / 100 : 0;
@@ -60,8 +61,19 @@ function StripeForm({ openAlert, openLogin }) {
                 }).then(payload => {
                     // console.log('payload: ', payload);
 
-                    openAlert(true, true, 'Order placed successfully!');
-                    history.push('/');
+                    const order = {
+                        id: payload.paymentIntent.id,
+                        date: new Date().getTime(),
+                        total: total,
+                        status: 'preparing',
+                        products: cart,
+                    }
+
+                    saveOrdersByUserId(user.id, order).then(() => {
+                        dispatch({ type: 'EMPTY_CART' });
+                        openAlert(true, true, 'Order placed successfully!');
+                        history.push('/');
+                    });
                 });
             });
         });
