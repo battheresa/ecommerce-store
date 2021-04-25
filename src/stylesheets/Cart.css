@@ -1,0 +1,39 @@
+.cart__container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 50px 100px 25px 100px;
+}
+
+.cart__cart {
+    border-right: 0.8px solid black;
+}
+
+.cart__dropdown {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.cart__summary {
+    padding-left: 50px;
+}
+
+.cart__cost {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 0.8px solid black;
+}
+
+.cart__cost > div {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.cart__empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}

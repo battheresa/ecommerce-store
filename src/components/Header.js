@@ -102,7 +102,7 @@ function Header({ openLogin }) {
                 {/* cart */}
                 <div className='header__menu' onClick={() => history.push('/cart')}>
                     <ShoppingCartOutlinedIcon className='header__icon' fontSize='small' />
-                    <h2 className='font-wide'>CART ({cart.length})</h2>
+                    <h2 className='font-wide'>CART ({cart ? cart.length : 0})</h2>
                 </div>
 
                 {/* login */}

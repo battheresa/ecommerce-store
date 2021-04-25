@@ -210,7 +210,7 @@ export const fetchStoreLocations = async () => {
 
 // promo code --------------------------------------
 
-var storedPromoCode = [];
+var storedPromoCode;
 
 // fetch all promo codes
 export const fetchAllCodes = async () => {
@@ -218,7 +218,7 @@ export const fetchAllCodes = async () => {
         return storedPromoCode;
     
     var codes = [];
-    const all = await db.collection('products').get();
+    const all = await db.collection('promo-code').get();
 
     all.forEach(doc => codes.push(doc.data()));
     storedPromoCode = codes;
@@ -227,13 +227,23 @@ export const fetchAllCodes = async () => {
     return codes;
 }
 
-// fetch promo code by code id
-export const fetchCodeById = async (promocode) => {
-    var code;
-    await fetchAllCodes().then(content => code = content.find(data => data.code === promocode));
+// delivery method ---------------------------------
 
-    // console.log('discount: ', code);
-    return code;
+var storedDeliveryMethod;
+
+// fetch all promo codes
+export const fetchAllDeliveryMethod = async () => {
+    if (storedDeliveryMethod)
+        return storedDeliveryMethod;
+    
+    var methods = [];
+    const all = await db.collection('delivery-method').get();
+
+    all.forEach(doc => methods.push(doc.data()));
+    storedDeliveryMethod = methods;
+
+    // console.log('delivery: ', methods);
+    return methods;
 }
 
 // user account ------------------------------------

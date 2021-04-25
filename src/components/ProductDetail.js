@@ -25,6 +25,10 @@ function ProductDetail({ openAlert, openLogin }) {
     const [ inWishlist, setInWishlist ] = useState();
 
     const [ related, setRelated ] = useState([]);
+
+    const [ size, setSize ] = useState('');
+    const [ material, setMaterial ] = useState('');
+    const [ color, setColor ] = useState('');
     
     // fetch product
     useEffect(() => {
@@ -33,6 +37,10 @@ function ProductDetail({ openAlert, openLogin }) {
 
         fetchByIdAndVariation(id, variation).then(content => {
             setProduct(content)
+
+            setSize(content.item.size.find(a => a.toLowerCase() === variation) ? variation : content.item.size[0] ? content.item.size[0] : '');
+            setMaterial(content.item.material.find(a => a.toLowerCase() === variation) ? variation : content.item.material[0] ? content.item.material[0] : '');
+            setColor(content.item.color.find(a => a.toLowerCase() === variation) ? variation : content.item.color[0] ? content.item.color[0] : '');
 
             if (user && user.wishlist)
                 setInWishlist(user.wishlist.includes(content.id));
@@ -47,10 +55,20 @@ function ProductDetail({ openAlert, openLogin }) {
 
     // add to cart
     const addToCart = () => {
+        const item = {
+            id: product.id,
+            image: image,
+            name: product.item.name,
+            price: product.price,
+            quantity: quantity,
+            size: size,
+            material: material,
+            color: color,
+        }
+
         dispatch({
             type: 'ADD_CART',
-            item: product,
-            quantity: quantity
+            item: item,
         });
     };
 
@@ -75,7 +93,6 @@ function ProductDetail({ openAlert, openLogin }) {
         var newWishlist = user.wishlist;
         newWishlist.splice(user.wishlist.indexOf(product.id), 1);
 
-        console.log('wishlist: ', newWishlist);
         updateUser(user.id, { wishlist : newWishlist }).then(() => {
             setInWishlist(false);
             openAlert(true, true, 'Removed from wishlist!');
@@ -84,6 +101,23 @@ function ProductDetail({ openAlert, openLogin }) {
 
     // change options
     const changeOption = (group, changeTo, index) => {
+        switch (group) {
+            case 'size': 
+                setSize(changeTo);
+                break;
+
+            case 'material': 
+                setMaterial(changeTo);
+                break;
+
+            case 'color': 
+                setColor(changeTo);
+                break;
+            
+            default:
+                break;
+        }
+
         if (product?.item[group].length === 1)
             return;
 
@@ -119,7 +153,6 @@ function ProductDetail({ openAlert, openLogin }) {
 
     return (
         <div className='productDetail'>
-            {/* subheader */}
             <Subheader path={['home', product?.item.category, product?.item.name]} />
 
             {/* product details */}
@@ -172,11 +205,11 @@ function ProductDetail({ openAlert, openLogin }) {
                     <div className='productDetail__product-quantity'>
                         <h6><small>QUANTITY :</small></h6>
                         <div>
-                            <IconButton style={{ width: 'fit-content' }} onClick={() => setQuantity(Math.max(0, quantity - 1))}>
+                            <IconButton style={{ width: 'fit-content' }} onClick={() => setQuantity(Math.max(1, quantity - 1))}>
                                 <RemoveIcon fontSize='small' />
                             </IconButton>
 
-                            <input className='productDetail__product-input' type='number' value={Math.max(0, Math.min(100, quantity))} onChange={(e) => setQuantity(e.target.value)} /> 
+                            <input className='productDetail__product-input' type='number' value={Math.max(1, Math.min(100, quantity))} onChange={(e) => setQuantity(e.target.value)} /> 
 
                             <IconButton style={{ width: 'fit-content' }} onClick={() => setQuantity(Math.min(100, quantity + 1))}>
                                 <AddIcon fontSize='small' />
