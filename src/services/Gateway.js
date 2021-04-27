@@ -162,7 +162,7 @@ export const fetchByKeyword = async (keyword) => {
 
     await fetchAllProducts().then(content => 
         content.forEach(data => {
-            if (data.item.name.toLowerCase().includes(keyword.toLowerCase())) {
+            if (data.item.name.toLowerCase().includes(keyword.toLowerCase()) || data.item.category.toLowerCase().includes(keyword.toLowerCase()) || data.item.description.toLowerCase().includes(keyword.toLowerCase())) {
                 if (condense.find(temp => temp.item.name === data.item.name) === undefined)
                     condense.push(data)
 
@@ -249,8 +249,8 @@ export const fetchAllDeliveryMethod = async () => {
 // user account ------------------------------------
 
 // create user
-export const createUser = async (user) => {
-    await db.collection('users').doc().set(user);
+export const createUser = async (id, user) => {
+    await db.collection('users').doc(id).set(user);
 }
 
 // update user info

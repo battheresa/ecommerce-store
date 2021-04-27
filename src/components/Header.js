@@ -37,6 +37,10 @@ function Header({ openLogin }) {
         };
     }, []);
 
+    useEffect(() => {
+        console.log('logged in successful');
+    }, [user]);
+
     // search by category
     const searchCategory = (path) => {
         setShopDropdown(false);

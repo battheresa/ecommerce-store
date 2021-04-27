@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, TextField } from '@material-ui/core';
 
 import { auth } from '../services/firebase';
-import { fetchUserById } from '../services/Gateway';
+import { fetchUserById, createUser } from '../services/Gateway';
 import { useStateValue } from '../services/StateProvider';
 
 import '../stylesheets/Authentication.css';
@@ -39,7 +39,7 @@ function Authentication({ login, openLogin, openAlert }) {
         auth.onAuthStateChanged(authUser => {
             if (authUser) {
                 fetchUserById(authUser.uid).then(user => {
-                    if (user)
+                    if (user) 
                         dispatch({ type: 'SET_USER', user: user });
                 });
             }
@@ -66,8 +66,20 @@ function Authentication({ login, openLogin, openAlert }) {
         event.preventDefault();
 
         auth.createUserWithEmailAndPassword(email, password).then((auth) => {
-            if (auth) 
-                updateUser();
+            const newUser = {
+                id: auth.user.uid,
+                firstname: '',
+                lastname: '',
+                email: email,
+                gender: 'other',
+                wishlist: [],
+                addresses: [],
+            };
+
+            createUser(auth.user.uid, newUser).then(() => {
+                if (auth) 
+                    updateUser();
+            });
         }).catch(error => {
             openAlert(true, false, error.message);
         });

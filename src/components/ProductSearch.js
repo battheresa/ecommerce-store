@@ -97,7 +97,7 @@ function ProductSearch() {
         }
 
         // eslint-disable-next-line
-    }, [location.pathname]);
+    }, [location]);
 
     // update variables when products are loaded
     useEffect(() => {
