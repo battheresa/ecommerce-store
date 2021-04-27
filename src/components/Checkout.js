@@ -8,7 +8,7 @@ import AddressCard from './AddressCard';
 import StripeForm from './StripeForm';
 import '../stylesheets/Checkout.css';
 
-function Checkout({ openAlert, openLogin }) {
+function Checkout({ openAlert }) {
     const [ { user }, dispatch ] = useStateValue();
     const [ addressModal, setAddressModal ] = useState();
 
@@ -97,7 +97,7 @@ function Checkout({ openAlert, openLogin }) {
                 </div>
 
                 {/* payment info */}
-                <StripeForm openAlert={openAlert} openLogin={openLogin} />
+                <StripeForm openAlert={openAlert} />
             </div>
 
             {/* change address modal */}

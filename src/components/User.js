@@ -72,7 +72,6 @@ function User({ openAlert, openLogin }) {
 
             fetchOrdersByUserId(user.id).then(orders => {
                 setOrders(orders);
-                console.log(orders);
             });
 
             if (user.wishlist) {
