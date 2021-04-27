@@ -14,7 +14,7 @@ import ProductSummary from './ProductSummary';
 import StripeTextField from './StripeTextField';
 import '../stylesheets/StripeForm.css';
 
-function StripeForm({ openAlert, openLogin }) {
+function StripeForm({ openAlert }) {
     const history = useHistory();
     const [ { user, cart, promo, delivery }, dispatch ] = useStateValue();
 
@@ -48,32 +48,34 @@ function StripeForm({ openAlert, openLogin }) {
             method: 'POST',
             url: `/purchase/order?total=${Math.round(total * 100)}`
         }).then(async (response) => {
-            // console.log('secret: ', response.data.secret);
+            console.log('secret: ', response.data.secret);
 
             await stripe.createPaymentMethod({
                 type: 'card',
                 card: elements.getElement(CardNumberElement)
             }).then(async (result) => {
-                // console.log('payment method:', result.paymentMethod);
+                console.log('payment method: ', result.paymentMethod);
                 
                 await stripe.confirmCardPayment(response.data.secret, { 
                     payment_method: result.paymentMethod.id
                 }).then(payload => {
-                    // console.log('payload: ', payload);
+                    console.log('payload: ', payload);
 
-                    const order = {
-                        id: payload.paymentIntent.id,
-                        date: new Date().getTime(),
-                        total: total,
-                        status: 'preparing',
-                        products: cart,
+                    if (user !== null && user !== undefined) {
+                        const order = {
+                            id: payload.paymentIntent.id,
+                            date: new Date().getTime(),
+                            total: total,
+                            status: 'preparing',
+                            products: cart,
+                        }
+
+                        saveOrdersByUserId(user.id, order);
                     }
 
-                    saveOrdersByUserId(user.id, order).then(() => {
-                        dispatch({ type: 'EMPTY_CART' });
-                        openAlert(true, true, 'Order placed successfully!');
-                        history.push('/');
-                    });
+                    dispatch({ type: 'EMPTY_CART' });
+                    openAlert(true, true, 'Order placed successfully!');
+                    history.push('/');
                 });
             });
         });

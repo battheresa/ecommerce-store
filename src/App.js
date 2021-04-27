@@ -91,7 +91,7 @@ function App() {
                         </Route>
                         <Route path='/checkout'>
                             {promise && <Elements stripe={promise}>
-                                <Checkout openAlert={openAlert} openLogin={openLogin} />
+                                <Checkout openAlert={openAlert} />
                             </Elements>}
 
                             {!promise && <div style={{ height: '50vh', width: '100vw', display: 'flex', justifyContent: 'center', alignItems: 'center' }} />}
