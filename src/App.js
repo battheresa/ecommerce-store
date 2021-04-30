@@ -24,6 +24,7 @@ import StoreLocation from './components/StoreLocation';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import ContactUs from './components/ContactUs';
+import TermsConditions from './components/TermsConditions';
 
 import './App.css';
 
@@ -107,6 +108,9 @@ function App() {
                         </Route>
                         <Route path='/user'>
                             <User openAlert={openAlert} openLogin={openLogin} />
+                        </Route>
+                        <Route path='/terms-and-conditions'>
+                            <TermsConditions />
                         </Route>
                         <Route path='/'>
                             <ProductSearch />

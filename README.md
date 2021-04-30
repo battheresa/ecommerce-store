@@ -7,7 +7,7 @@
 - [x] Home
 - [x] Product Search Results
 - [x] Product Details
-- [ ] Cart
+- [x] Cart
 - [x] Checkout
 - [x] Store Locations
 - [x] Contact
@@ -24,13 +24,13 @@
 - [x] Home
 - [x] Product Search Results
 - [x] Product Details
-- [ ] Cart
+- [x] Cart
 - [x] Checkout
 - [x] Store Locations
-- [ ] Contact
+- [x] Contact
 - [x] Login/Signup
 - [x] User Account
-- [ ] Terms and Conditions
+- [x] Terms and Conditions
 
 <br>
 

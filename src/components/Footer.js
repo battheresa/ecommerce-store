@@ -3,10 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { Button, TextField } from '@material-ui/core';
 import '../stylesheets/Footer.css';
 
-// TODO: subscribe
-
 function Footer() {
     const history = useHistory();
+
+    const goTo = (path, search) => {
+        window.scrollTo(0, 0);
+        history.push({ pathname: path, search: search });
+    };
 
     return (
         <div className='footer'>
@@ -16,27 +19,27 @@ function Footer() {
                 {/* additional information */}
                 <div className='footer__section'>
                     <h2>MY ACCOUNT</h2>
-                    <h2 onClick={() => history.push({ pathname: '/user', search: `?tab=profile` })}>Profile</h2>
-                    <h2 onClick={() => history.push({ pathname: '/user', search: `?tab=orders` })}>Orders</h2>
-                    <h2 onClick={() => history.push({ pathname: '/user', search: `?tab=wishlist` })}>Wishlist</h2>
+                    <h2 onClick={() => goTo('/user', '?tab=profile')}>Profile</h2>
+                    <h2 onClick={() => goTo('/user', '?tab=orders')}>Orders</h2>
+                    <h2 onClick={() => goTo('/user', '?tab=wishlist')}>Wishlist</h2>
                 </div>
                 <div className='footer__section'>
                     <h2>SERVICES</h2>
-                    <h2 onClick={() => history.push('/contact-us')}>Contact Us</h2>
-                    <h2 onClick={() => history.push('/store-locations')}>Store Locations</h2>
-                    <h2>Terms &amp; Conditions</h2>
+                    <h2 onClick={() => goTo('/contact-us')}>Contact Us</h2>
+                    <h2 onClick={() => goTo('/store-locations')}>Store Locations</h2>
+                    <h2 onClick={() => goTo('/terms-and-conditions')}>Terms &amp; Conditions</h2>
                 </div>
 
                 {/* items categories */}
                 <div className='footer__section'>
                     <h2>SHOP</h2>
                     <div className='footer__shop'>
-                        <h2 onClick={() => history.push('/electronics')}>Electronics</h2>
-                        <h2 onClick={() => history.push('/fabrics')}>Fabrics</h2>
-                        <h2 onClick={() => history.push('/furnitures')}>Furnitures</h2>
-                        <h2 onClick={() => history.push('/housekeeping')}>Housekeeping</h2>
-                        <h2 onClick={() => history.push('/kitchenwares')}>Kitchenwares</h2>
-                        <h2 onClick={() => history.push('/storages')}>Storages</h2>
+                        <h2 onClick={() => goTo('/electronics')}>Electronics</h2>
+                        <h2 onClick={() => goTo('/fabrics')}>Fabrics</h2>
+                        <h2 onClick={() => goTo('/furnitures')}>Furnitures</h2>
+                        <h2 onClick={() => goTo('/housekeeping')}>Housekeeping</h2>
+                        <h2 onClick={() => goTo('/kitchenwares')}>Kitchenwares</h2>
+                        <h2 onClick={() => goTo('/storages')}>Storages</h2>
                     </div>
                 </div>
 

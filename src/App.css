@@ -134,6 +134,10 @@ td, th {
     letter-spacing: 1.05px;
 }
 
+.font-larger {
+    font-size: 16px;
+}
+
 .modal-background {
     display: flex;
     justify-content: center;
